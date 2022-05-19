@@ -9,5 +9,7 @@
 <body>
 <h1>Congrats! This page loads!</h1>
 
+${DEBUG}
+
 </body>
 </html>
