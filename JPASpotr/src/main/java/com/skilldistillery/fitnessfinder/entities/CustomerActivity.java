@@ -7,6 +7,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
@@ -21,10 +22,12 @@ public class CustomerActivity {
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
+	@MapsId(value = "customerId")
 	private Customer customer;
 
 	@ManyToOne
 	@JoinColumn(name = "activity_id")
+	@MapsId(value = "activityId")
 	private Activity activity;
 
 	public CustomerActivity() {

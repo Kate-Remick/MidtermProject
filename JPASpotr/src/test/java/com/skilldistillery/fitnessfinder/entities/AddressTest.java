@@ -10,7 +10,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import net.bytebuddy.dynamic.DynamicType.Builder.MethodDefinition.ParameterDefinition.Annotatable;
 
 class AddressTest {
 
@@ -32,7 +35,6 @@ class AddressTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		address = em.find(Address.class, 1);
 	}
 
 	@AfterEach
@@ -42,10 +44,20 @@ class AddressTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing OTO facility mapping")
+	void test1() {
+		address = em.find(Address.class, 2);
 		assertNotNull(address);
-		assertEquals("500 Oak St", address.getStreetAddress1());
-		assertEquals("Boston", address.getCity());
+		assertNotNull(address.getFacility());
+		assertEquals("GloboGym", address.getFacility().getName());
+	}
+	@Test
+	@DisplayName("Testing OTO customer mapping")
+	void test2() {
+		address = em.find(Address.class, 1);
+		assertNotNull(address);
+		assertNotNull(address.getCustomer());
+		assertEquals("Max",address.getCustomer().getFirstName());
 	}
 
 }

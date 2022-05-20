@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CategoryTest {
@@ -41,8 +42,16 @@ class CategoryTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic Mapping")
+	void test1() {
 		assertNotNull(category);
+		assertEquals("Strength", category.getTitle());
+	}
+	@Test
+	@DisplayName("Testing activity Mapping")
+	void test2() {
+		assertNotNull(category);
+//		assertNotNull(category.getActivities());
 		assertEquals("Strength", category.getTitle());
 	}
 }

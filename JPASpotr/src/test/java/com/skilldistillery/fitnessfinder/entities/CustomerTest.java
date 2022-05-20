@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CustomerTest {
@@ -41,10 +42,55 @@ class CustomerTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic mapping")
+	void test1() {
 		assertNotNull(customer);
 		assertEquals("Max", customer.getFirstName());
 		assertEquals("hello", customer.getBio());
+	}
+	@Test
+	@DisplayName("Testing address mapping")
+	void test2() {
+		assertNotNull(customer);
+		assertNotNull(customer.getAddress());
+		assertEquals("500 Oak St", customer.getAddress().getStreetAddress1());
+	}
+	@Test
+	@DisplayName("Testing facility mapping")
+	void test3() {
+		assertNotNull(customer);
+		assertNotNull(customer.getFacilities());
+		assertTrue(customer.getFacilities().size() > 0);
+	}
+	@Test
+	@DisplayName("Testing gender mapping")
+	void test4() {
+		assertNotNull(customer);
+	}
+	@Test
+	@DisplayName("Testing journal mapping")
+	void test5() {
+		assertNotNull(customer);
+	}
+	@Test
+	@DisplayName("Testing goal mapping")
+	void test6() {
+		assertNotNull(customer);
+	}
+	@Test
+	@DisplayName("Testing login mapping")
+	void test7() {
+		assertNotNull(customer);
+	}
+	@Test
+	@DisplayName("Testing activity mapping")
+	void test8() {
+		assertNotNull(customer);
+	}
+	@Test
+	@DisplayName("Testing facility preference mapping")
+	void test9() {
+		assertNotNull(customer);
 	}
 
 }

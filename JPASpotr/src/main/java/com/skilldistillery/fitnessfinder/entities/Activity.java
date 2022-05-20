@@ -45,7 +45,7 @@ public class Activity {
 			category.addActivity(this);
 		}
 	}
-	
+
 	public void removeCategory(Category category) {
 		if (categories != null && categories.contains(category)) {
 			categories.remove(category);
