@@ -1,6 +1,7 @@
 package com.skilldistillery.fitnessfinder.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,12 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LoginTest {
-
+class RoleTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Login user;
+	private Role role;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,18 +32,18 @@ class LoginTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(Login.class, 1);
+		role = em.find(Role.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		role = null;
 	}
 
 	@Test
 	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
+		assertNotNull(role);
+		assertEquals("customer", role.getName());
 	}
 }
