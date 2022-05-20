@@ -8,15 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Activity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String username;
+	private String name;
 
-	public User() {
+	public Activity() {
 		super();
 	}
 
@@ -28,12 +28,17 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
@@ -49,13 +54,8 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Activity other = (Activity) obj;
 		return id == other.id;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
 	}
 
 }

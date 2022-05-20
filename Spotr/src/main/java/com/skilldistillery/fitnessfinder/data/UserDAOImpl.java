@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.fitnessfinder.entities.User;
+import com.skilldistillery.fitnessfinder.entities.Login;
 
 @Service	
 @Transactional
@@ -16,13 +16,13 @@ public class UserDAOImpl implements UserDAO {
 	private EntityManager em;
 
 	@Override
-	public User findUserById(int id) {
+	public Login findUserById(int id) {
 		
-		return em.find(User.class, id);
+		return em.find(Login.class, id);
 	}
 
 	@Override
-	public User findBuUsernameAndPassword(String username, String password) {
+	public Login findBuUsernameAndPassword(String username, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}

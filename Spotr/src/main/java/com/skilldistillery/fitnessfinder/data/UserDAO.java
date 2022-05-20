@@ -1,8 +1,8 @@
 package com.skilldistillery.fitnessfinder.data;
 
-import com.skilldistillery.fitnessfinder.entities.User;
+import com.skilldistillery.fitnessfinder.entities.Login;
 
 public interface UserDAO {
-	User findUserById(int id);
-	User findBuUsernameAndPassword(String username, String password);
+	Login findUserById(int id);
+	Login findBuUsernameAndPassword(String username, String password);
 }
