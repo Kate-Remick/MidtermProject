@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -28,7 +29,7 @@ public class Login {
 	@OneToOne(mappedBy = "login")
 	private Facility facility;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "role_id")
 	private Role role;
 

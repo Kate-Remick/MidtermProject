@@ -47,4 +47,18 @@ class ActivityTest {
 		assertNotNull(activity);
 		assertEquals("Powerlifting", activity.getName());
 	}
+	@Test
+	@DisplayName("Testing MTM category")
+	void test2() {
+		assertNotNull(activity);
+		assertNotNull(activity.getCategories());
+		assertTrue(activity.getCategories().size() > 0);
+	}
+	@Test
+	@DisplayName("Testing MTM facilities")
+	void test3() {
+		assertNotNull(activity);
+		assertNotNull(activity.getFacilities());
+		assertTrue(activity.getFacilities().size() > 0);
+	}
 }
