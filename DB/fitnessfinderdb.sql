@@ -233,6 +233,7 @@ CREATE TABLE IF NOT EXISTS `goal` (
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(200) NULL,
   `customer_id` INT NOT NULL,
+  `completed` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_goal_customer1_idx` (`customer_id` ASC),
   CONSTRAINT `fk_goal_customer1`
@@ -388,7 +389,6 @@ CREATE TABLE IF NOT EXISTS `facility_comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `facility_id` INT NOT NULL,
   `customer_id` INT NOT NULL,
-  `comment_id` INT NULL,
   `comment` TEXT NULL,
   `created_at` DATETIME NULL,
   PRIMARY KEY (`id`),
@@ -416,7 +416,6 @@ CREATE TABLE IF NOT EXISTS `customer_trainer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `personal_trainer_id` INT NOT NULL,
   `customer_id` INT NOT NULL,
-  `comment_id` INT NULL,
   `comment` TEXT NULL,
   `created_at` DATETIME NULL,
   INDEX `fk_personal_trainer_has_customer_customer1_idx` (`customer_id` ASC),
@@ -587,7 +586,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fitnessfinderdb`;
-INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`) VALUES (1, 'Pump Iron', 'bench 1000 lbs', 1);
+INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`, `completed`) VALUES (1, 'Pump Iron', 'bench 1000 lbs', 1, 0);
 
 COMMIT;
 
@@ -677,7 +676,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fitnessfinderdb`;
-INSERT INTO `facility_comment` (`id`, `facility_id`, `customer_id`, `comment_id`, `comment`, `created_at`) VALUES (1, 1, 1, 1, 'this place sucks', '2022-05-05');
+INSERT INTO `facility_comment` (`id`, `facility_id`, `customer_id`, `comment`, `created_at`) VALUES (1, 1, 1, 'this place sucks', '2022-05-05');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `customer_trainer`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fitnessfinderdb`;
+INSERT INTO `customer_trainer` (`id`, `personal_trainer_id`, `customer_id`, `comment`, `created_at`) VALUES (1, 1, 1, 'awesome dude', '2022-05-05');
 
 COMMIT;
 
