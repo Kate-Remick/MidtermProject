@@ -3,7 +3,20 @@
 	<persistence-unit name="JPASpotr">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
-		<class>com.skilldistillery.fitnessfinder.entities.User</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Activity</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Address</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Category</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Customer</class>
+		<class>com.skilldistillery.fitnessfinder.entities.CustomerActivity</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Facility</class>
+		<class>com.skilldistillery.fitnessfinder.entities.FacilityComment</class>
+		<class>com.skilldistillery.fitnessfinder.entities.FacilityPreferences</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Gender</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Goal</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Journal</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Login</class>
+		<class>com.skilldistillery.fitnessfinder.entities.PersonalTrainer</class>
+		<class>com.skilldistillery.fitnessfinder.entities.Role</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
