@@ -1,6 +1,7 @@
 package com.skilldistillery.fitnessfinder.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,7 +46,7 @@ public class Customer {
 
 	@ManyToOne
 	@JoinColumn(name = "gender_id")
-	private String gender;
+	private Gender gender;
 
 	@OneToMany(mappedBy = "customer")
 	private List<Journal> logs;
@@ -70,6 +71,46 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	
+//	//****************
+//		public void addCategory(Category category) {
+//			if (categories == null) {
+//				categories = new ArrayList<>();
+//				
+//			}
+//			if (!categories.contains(category)) {
+//				categories.add(category);
+//				category.addActivity(this);
+//			}
+//		}
+//		
+//		public void removeCategory(Category category) {
+//			if (categories != null && categories.contains(category)) {
+//				categories.remove(category);
+//				category.removeActivity(this);
+//			}
+//		}
+//		
+//		//****************
+//		public void addCategory(Category category) {
+//			if (categories == null) {
+//				categories = new ArrayList<>();
+//				
+//			}
+//			if (!categories.contains(category)) {
+//				categories.add(category);
+//				category.addActivity(this);
+//			}
+//		}
+//		
+//		public void removeCategory(Category category) {
+//			if (categories != null && categories.contains(category)) {
+//				categories.remove(category);
+//				category.removeActivity(this);
+//			}
+//		}
+//		//****************
+//		//****************
 
 	public int getId() {
 		return id;
@@ -127,11 +168,11 @@ public class Customer {
 		this.facilities = facilities;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 

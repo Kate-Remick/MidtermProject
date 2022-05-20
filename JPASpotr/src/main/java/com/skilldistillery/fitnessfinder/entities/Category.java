@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,6 +27,26 @@ public class Category {
 		super();
 	}
 
+	// ***************
+	public void addActivity(Activity activity) {
+		if (activities == null) {
+			activities = new ArrayList<>();
+
+		}
+		if (!activities.contains(activity)) {
+			activities.add(activity);
+			activity.addCategory(this);
+		}
+	}
+
+	public void removeActivity(Activity activity) {
+		if (activities != null && activities.contains(activity)) {
+			activities.remove(activity);
+			activity.removeCategory(this);
+		}
+	}
+	// ******************
+
 	public int getId() {
 		return id;
 	}
@@ -40,6 +61,14 @@ public class Category {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 
 	@Override

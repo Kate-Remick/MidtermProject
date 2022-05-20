@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +25,7 @@ public class Activity {
 	@JoinTable(name = "activity_category", joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories;
 	// TODO: Add/Remove methods
+	
 
 	@ManyToMany
 	@JoinTable(name = "facility_activity", joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
@@ -32,7 +34,46 @@ public class Activity {
 	public Activity() {
 		super();
 	}
-
+	
+	//****************
+	public void addCategory(Category category) {
+		if (categories == null) {
+			categories = new ArrayList<>();
+			
+		}
+		if (!categories.contains(category)) {
+			categories.add(category);
+			category.addActivity(this);
+		}
+	}
+	
+	public void removeCategory(Category category) {
+		if (categories != null && categories.contains(category)) {
+			categories.remove(category);
+			category.removeActivity(this);
+		}
+	}
+	//****************
+	
+//	public void addFacility(Facility facility) {
+//		if (facilities == null) {
+//			facilities = new ArrayList<>();
+//			
+//		}
+//		if (!facilities.contains(facility)) {
+//			facilities.add(facility);
+//			facility.addActivity(this);
+//		}
+//	}
+//	
+//	public void removeFacility(Facility facility) {
+//		if (facilities != null && facilities.contains(facility)) {
+//			facilities.remove(facility);
+//			facility.removeActivity(this);
+//		}
+//	}
+	//**************
+	
 	public int getId() {
 		return id;
 	}
