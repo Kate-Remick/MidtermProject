@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,6 @@ public class Facility {
 
 	@ManyToMany(mappedBy = "facilities")
 	List<Customer> customers;
-	// TODO: Add/Remove methods
 
 	@OneToOne
 	@JoinColumn(name = "login_id")
@@ -55,6 +55,45 @@ public class Facility {
 	public Facility() {
 		super();
 	}
+	
+	//***************
+	public void addCustomer(Customer customer) {
+		if (customers == null) {
+			customers = new ArrayList<>();
+			
+		}
+		if (!customers.contains(customer)) {
+			customers.add(customer);
+			customer.addFacility(this);
+		}
+	}
+	
+	public void removeCustomer(Customer customer) {
+		if (customers != null && customers.contains(customer)) {
+			customers.remove(customer);
+			customer.removeFacility(this);
+		}
+	}
+	
+	public void addActivity(Activity activity) {
+		if (activities == null) {
+			activities = new ArrayList<>();
+			
+		}
+		if (!activities.contains(activity)) {
+			activities.add(activity);
+			activity.addFacility(this);
+		}
+	}
+	
+	public void removeActivity(Activity activity) {
+		if (activities != null && activities.contains(activity)) {
+			activities.remove(activity);
+			activity.removeFacility(this);
+		}
+	}
+	//**************
+	
 
 	public int getId() {
 		return id;
