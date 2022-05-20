@@ -47,11 +47,12 @@ class CategoryTest {
 		assertNotNull(category);
 		assertEquals("Strength", category.getTitle());
 	}
+
 	@Test
 	@DisplayName("Testing activity Mapping")
 	void test2() {
 		assertNotNull(category);
-//		assertNotNull(category.getActivities());
-		assertEquals("Strength", category.getTitle());
+		assertNotNull(category.getActivities());
+		assertTrue(category.getActivities().size() > 0 );
 	}
 }
