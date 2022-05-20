@@ -8,6 +8,7 @@
 		<class>com.skilldistillery.fitnessfinder.entities.Category</class>
 		<class>com.skilldistillery.fitnessfinder.entities.Customer</class>
 		<class>com.skilldistillery.fitnessfinder.entities.CustomerActivity</class>
+		<class>com.skilldistillery.fitnessfinder.entities.CustomerActivityId</class>
 		<class>com.skilldistillery.fitnessfinder.entities.Facility</class>
 		<class>com.skilldistillery.fitnessfinder.entities.FacilityComment</class>
 		<class>com.skilldistillery.fitnessfinder.entities.FacilityPreferences</class>
@@ -15,7 +16,7 @@
 		<class>com.skilldistillery.fitnessfinder.entities.Goal</class>
 		<class>com.skilldistillery.fitnessfinder.entities.Journal</class>
 		<class>com.skilldistillery.fitnessfinder.entities.Login</class>
-		<class>com.skilldistillery.fitnessfinder.entities.PersonalTrainer</class>
+		<class>com.skilldistillery.fitnessfinder.entities.icebox.PersonalTrainer</class>
 		<class>com.skilldistillery.fitnessfinder.entities.Role</class>
 
 		<properties>
