@@ -5,6 +5,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,14 @@ public class CustomerActivity {
 
 	@Column(name = "skill_level")
 	private Integer skillLevel;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+	@ManyToOne
+	@JoinColumn(name = "activity_id")
+	private Activity activity;
 
 	public CustomerActivity() {
 		super();
@@ -35,6 +45,22 @@ public class CustomerActivity {
 
 	public void setSkillLevel(Integer skillLevel) {
 		this.skillLevel = skillLevel;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Login {
@@ -19,6 +21,16 @@ public class Login {
 	private String password;
 
 	private boolean active;
+
+	@OneToOne(mappedBy = "login")
+	private Customer customer;
+
+	@OneToOne(mappedBy = "login")
+	private Facility facility;
+
+	@OneToOne
+	@JoinColumn(name = "role_id")
+	private Role role;
 
 	public Login() {
 		super();
@@ -54,6 +66,30 @@ public class Login {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
 	}
 
 	@Override

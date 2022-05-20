@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Role {
@@ -15,6 +16,9 @@ public class Role {
 	private int id;
 
 	private String name;
+	
+	@OneToOne(mappedBy = "role")
+	private Login login;
 
 	public Role() {
 		super();
@@ -34,6 +38,14 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 	@Override

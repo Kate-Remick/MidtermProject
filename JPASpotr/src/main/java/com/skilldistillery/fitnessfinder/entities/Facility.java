@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Facility {
@@ -32,6 +36,21 @@ public class Facility {
 	private boolean alwaysOpen;
 
 	private Integer price;
+
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
+
+	@ManyToMany(mappedBy = "facilities")
+	List<Customer> customers;
+	// TODO: Add/Remove methods
+
+	@OneToOne
+	@JoinColumn(name = "login_id")
+	private Login login;
+
+	@ManyToMany(mappedBy = "facilities")
+	private List<Activity> activities;
 
 	public Facility() {
 		super();
@@ -99,6 +118,38 @@ public class Facility {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 
 	@Override

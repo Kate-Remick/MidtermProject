@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Journal {
@@ -20,6 +22,14 @@ public class Journal {
 
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name = "goal_id")
+	private Goal goal;
 
 	public Journal() {
 		super();
@@ -47,6 +57,22 @@ public class Journal {
 
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Goal getGoal() {
+		return goal;
+	}
+
+	public void setGoal(Goal goal) {
+		this.goal = goal;
 	}
 
 	@Override

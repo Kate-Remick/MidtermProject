@@ -1,11 +1,13 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Gender {
@@ -15,6 +17,9 @@ public class Gender {
 	private int id;
 
 	private String name;
+
+	@OneToMany(mappedBy = "gender")
+	private List<Customer> customers;
 
 	public Gender() {
 		super();
@@ -34,6 +39,14 @@ public class Gender {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
 	}
 
 	@Override

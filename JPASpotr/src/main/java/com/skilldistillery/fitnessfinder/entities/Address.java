@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -32,6 +33,12 @@ public class Address {
 	private String email;
 
 	private String url;
+
+	@OneToOne(mappedBy = "address")
+	private Facility facility;
+
+	@OneToOne(mappedBy = "address")
+	private Customer customer;
 
 	public Address() {
 		super();
@@ -107,6 +114,22 @@ public class Address {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override

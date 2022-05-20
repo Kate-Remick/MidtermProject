@@ -1,6 +1,7 @@
 package com.skilldistillery.fitnessfinder.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
@@ -26,6 +33,39 @@ public class Customer {
 	private LocalDate birthDate;
 
 	private String bio;
+
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
+
+	@ManyToMany
+	@JoinTable(name = "customer_facility", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
+	private List<Facility> facilities;
+	// TODO: Add/Remove methods
+
+	@ManyToOne
+	@JoinColumn(name = "gender_id")
+	private String gender;
+
+	@OneToMany(mappedBy = "customer")
+	private List<Journal> logs;
+	// TODO: Add/Remove/Edit methods
+
+	@OneToMany(mappedBy = "customer")
+	private List<Goal> goals;
+	// TODO: Add/Remove/Edit methods
+
+	@OneToOne
+	@JoinColumn(name = "login_id")
+	private Login login;
+
+	@OneToMany(mappedBy = "customer")
+	private List<CustomerActivity> customerActivities;
+	// TODO: ADD/REMOVE methods
+
+	@OneToOne
+	@JoinColumn(name = "facility_preferences_id")
+	private FacilityPreferences facilityPreferences;
 
 	public Customer() {
 		super();
@@ -69,6 +109,70 @@ public class Customer {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Facility> getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(List<Facility> facilities) {
+		this.facilities = facilities;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public List<Journal> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(List<Journal> logs) {
+		this.logs = logs;
+	}
+
+	public List<Goal> getGoals() {
+		return goals;
+	}
+
+	public void setGoals(List<Goal> goals) {
+		this.goals = goals;
+	}
+
+	public List<CustomerActivity> getCustomerActivities() {
+		return customerActivities;
+	}
+
+	public void setCustomerActivities(List<CustomerActivity> customerActivities) {
+		this.customerActivities = customerActivities;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	public FacilityPreferences getFacilityPreferences() {
+		return facilityPreferences;
+	}
+
+	public void setFacilityPreferences(FacilityPreferences facilityPreferences) {
+		this.facilityPreferences = facilityPreferences;
 	}
 
 	@Override

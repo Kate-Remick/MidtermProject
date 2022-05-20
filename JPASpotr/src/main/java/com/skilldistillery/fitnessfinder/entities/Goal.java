@@ -1,11 +1,15 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Goal {
@@ -17,6 +21,14 @@ public class Goal {
 	private String name;
 
 	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+
+	@OneToMany(mappedBy = "goal")
+	private List<Journal> logs;
+	// TODO: Add/Remove/Edit methods
 
 	public Goal() {
 		super();
@@ -44,6 +56,22 @@ public class Goal {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public List<Journal> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(List<Journal> logs) {
+		this.logs = logs;
 	}
 
 	@Override
