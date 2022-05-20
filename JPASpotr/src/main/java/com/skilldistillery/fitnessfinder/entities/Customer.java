@@ -42,7 +42,6 @@ public class Customer {
 	@ManyToMany
 	@JoinTable(name = "customer_facility", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
 	private List<Facility> facilities;
-	// TODO: Add/Remove methods
 
 	@ManyToOne
 	@JoinColumn(name = "gender_id")
@@ -50,11 +49,9 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer")
 	private List<Journal> logs;
-	// TODO: Add/Remove/Edit methods
 
 	@OneToMany(mappedBy = "customer")
 	private List<Goal> goals;
-	// TODO: Add/Remove/Edit methods
 
 	@OneToOne
 	@JoinColumn(name = "login_id")
@@ -62,7 +59,6 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer")
 	private List<CustomerActivity> customerActivities;
-	// TODO: ADD/REMOVE methods
 
 	@OneToOne
 	@JoinColumn(name = "facility_preferences_id")
@@ -72,45 +68,81 @@ public class Customer {
 		super();
 	}
 	
-//	//****************
-//		public void addCategory(Category category) {
-//			if (categories == null) {
-//				categories = new ArrayList<>();
-//				
-//			}
-//			if (!categories.contains(category)) {
-//				categories.add(category);
-//				category.addActivity(this);
-//			}
-//		}
-//		
-//		public void removeCategory(Category category) {
-//			if (categories != null && categories.contains(category)) {
-//				categories.remove(category);
-//				category.removeActivity(this);
-//			}
-//		}
-//		
-//		//****************
-//		public void addCategory(Category category) {
-//			if (categories == null) {
-//				categories = new ArrayList<>();
-//				
-//			}
-//			if (!categories.contains(category)) {
-//				categories.add(category);
-//				category.addActivity(this);
-//			}
-//		}
-//		
-//		public void removeCategory(Category category) {
-//			if (categories != null && categories.contains(category)) {
-//				categories.remove(category);
-//				category.removeActivity(this);
-//			}
-//		}
-//		//****************
-//		//****************
+	//****************
+		public void addFacility(Facility facility) {
+			if (facilities == null) {
+				facilities = new ArrayList<>();
+				
+			}
+			if (!facilities.contains(facility)) {
+				facilities.add(facility);
+				facility.addCustomer(this);
+			}
+		}
+		
+		public void removeFacility(Facility facility) {
+			if (facilities != null && facilities.contains(facility)) {
+				facilities.remove(facility);
+				facility.removeCustomer(this);
+			}
+		}
+		
+		
+		public void addJournal(Journal journal) {
+			if (logs == null) {
+				logs = new ArrayList<>();
+				
+			}
+			if (!logs.contains(journal)) {
+				logs.add(journal);
+				journal.setCustomer(this);
+			}
+			
+		}
+		
+		public void removeJournal(Journal journal) {
+			if (logs != null && logs.contains(journal)) {
+				logs.remove(journal);
+				
+			}
+		}
+		
+		public void addGoal(Goal goal) {
+			if (goals == null) {
+				goals = new ArrayList<>();
+				
+			}
+			if (!goals.contains(goal)) {
+				goals.add(goal);
+				goal.setCustomer(this);
+			}
+		}
+		
+		public void removeGoal(Goal goal) {
+			if (goals != null && facilities.contains(goal)) {
+				goals.remove(goal);
+			}
+		}
+		
+		public void addCustomerActivity(CustomerActivity customerActivity) {
+			if (customerActivities == null) {
+				customerActivities = new ArrayList<>();
+				
+			}
+			if (!customerActivities.contains(customerActivity)) {
+				customerActivities.add(customerActivity);
+				customerActivity.setCustomer(this);
+			}
+		}
+		
+		public void removeCustomerActivity(CustomerActivity customerActivity) {
+			if (customerActivities != null && customerActivities.contains(customerActivity)) {
+				customerActivities.remove(customerActivity);
+				customerActivity.setCustomer(null);
+			}
+		}
+		
+		//****************
 
 	public int getId() {
 		return id;

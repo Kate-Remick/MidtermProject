@@ -21,7 +21,6 @@ public class Category {
 
 	@ManyToMany(mappedBy = "categories")
 	private List<Activity> activities;
-	// TODO: Add/Remove methods
 
 	public Category() {
 		super();

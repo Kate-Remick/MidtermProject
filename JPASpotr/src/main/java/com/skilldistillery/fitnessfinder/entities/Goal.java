@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,11 +29,29 @@ public class Goal {
 
 	@OneToMany(mappedBy = "goal")
 	private List<Journal> logs;
-	// TODO: Add/Remove/Edit methods
 
 	public Goal() {
 		super();
 	}
+	
+	//*************
+	public void addJournal(Journal journal) {
+		if (logs == null) {
+			logs = new ArrayList<>();
+			
+		}
+		if (!logs.contains(journal)) {
+			logs.add(journal);
+			journal.setGoal(this);
+		}
+	}
+	public void removeJournal(Journal journal) {
+		if (logs != null && logs.contains(journal)) {
+			logs.remove(journal);
+		}
+	}
+	
+	//**************
 
 	public int getId() {
 		return id;

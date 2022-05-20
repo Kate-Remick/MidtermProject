@@ -24,7 +24,6 @@ public class Activity {
 	@ManyToMany
 	@JoinTable(name = "activity_category", joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private List<Category> categories;
-	// TODO: Add/Remove methods
 	
 
 	@ManyToMany
@@ -55,23 +54,23 @@ public class Activity {
 	}
 	//****************
 	
-//	public void addFacility(Facility facility) {
-//		if (facilities == null) {
-//			facilities = new ArrayList<>();
-//			
-//		}
-//		if (!facilities.contains(facility)) {
-//			facilities.add(facility);
-//			facility.addActivity(this);
-//		}
-//	}
-//	
-//	public void removeFacility(Facility facility) {
-//		if (facilities != null && facilities.contains(facility)) {
-//			facilities.remove(facility);
-//			facility.removeActivity(this);
-//		}
-//	}
+	public void addFacility(Facility facility) {
+		if (facilities == null) {
+			facilities = new ArrayList<>();
+			
+		}
+		if (!facilities.contains(facility)) {
+			facilities.add(facility);
+			facility.addActivity(this);
+		}
+	}
+	
+	public void removeFacility(Facility facility) {
+		if (facilities != null && facilities.contains(facility)) {
+			facilities.remove(facility);
+			facility.removeActivity(this);
+		}
+	}
 	//**************
 	
 	public int getId() {
