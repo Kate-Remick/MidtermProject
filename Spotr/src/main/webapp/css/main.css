@@ -35,20 +35,21 @@ body {
   
 }
 
-#login {
-  display: inline-block;
-  position: relative;
-  right: 20em;
-	background-color: white;
-     float:right;
-}
-
-#new_user {
-  display: inline-block;
-  position: relative;
-  right: 10em;
-	background-color: gray;
-     float:right;
+span.button {
+	display: inline-block;
+    position: relative;
+    right: 5%;
+    top:50%;
+    color:red; 
+    font-size: 12px;
+    background-color: #ffcaca;
+    padding: 5px;
+border-radius: 5px 5px 5px;
+border: 1px solid red;
+padding-left: 25px;
+float: right;
+    
+	
 }
 
 .formLabels {
