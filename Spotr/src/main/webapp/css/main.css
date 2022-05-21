@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightgrey;
+}
+
+.header {
+	vertical-align: middle;
+	height: 100px;
+	color: black;
+	
+}
+
+.logo{
+     float:left;
+     width: 287px;
+     height:100px;
+     display:block;    
+}
+
+.banner{
+  background-image:
+      url("images/banner_background1.png");
+}
+
+.tagline {
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+  
+  
+}
+
+#login {
+  display: inline-block;
+  position: relative;
+  right: 20em;
+	background-color: white;
+     float:right;
+}
+
+#new_user {
+  display: inline-block;
+  position: relative;
+  right: 10em;
+	background-color: gray;
+     float:right;
+}
+
+.formLabels {
+	width: 20%;
+	text-align: right;
+}
+
+.inline {
+	display: inline;
+}
