@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LoginTest {
@@ -32,7 +33,6 @@ class LoginTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(Login.class, 1);
 	}
 
 	@AfterEach
@@ -42,8 +42,35 @@ class LoginTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic mapping")
+	void test1() {
+		user = em.find(Login.class, 1);
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
+	}
+	// TODO ???
+	@Test
+	@DisplayName("Testing customer mapping")
+	void test2() {
+		user = em.find(Login.class, 1);
+		assertNotNull(user);
+		assertNotNull(user.getCustomer());
+		assertEquals("Max", user.getCustomer().getFirstName());
+	}
+	@Test
+	@DisplayName("Testing Facility mapping")
+	void test3() {
+		user = em.find(Login.class, 3);
+		assertNotNull(user);
+		assertNotNull(user.getFacility());
+		assertEquals("GloboGym", user.getFacility().getName());
+	}
+	@Test
+	@DisplayName("Testing role mapping")
+	void test4() {
+		user = em.find(Login.class, 3);
+		assertNotNull(user);
+		assertNotNull(user.getRole());
+		assertEquals("facility_owner", user.getRole().getName());
 	}
 }
