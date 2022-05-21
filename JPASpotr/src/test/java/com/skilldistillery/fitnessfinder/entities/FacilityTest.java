@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class FacilityTest {
@@ -41,9 +42,39 @@ class FacilityTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic mapping")
+	void test1() {
 		assertNotNull(facility);
 		assertEquals("GloboGym", facility.getName());
 		assertEquals("Ben Stiller", facility.getOwnerName());
+	}
+	@Test
+	@DisplayName("Testing address mapping")
+	void test2() {
+		assertNotNull(facility);
+		assertNotNull(facility.getAddress());
+		assertEquals("100 Elm", facility.getAddress().getStreetAddress1());
+	}
+	@Test
+	@DisplayName("Testing customer mapping")
+	void test3() {
+		assertNotNull(facility);
+		assertNotNull(facility.getCustomers());
+		assertTrue(facility.getCustomers().size() > 0);
+	}
+	@Test
+	@DisplayName("Testing login mapping")
+	void test4() {
+		assertNotNull(facility);
+		assertNotNull(facility.getLogin());
+		assertEquals("kobrakommander",facility.getLogin().getUsername());
+	}
+	@Test
+	@DisplayName("Testing activity mapping")
+	void test5() {
+		assertNotNull(facility);
+		assertNotNull(facility.getActivities());
+		assertTrue(facility.getActivities().size() > 0 );
+		assertEquals("Powerlifting", facility.getActivities().get(0).getName());
 	}
 }
