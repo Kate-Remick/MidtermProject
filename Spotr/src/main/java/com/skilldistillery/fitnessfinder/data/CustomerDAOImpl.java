@@ -27,6 +27,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(Login user, Customer customer) {
+		// TODO
 		em.persist(customer);
 		em.flush();
 		return customer;
@@ -40,28 +41,31 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Journal removeJournalEntry(Journal log) {
+	public boolean removeJournalEntry(Journal log) {
+		boolean removed = false;
 		Journal removeLog = em.find(Journal.class, log.getId());
-		em.remove(removeLog);
-		// return boolean?
-		return null;
+		if (removeLog != null) {
+			em.remove(removeLog);
+			removed = !em.contains(removeLog);
+		}
+		return removed;
 	}
 
 	@Override
 	public Goal addEditGoals(Journal log, Goal goal) {
-
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Goal removeGoals(Journal log, Goal goal) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean removeGoals(Journal log, Goal goal) {
+		// TODO
+		boolean removed = false;
+		return removed;
 	}
 
 	@Override
-	public Customer editFacilityPreferences(FacilityPreferences preff) {
+	public Customer editFacilityPreferences(FacilityPreferences prefs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -73,53 +77,85 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public List<Facility> removeFacility(Facility facility) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean removeFacility(Facility facility) {
+		boolean removed = false;
+		Journal removeFacility = em.find(Journal.class, facility.getId());
+		if (removeFacility != null) {
+			em.remove(removeFacility);
+			removed = !em.contains(removeFacility);
+		}
+		return removed;
 	}
 
 	@Override
 	public Customer editCustomerInfo(Customer customer) {
-		// TODO Auto-generated method stub
+		Customer editCustomer = em.find(Customer.class, customer.getId());
+		if (editCustomer != null) {
+			editCustomer.setFirstName(customer.getFirstName());
+			editCustomer.setLastName(customer.getLastName());
+			editCustomer.setBirthDate(customer.getBirthDate());
+			editCustomer.setBio(customer.getBio());
+			em.flush();
+			// TODO WHAT ELSE ARE WE EDITING?
+		}
+		return editCustomer;
+	}
+
+	@Override
+	public Customer addActivities(Activity activity) {
+		// TODO List<CustomerActivity> customerActivities
 		return null;
 	}
 
 	@Override
-	public Customer addEditActivities(Activity activity) {
-		// TODO Auto-generated method stub
+	public Customer editActivities(Activity activity) {
+		// TODO List<CustomerActivity> customerActivities
 		return null;
 	}
 
 	@Override
-	public Customer removeActivities(Activity activity) {
-		Activity removeActivity = em.find(Activity.class, activity.getId());
-		em.remove(removeActivity);
-		// return boolean?
-		return null;
+	public boolean removeActivities(Activity activity) {
+		
+		boolean removed = false;
+		Journal removeActivity = em.find(Journal.class, activity.getId());
+		if (removeActivity != null) {
+			em.remove(removeActivity);
+			removed = !em.contains(removeActivity);
+		}
+		return removed;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByActivity(Activity activity) {
-		String jpql = "SELECT f FROM facility f WHERE f.activity = :activity ";
-		// TODO Auto-generated method stub
-		return null;
+		// TODO ???
+		String jpql = "SELECT f FROM Facility f JOIN f.activity WHERE f.activity.id = :activityId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class)
+                .setParameter("activityId", activity)
+                .getResultList();
+		return facilities;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByCategory(Category category) {
-		// TODO Auto-generated method stub
+		// TODO ???
+		String jpql = "SELECT";
 		return null;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByLocation(Address address) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO ???
+		String jpql = "SELECT f FROM Facility f WHERE f.address.id = :addressId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class)
+                .setParameter("addressId", address)
+                .getResultList();
+		return facilities;
 	}
 
 	@Override
-	public List<Facility> searchFacilityByPreferences(FacilityPreferences preff) {
-		// TODO Auto-generated method stub
+	public List<Facility> searchFacilityByPreferences(FacilityPreferences prefs) {
+		// TODO ???
+		String jpql = "SELECT ";
 		return null;
 	}
 

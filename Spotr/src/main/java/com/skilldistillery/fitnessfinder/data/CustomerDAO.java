@@ -16,19 +16,20 @@ public interface CustomerDAO {
 	
 	Customer createCustomer(Login user, Customer customer);
 	Journal addJournalEntry(Journal log);
-	Journal removeJournalEntry(Journal log);
+	boolean removeJournalEntry(Journal log);
 	Goal addEditGoals(Journal log, Goal goal);
-	Goal removeGoals(Journal log, Goal goal);
-	Customer editFacilityPreferences(FacilityPreferences preff);
+	boolean removeGoals(Journal log, Goal goal);
+	Customer editFacilityPreferences(FacilityPreferences prefs);
 	List<Facility> addFacility(Facility facility);
-	List<Facility> removeFacility(Facility facility);
+	boolean removeFacility(Facility facility);
 	Customer editCustomerInfo(Customer customer);
-	Customer addEditActivities(Activity activity);
-	Customer removeActivities(Activity activity);
+	Customer addActivities(Activity activity);
+	Customer editActivities(Activity activity);
+	boolean removeActivities(Activity activity);
 	List<Facility> searchFacilityByActivity(Activity activity);
 	List<Facility> searchFacilityByCategory(Category category);
 	List<Facility> searchFacilityByLocation(Address address);
-	List<Facility> searchFacilityByPreferences(FacilityPreferences preff);
+	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
 	
 
 }
