@@ -47,6 +47,7 @@ class FacilityPreferencesTest {
 		assertNotNull(facilityPreferences);
 		assertTrue(facilityPreferences.isAlwaysOpen());
 		assertEquals(100, facilityPreferences.getPriceMax());
+		assertTrue(facilityPreferences.isHasTrainers());
 	}
 
 }
