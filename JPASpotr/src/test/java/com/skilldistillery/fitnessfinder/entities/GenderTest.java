@@ -20,7 +20,6 @@ class GenderTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Gender gender;
-	private Customer customer;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {

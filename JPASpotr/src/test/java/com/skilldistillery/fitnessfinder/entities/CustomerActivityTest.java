@@ -1,6 +1,7 @@
 package com.skilldistillery.fitnessfinder.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,7 +18,6 @@ class CustomerActivityTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private CustomerActivity customerActivity;
 	private Customer customer;
 
 	@BeforeAll
@@ -39,7 +39,6 @@ class CustomerActivityTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		customerActivity = null;
 	}
 
 	@Test
