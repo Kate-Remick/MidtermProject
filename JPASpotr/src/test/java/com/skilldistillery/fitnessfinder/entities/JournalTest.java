@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class JournalTest {
@@ -41,9 +42,31 @@ class JournalTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic mapping")
+	void test1() {
 		assertNotNull(journal);
 		assertEquals("workout 1", journal.getEntry());
+	}
+	@Test
+	@DisplayName("Testing createdAt mapping")
+	void test2() {
+		assertNotNull(journal);
+		assertNotNull(journal.getCreatedAt());
+		assertEquals(2022, journal.getCreatedAt().getYear());
+	}
+	@Test
+	@DisplayName("Testing customer mapping")
+	void test3() {
+		assertNotNull(journal);
+		assertNotNull(journal.getCustomer());
+		assertEquals("Max", journal.getCustomer().getFirstName());
+	}
+	@Test
+	@DisplayName("Testing goal mapping")
+	void test4() {
+		assertNotNull(journal);
+		assertNotNull(journal.getGoal());
+		assertEquals("Pump Iron", journal.getGoal().getName());
 	}
 
 }

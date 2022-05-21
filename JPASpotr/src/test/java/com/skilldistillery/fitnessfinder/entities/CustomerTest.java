@@ -66,31 +66,44 @@ class CustomerTest {
 	@DisplayName("Testing gender mapping")
 	void test4() {
 		assertNotNull(customer);
+		assertNotNull(customer.getGender());
+		assertEquals("male", customer.getGender().getName());
 	}
 	@Test
 	@DisplayName("Testing journal mapping")
 	void test5() {
 		assertNotNull(customer);
+		assertNotNull(customer.getLogs());
+		assertEquals("workout 1", customer.getLogs().get(0).getEntry());
 	}
 	@Test
 	@DisplayName("Testing goal mapping")
 	void test6() {
 		assertNotNull(customer);
+		assertNotNull(customer.getGoals());
+		assertEquals("Pump Iron", customer.getGoals().get(0).getName());
 	}
 	@Test
 	@DisplayName("Testing login mapping")
 	void test7() {
 		assertNotNull(customer);
+		assertNotNull(customer.getLogin());
+		assertEquals("admin", customer.getLogin().getUsername());
 	}
 	@Test
 	@DisplayName("Testing activity mapping")
 	void test8() {
 		assertNotNull(customer);
+		assertNotNull(customer.getCustomerActivities());
+		assertEquals("Powerlifting", customer.getCustomerActivities().get(0).getActivity().getName());
 	}
 	@Test
 	@DisplayName("Testing facility preference mapping")
 	void test9() {
 		assertNotNull(customer);
+		assertNotNull(customer.getFacilityPreferences());
+		assertTrue(customer.getFacilityPreferences().isAlwaysOpen());
+		assertEquals(100,customer.getFacilityPreferences().getPriceMax());
 	}
 
 }

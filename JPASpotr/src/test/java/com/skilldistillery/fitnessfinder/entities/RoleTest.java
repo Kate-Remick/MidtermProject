@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RoleTest {
@@ -42,7 +43,8 @@ class RoleTest {
 	}
 
 	@Test
-	void test_User_entity_mapping() {
+	@DisplayName("Testing basic mapping")
+	void test1() {
 		assertNotNull(role);
 		assertEquals("customer", role.getName());
 	}
