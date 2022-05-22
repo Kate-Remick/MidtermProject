@@ -31,8 +31,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		user = em.find(Login.class, user.getId());
 		customer.setLogin(user);
 		em.persist(customer);
-		// TODO add cascade type to customer entity
 		em.flush();
+		// TODO add cascade type to customer entity
 		return customer;
 	}
 
@@ -184,7 +184,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<Facility> searchFacilityByLocation(Address address) {
-		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length()-1), '%');
+		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 1), '%');
 		String jpql = "SELECT f FROM Facility f WHERE f.address.zip IS LIKE :addressId";
 		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", partialZip)
 				.getResultList();
@@ -194,11 +194,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public List<Facility> searchFacilityByPreferences(FacilityPreferences prefs) {
 		String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price <= :prefsPrice";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class)
-												.setParameter("prefsOpen", prefs.isAlwaysOpen())
-												.setParameter("prefsTrainers", prefs.isHasTrainers())
-												.setParameter("prefsPrice", prefs.getPriceMax())
-												.getResultList();
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
+				.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
+				.getResultList();
 		return facilities;
 	}
 
