@@ -22,7 +22,7 @@ public interface CustomerDAO {
 	Goal completeGoals(Goal goal);
 	boolean removeGoals(Goal goal);
 	Customer editFacilityPreferences(int customerId, FacilityPreferences prefs);
-	List<Facility> addFacility(int customerId, Facility facility);
+	Facility addFacility(int customerId, int facilityId);
 	boolean removeFacility(int customerId, Facility facility);
 	Customer editCustomerInfo(Customer customer);
 	Customer editCustomerAddress(Customer customer, Address address);
