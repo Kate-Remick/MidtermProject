@@ -1,7 +1,12 @@
 @charset "UTF-8";
 
 body {
-	background-color: lightgrey;
+	background-image: 
+		url(../images/rc_back.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
 }
 
 section.header {
@@ -9,7 +14,8 @@ section.header {
       url(../images/banner2.png);
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
-    background-position: center center;              /* optional, center the image */}
+    background-position: center center;              /* optional, center the image */
+}
 
 section.div.a.logo{
      float:left;
@@ -38,6 +44,24 @@ div.banner{
   font-style: oblique 90deg;
   
   
+}
+
+form.login_form {
+/*  display: inline-block; */
+  position: relative;
+  border: 1px solid rgb(255,232,57);
+  width: 200px;
+  margin:auto;
+  padding: 5px;
+  text-align: left;
+}
+
+div#inputs {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: 100%;
+  text-align: center;
 }
 
 span.button {

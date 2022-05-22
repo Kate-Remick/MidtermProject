@@ -30,9 +30,23 @@
 		</section>
 	<section class="main" id="main">
 
-<h1>Congrats! This page loads!</h1>
+<h1>${DEBUG}</h1>
+</br>
+</br>
+</br>
 
-${DEBUG}
+	<div name="inputs" id="inputs" class="inputs">
+	<form action="login.do" method="POST" name="login_form" class="login_form" id="login_form">
+	<label for="username"><strong>Username:</strong></label>
+	<input type="text" name="username" id="username"></br>
+	<label for="password"><strong>Password:</strong></label>
+	<input type="password" name="password" id="password"><br>
+	<input type="submit" value="Log In">
+	</form>
+	<a href="newAccount.do" name="new_account" id="new_account">New User? Click here!</a>
+	</div>
+	
+
 
 
 </section>
