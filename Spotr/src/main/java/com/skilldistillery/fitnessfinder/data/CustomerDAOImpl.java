@@ -90,11 +90,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public List<Facility> addFacility(int customerId, Facility facility) {
-		facility = em.find(Facility.class, facility.getId());
+	public Facility addFacility(int customerId, int facilityId) {
+		Facility facility = em.find(Facility.class, facilityId);
 		Customer customer = em.find(Customer.class, customerId);
 		customer.addFacility(facility);
-		return customer.getFacilities();
+		return facility;
 	}
 
 	@Override
