@@ -28,14 +28,14 @@
 			<span class="button" id="new_account"><a href="FIXME">New User</a></span>
 			</div>
 		</section>
-	<section class="main" id="main">
-
-<h1>Congrats! This page loads!</h1>
-
-${DEBUG}
-
-
-</section>
+	<section class="login" id="login">
+	
+	<label for="username">Username:</label>
+	<input type="text" name="username" id="username"></br>
+	<label for="password">Passeword:</label>
+	<input type="password" name="password" id="password">
+	
+	</section>
 </main>
 
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->

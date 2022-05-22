@@ -4,23 +4,28 @@ body {
 	background-color: lightgrey;
 }
 
-.header {
-	vertical-align: middle;
-	height: 100px;
-	color: black;
-	
-}
+section.header {
+ 	background-image:
+      url(../images/banner2.png);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */}
 
-.logo{
+section.div.a.logo{
      float:left;
-     width: 287px;
-     height:100px;
+/*     width: 287px; */
+     height:100%;
      display:block;    
+     margin: 0;
+     padding: 0;
 }
 
-.banner{
-  background-image:
-      url("images/banner_background1.png");
+div.banner{
+	display: inline; /* MIGHT NOT DO ANYTHING */
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
 }
 
 .tagline {
@@ -49,6 +54,13 @@ border: 1px solid red;
 padding-left: 25px;
 float: right;
     
+	
+}
+
+section.main {
+	
+	background-color:
+	linear-gradient(45deg, blue, red);
 	
 }
 
