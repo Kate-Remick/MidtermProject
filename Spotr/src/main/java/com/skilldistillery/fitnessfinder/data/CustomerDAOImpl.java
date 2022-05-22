@@ -27,8 +27,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(Login user, Customer customer) {
-		// TODO
+		user = em.find(Login.class, user.getId());
+		customer.setLogin(user);
 		em.persist(customer);
+		// TODO add cascade type to customer entity
 		em.flush();
 		return customer;
 	}
@@ -44,46 +46,65 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public boolean removeJournalEntry(Journal log) {
 		boolean removed = false;
 		Journal removeLog = em.find(Journal.class, log.getId());
+		Customer customer = em.find(Customer.class, log.getCustomer().getId());
 		if (removeLog != null) {
-			em.remove(removeLog);
-			removed = !em.contains(removeLog);
+			customer.removeJournal(removeLog);
 		}
+		removed = !customer.getLogs().contains(removeLog);
 		return removed;
 	}
 
 	@Override
-	public Goal addEditGoals(Journal log, Goal goal) {
-		// TODO Auto-generated method stub
+	public Goal addGoals(Goal goal) {
+		Customer customer = em.find(Customer.class, goal.getCustomer().getId());
+		em.persist(goal);
+		goal.setCustomer(customer);
+		em.flush();
 		return null;
 	}
 
 	@Override
-	public boolean removeGoals(Journal log, Goal goal) {
-		// TODO
+	public Goal completeGoals(Goal goal) {
+		goal.setCompleted(true);
+		return goal;
+	}
+
+	@Override
+	public boolean removeGoals(Goal goal) {
 		boolean removed = false;
+		Goal removeGoal = em.find(Goal.class, goal.getId());
+		Customer customer = em.find(Customer.class, removeGoal.getCustomer().getId());
+		if (removeGoal != null) {
+			customer.removeGoal(removeGoal);
+		}
+		removed = !customer.getGoals().contains(removeGoal);
 		return removed;
 	}
 
 	@Override
-	public Customer editFacilityPreferences(FacilityPreferences prefs) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer editFacilityPreferences(int customerId, FacilityPreferences prefs) {
+		Customer customer = em.find(Customer.class, customerId);
+		customer.setFacilityPreferences(prefs);
+		return customer;
 	}
 
 	@Override
-	public List<Facility> addFacility(Facility facility) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Facility> addFacility(int customerId, Facility facility) {
+		facility = em.find(Facility.class, facility.getId());
+		Customer customer = em.find(Customer.class, customerId);
+		customer.addFacility(facility);
+		return customer.getFacilities();
 	}
 
 	@Override
-	public boolean removeFacility(Facility facility) {
+	public boolean removeFacility(int customerId, Facility facility) {
 		boolean removed = false;
-		Journal removeFacility = em.find(Journal.class, facility.getId());
+		Facility removeFacility = em.find(Facility.class, facility.getId());
+		Customer customer = em.find(Customer.class, customerId);
 		if (removeFacility != null) {
-			em.remove(removeFacility);
-			removed = !em.contains(removeFacility);
+			customer.removeFacility(removeFacility);
 		}
+		removed = !customer.getFacilities().contains(removeFacility);
 		return removed;
 	}
 
@@ -96,26 +117,38 @@ public class CustomerDAOImpl implements CustomerDAO {
 			editCustomer.setBirthDate(customer.getBirthDate());
 			editCustomer.setBio(customer.getBio());
 			em.flush();
-			// TODO WHAT ELSE ARE WE EDITING?
 		}
 		return editCustomer;
 	}
 
 	@Override
-	public Customer addActivities(Activity activity) {
-		// TODO List<CustomerActivity> customerActivities
-		return null;
+	public Customer editCustomerAddress(Customer customer, Address address) {
+		if (!em.contains(address)) {
+			em.persist(address);
+		}
+		customer.setAddress(address);
+		em.flush();
+		return customer;
 	}
 
 	@Override
-	public Customer editActivities(Activity activity) {
-		// TODO List<CustomerActivity> customerActivities
+	public void editCustomerPrefs(FacilityPreferences prefs) {
+		FacilityPreferences updatedPrefs = em.find(FacilityPreferences.class, prefs.getId());
+		updatedPrefs.setAlwaysOpen(prefs.isAlwaysOpen());
+		updatedPrefs.setPriceMax(prefs.getPriceMax());
+		updatedPrefs.setHasTrainers(prefs.isHasTrainers());
+	}
+
+
+	@Override
+	public Customer editActivities(int customerId, Activity activity) {
+		
 		return null;
 	}
 
 	@Override
 	public boolean removeActivities(Activity activity) {
-		
+
 		boolean removed = false;
 		Journal removeActivity = em.find(Journal.class, activity.getId());
 		if (removeActivity != null) {
@@ -129,9 +162,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Facility> searchFacilityByActivity(Activity activity) {
 		// TODO ???
 		String jpql = "SELECT f FROM Facility f JOIN f.activity WHERE f.activity.id = :activityId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class)
-                .setParameter("activityId", activity)
-                .getResultList();
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activity)
+				.getResultList();
 		return facilities;
 	}
 
@@ -146,9 +178,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Facility> searchFacilityByLocation(Address address) {
 		// TODO ???
 		String jpql = "SELECT f FROM Facility f WHERE f.address.id = :addressId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class)
-                .setParameter("addressId", address)
-                .getResultList();
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", address)
+				.getResultList();
 		return facilities;
 	}
 
