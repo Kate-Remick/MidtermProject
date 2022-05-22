@@ -1,0 +1,65 @@
+package com.skilldistillery.fitnessfinder.data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.skilldistillery.fitnessfinder.entities.Activity;
+import com.skilldistillery.fitnessfinder.entities.Address;
+import com.skilldistillery.fitnessfinder.entities.Facility;
+import com.skilldistillery.fitnessfinder.entities.Login;
+
+@Service
+@Transactional
+public class FacilityDAOImpl implements FacilityDAO {
+
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public Facility createFacility(Login user, Facility facility) {
+		user = em.find(Login.class, facility.getId());
+		facility.setLogin(user);
+		em.persist(facility);
+		em.flush();
+		// TODO add cascade type to facility entity
+		return facility;
+	}
+
+	@Override
+	public Facility editFacilityInfo(Facility facility) {
+		Facility editFacility = em.find(Facility.class, facility.getId());
+		if (editFacility != null) {
+			editFacility.setHasTrainers(editFacility.isHasTrainers());
+			editFacility.setBrand(editFacility.getBrand());
+			editFacility.setName(editFacility.getName());
+			editFacility.setOwnerName(editFacility.getOwnerName());
+			editFacility.setAlwaysOpen(editFacility.isAlwaysOpen());
+			editFacility.setPrice(editFacility.getPrice());
+			em.flush();
+		}
+		return editFacility;
+	}
+
+	@Override
+	public Facility editFacilityAddress(Address address, Facility facility) {
+		if (!em.contains(address)) {
+			em.persist(address);
+		}
+		facility.setAddress(address);
+		em.flush();
+		return facility;
+	}
+
+	@Override
+	public List<Activity> editActivities(int facilityId, List<Activity> activities) {
+		Facility facility = em.find(Facility.class, facilityId);
+		facility.setActivities(activities);
+		return activities;
+	}
+
+}
