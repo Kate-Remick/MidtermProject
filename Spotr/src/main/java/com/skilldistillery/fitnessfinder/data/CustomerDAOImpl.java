@@ -12,6 +12,7 @@ import com.skilldistillery.fitnessfinder.entities.Activity;
 import com.skilldistillery.fitnessfinder.entities.Address;
 import com.skilldistillery.fitnessfinder.entities.Category;
 import com.skilldistillery.fitnessfinder.entities.Customer;
+import com.skilldistillery.fitnessfinder.entities.CustomerActivity;
 import com.skilldistillery.fitnessfinder.entities.Facility;
 import com.skilldistillery.fitnessfinder.entities.FacilityPreferences;
 import com.skilldistillery.fitnessfinder.entities.Goal;
@@ -139,19 +140,26 @@ public class CustomerDAOImpl implements CustomerDAO {
 		updatedPrefs.setHasTrainers(prefs.isHasTrainers());
 	}
 
-
 	@Override
-	public Customer editActivities(int customerId, Activity activity) {
-		
-		return null;
+	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
+		Customer editCustomer = em.find(Customer.class, customerId);
+		editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		for (CustomerActivity customerActivity : activities) {
+			customerActivity.setCustomer(editCustomer);
+			em.persist(customerActivity);
+			editCustomer.addCustomerActivity(customerActivity); // POSSIBLY EXTRANEOUS LINE?
+		}
+		return editCustomer;
 	}
 
 	@Override
-	public boolean removeActivities(Activity activity) {
+	public boolean removeActivities(int customerId, CustomerActivity activity) {
 
 		boolean removed = false;
-		Journal removeActivity = em.find(Journal.class, activity.getId());
+		Customer removingCustomer = em.find(Customer.class, customerId);
+		CustomerActivity removeActivity = em.find(CustomerActivity.class, activity.getId());
 		if (removeActivity != null) {
+			removingCustomer.removeCustomerActivity(activity);
 			em.remove(removeActivity);
 			removed = !em.contains(removeActivity);
 		}
@@ -160,8 +168,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<Facility> searchFacilityByActivity(Activity activity) {
-		// TODO ???
-		String jpql = "SELECT f FROM Facility f JOIN f.activity WHERE f.activity.id = :activityId";
+		String jpql = "SELECT f FROM Facility f JOIN f.activities a WHERE a.id = :activityId";
 		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activity)
 				.getResultList();
 		return facilities;
@@ -169,25 +176,30 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<Facility> searchFacilityByCategory(Category category) {
-		// TODO ???
-		String jpql = "SELECT";
-		return null;
+		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca WHERE fa.id = ca.id AND c.id = :categoryId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", category)
+				.getResultList();
+		return facilities;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByLocation(Address address) {
-		// TODO ???
-		String jpql = "SELECT f FROM Facility f WHERE f.address.id = :addressId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", address)
+		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length()-1), '%');
+		String jpql = "SELECT f FROM Facility f WHERE f.address.zip IS LIKE :addressId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", partialZip)
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByPreferences(FacilityPreferences prefs) {
-		// TODO ???
-		String jpql = "SELECT ";
-		return null;
+		String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price <= :prefsPrice";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class)
+												.setParameter("prefsOpen", prefs.isAlwaysOpen())
+												.setParameter("prefsTrainers", prefs.isHasTrainers())
+												.setParameter("prefsPrice", prefs.getPriceMax())
+												.getResultList();
+		return facilities;
 	}
 
 }
