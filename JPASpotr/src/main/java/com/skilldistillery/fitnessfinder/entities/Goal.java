@@ -30,28 +30,39 @@ public class Goal {
 	@OneToMany(mappedBy = "goal")
 	private List<Journal> logs;
 
+	private boolean completed;
+
 	public Goal() {
 		super();
 	}
-	
-	//*************
+
+	// *************
 	public void addJournal(Journal journal) {
 		if (logs == null) {
 			logs = new ArrayList<>();
-			
+
 		}
 		if (!logs.contains(journal)) {
 			logs.add(journal);
 			journal.setGoal(this);
 		}
 	}
+
 	public void removeJournal(Journal journal) {
 		if (logs != null && logs.contains(journal)) {
 			logs.remove(journal);
 		}
 	}
-	
-	//**************
+
+	// **************
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
 
 	public int getId() {
 		return id;

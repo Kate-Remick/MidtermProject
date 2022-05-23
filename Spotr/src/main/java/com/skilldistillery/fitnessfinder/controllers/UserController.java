@@ -19,6 +19,11 @@ public class UserController {
 		return "home";
 		
 	}
+	@RequestMapping(path = "login.do")
+	public String loginPage(String string) {
+		return "login";
+		
+	}
 	
 	//DUMMY METHOD FOR TESTING JSP PAGES
 	@RequestMapping(path = "customer.do")
