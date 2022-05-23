@@ -11,7 +11,7 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/new_customer.css">
+<link rel="stylesheet" href="css/new_customer.css">
 
 </head>
 <body>
@@ -43,11 +43,11 @@
   <div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="id"></div>
 	
 	<div class="row d-inline-flex">
-	<label for="disabledUsername"><strong>Username:</strong></label></div>
+	<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
 	<input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here">	
 	</div></br>
 	<div class="row d-inline-flex">
-	<label for="firstname"><strong>First Name:</strong></label>
+	<span class="label"><label for="firstname"><strong>First Name:</strong></label></span>
 	<input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
 	</div></br>
 	<div class="row d-inline-flex">
