@@ -27,16 +27,9 @@ public class FacilityController {
 		return "viewFacility";
 	}
 
-	@RequestMapping(path = "createFacility.do", method = RequestMethod.GET)
-	public ModelAndView createFacilityForm() {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("activities", facilityDAO.getAllActivities());
-		mv.setViewName("createFacility");
-		return mv;
-	}
 
 	@RequestMapping(path="createFacility.do", method = RequestMethod.POST)
-	public ModelAndView createFacility(@RequestParam ("loggedInUser")Login login, Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView createFacility(Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
@@ -49,7 +42,7 @@ public class FacilityController {
 			}
 		}
 		facility.setActivities(facilityActivity);
-		facilityDAO.createFacility(login, facility);
+		facilityDAO.createFacility((Login)session.getAttribute("loggedInUser"), facility);
 		session.setAttribute("facility", facility);
 		mv.setViewName("facility");
 		return mv;
@@ -61,7 +54,7 @@ public class FacilityController {
 	}
 	
 	@RequestMapping(path="editFacility.do", method = RequestMethod.POST)
-	public ModelAndView editFacility(@RequestParam ("facility")Facility facilityUnderEdit, Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView editFacility( Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
@@ -74,7 +67,7 @@ public class FacilityController {
 			}
 		}
 		facility.setActivities(facilityActivity);
-		facilityDAO.editFacilityInfo(facilityUnderEdit, facility);
+		facility = facilityDAO.editFacilityInfo((Facility)session.getAttribute("facility"), facility);
 		session.setAttribute("facility", facility);
 		mv.setViewName("redirect:editedFacility.do");
 		return mv;
