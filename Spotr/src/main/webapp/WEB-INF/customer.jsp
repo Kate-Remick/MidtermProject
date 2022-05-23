@@ -24,7 +24,7 @@
 				class="logo" id="logo" /></a>
 				
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="logout.do">Logout</a></span>
+			<div class="logout"><span class="button" id="logout"><a href="logout.do" id="logout_link">Logout</a></span></div>
 			</div>
 		</section>
 	<section class="main" id="main">

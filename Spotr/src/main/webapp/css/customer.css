@@ -46,6 +46,35 @@ div.banner{
   
 }
 
+div.logout {
+	display: inline;
+	height: 100px;
+	float: right;
+}
+
+span.button {
+	display: inline-block;
+  position: relative;
+  right: 5%;
+  top:50%;
+  color:dark-gray; 
+  font-size: 12px;
+  background-color: #777777;
+  padding: 3px 3px 3px 3px;
+	border-radius: 5px 5px 5px;
+	border: 1px solid black;
+	padding-left: 25px;
+	float: right;	
+	text-align: center;
+	vertical-align: center;
+}
+
+a#logout_link {
+	color: black;
+	font-style: bold;
+	text-decoration: none;
+}
+
 div#customer {
 /*  display: inline-block;
   vertical-align: middle; */
