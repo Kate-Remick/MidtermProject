@@ -11,7 +11,7 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/customer.css">
+<link rel="stylesheet" href="../css/facility.css">
 
 </head>
 <body>
@@ -44,49 +44,36 @@ JOURNAL LINKS
 GOALS
 ACTIVITES & SKILL LEVELS
 -->
-	<div name="customer" id="customer" class="customer">
+	<div name="facility" id="facility" class="facility">
 		<table>
-		<tr><td class="customer_labels">Username:</td><td class="customer_data">FlashGordon</td></tr>
-		<tr><td class="customer_labels">First Name:</td><td class="customer_data">Flash</td></tr>
-		<tr><td class="customer_labels">Last Name:</td><td class="customer_data">Gordon</td></tr>		
+		<tr><td class="facility_labels">Company:</td><td class="facility_data">GloboGym Denver</td></tr>
+		<tr><td class="facility_labels">Franchiser:</td><td class="facility_data">GloboGym International</td></tr>
+		<tr><td class="facility_labels">Owner:</td><td class="facility_data">Ben Stiller</td></tr>
+		<tr><td class="facility_labels">Address:</td><td class="facility_data">100 Main Street suite 202, Denver, CO 80111</td></tr>
+		<tr><td class="facility_labels">Site has trainers:</td><td class="facility_data">YES</td></tr>
+		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">YES</td></tr>
+		<tr><td class="facility_labels">Price:</td><td class="facility_data">$10.00</td></tr>
 		</table>
 	</br>
-	<a href="editCustomer.do"><button>Update Personal Profile</button></a>
-	<a href="journal.do"><button>Your Fitness Journal</button></a>
-	</div>
-	</br>
-	
-	<div name="facilities" id="facilities" class="facilities">
-		<table>
-		<thead>
-		<th>Fitness FIrm</th><th>Location</th>
-		</thead>
-		<tbody>
-			<tr><td>Test Facility</td><td>101 Main St Suite 100, Denver, CO 80111</td></tr>
-
-		</tbody>
-		</table>
-	</br>
-	<a href="editFacilities.do"><button>Update Fitness Locations</button></a>
+	<a href="editFacility.do"><button>Update Company Profile</button></a>
 	</div>
 	</br>
 	<div name="activities" id="activities" class="activities">
 		<table>
 		<thead>
-		<th>Acitivity</th><th>Goal</th>
+		<th>Acitivity</th>
 		</thead>
 		<tbody>
-			<tr><td>Test Activity</td><td>Bench 500 like Ronnie Coleman</td></tr>
+			<tr><td>Weightlifting</td></tr>
+			<tr><td>CrossFit</td></tr>
+			<tr><td>Powerlifting</td></tr>
 
 		</tbody>
 		</table>
 	</br>
-	<a href="editActivities.do"><button>Update Fitness Activities</button></a> <a href="editGoals.do"><button>Update Fitness Goals</button></a>
+	<a href="editActivities.do"><button>Update Company Activity Offerings</button></a>
 	</div>
 	</br>
-	
-
-
 
 </section>
 </main>

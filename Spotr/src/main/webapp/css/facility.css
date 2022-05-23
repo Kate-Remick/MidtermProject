@@ -2,7 +2,7 @@
 
 body {
 	background-image: 
-		url(../images/customer_background1.avif);
+		url(../images/facility_background1.avif);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -46,20 +46,7 @@ div.banner{
   
 }
 
-div#customer {
-/*  display: inline-block;
-  vertical-align: middle; */
-  margin:auto;
-  width: auto;
-  height: auto;
-  text-align: left;
-  border: 3px solid red;
-  border-radius: 10px;
-  background-color: gray;
-  padding: 5px;
-}
-
-div#facilities {
+div#facility {
 /*  display: inline-block;
   vertical-align: middle; */
   margin:auto;

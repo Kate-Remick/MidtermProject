@@ -24,8 +24,9 @@
 				class="logo" id="logo" /></a>
 				
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="FIXME">Log In</a></span>
-			<span class="button" id="new_account"><a href="FIXME">New User</a></span>
+			<span class="button" id="login"><a href="customer.do">Customer</a></span>
+			<span class="button" id="new_account"><a href="facility.do">Facility</a></span>
+			<span class="button" id="new_account"><a href="newCustomer.do">New Customer</a></span>
 			</div>
 		</section>
 	<section class="main" id="main">
@@ -36,7 +37,8 @@
 </br>
 
 	<div name="inputs" id="inputs" class="inputs">
-	<form action="login.do" method="POST" name="login_form" class="login_form" id="login_form">
+	<form action="newUser.do" method="POST" name="login_form" class="login_form" id="login_form"> 
+	<!-- CHANGE ACTION TO "login.do" AFTER TESTING -->
 	<label for="username"><strong>Username:</strong></label>
 	<input type="text" name="username" id="username"></br>
 	<label for="password"><strong>Password:</strong></label>
