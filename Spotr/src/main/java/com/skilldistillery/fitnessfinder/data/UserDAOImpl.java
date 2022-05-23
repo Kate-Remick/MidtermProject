@@ -90,7 +90,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<Activity> getAllActivities() {
 		List<Activity> activities = new ArrayList<>();
-		String jpql = "SELECT a FROM a=Activity a";
+		String jpql = "SELECT a FROM a Activity a";
 		activities = em.createQuery(jpql, Activity.class).getResultList();
 		return activities;
 	}
