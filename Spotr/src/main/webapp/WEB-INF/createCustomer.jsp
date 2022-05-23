@@ -25,19 +25,13 @@
 				class="logo" id="logo" /></a>
 				
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="customer.do">Customer</a></span>
-			<span class="button" id="new_account"><a href="facility.do">Facility</a></span>
+			<span class="button" id="login"><a href="logout.do">Logout</a></span>
 			</div>
 		</section>
 		</div>
 		
-<h1>${DEBUG}</h1>
-</br>
-</br>
-</br>
-
 	<div name="inputs" id="inputs" class="col-sm-6 offset-3">
-	<form action="newUser.do" method="POST" name="new_customer_form" class="new_customer_form" id="new_customer_form">
+	<form action="createCustomer.do" method="POST" name="new_customer_form" class="new_customer_form" id="new_customer_form">
   <div class="form-group">
   
   <div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="id"></div>
