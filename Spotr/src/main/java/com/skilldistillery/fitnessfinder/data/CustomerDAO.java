@@ -35,6 +35,8 @@ public interface CustomerDAO {
 	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
 	List<Activity> getAllActivities();
 	List<Category> getAllCategories();
+	Activity findActivityById(int activityId);
+	List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca);
 	
 
 }

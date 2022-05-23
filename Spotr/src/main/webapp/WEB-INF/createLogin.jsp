@@ -9,6 +9,7 @@
 <body>
 <h3>Creating a new user</h3>
 <form action="create.do" method = "post">
+<input type="text" !important hidden name="active" id="active" value="1"/>
 <label for="username">Enter your user name:</label><input type="text" name="username" id="username"/></br>
 <label for="password">Enter your password:</label><input type="password" name="password" id="password"/></br>
 <label for="userType">What user type are you:</label>

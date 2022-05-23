@@ -217,4 +217,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return categories;
 	}
 
+	@Override
+	public Activity findActivityById(int activityId) {
+		Activity activity = em.find(Activity.class, activityId);
+		return activity;
+	}
+
+	@Override
+	public List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca) {
+		Customer customer = em.find(Customer.class, ca.get(0).getCustomer().getId());
+		customer.setCustomerActivities(ca);
+		return ca;
+	}
+
 }

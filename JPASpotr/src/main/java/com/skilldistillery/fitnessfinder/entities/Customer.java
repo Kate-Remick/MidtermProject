@@ -16,6 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Customer {
@@ -37,6 +42,7 @@ public class Customer {
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
+	@Cascade(CascadeType.PERSIST)
 	private Address address;
 
 	@ManyToMany
@@ -45,6 +51,7 @@ public class Customer {
 
 	@ManyToOne
 	@JoinColumn(name = "gender_id")
+	@Cascade(CascadeType.PERSIST)
 	private Gender gender;
 
 	@OneToMany(mappedBy = "customer")
@@ -58,10 +65,12 @@ public class Customer {
 	private Login login;
 
 	@OneToMany(mappedBy = "customer")
+	@Cascade(CascadeType.PERSIST)
 	private List<CustomerActivity> customerActivities;
 
 	@OneToOne
 	@JoinColumn(name = "facility_preferences_id")
+	@Cascade(CascadeType.PERSIST)
 	private FacilityPreferences facilityPreferences;
 
 	public Customer() {
