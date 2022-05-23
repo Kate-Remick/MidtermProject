@@ -31,15 +31,17 @@ public class FacilityDAOImpl implements FacilityDAO {
 	}
 
 	@Override
-	public Facility editFacilityInfo(Facility facility) {
+	public Facility editFacilityInfo(Facility facility, Facility newFacility) {
 		Facility editFacility = em.find(Facility.class, facility.getId());
 		if (editFacility != null) {
-			editFacility.setHasTrainers(editFacility.isHasTrainers());
-			editFacility.setBrand(editFacility.getBrand());
-			editFacility.setName(editFacility.getName());
-			editFacility.setOwnerName(editFacility.getOwnerName());
-			editFacility.setAlwaysOpen(editFacility.isAlwaysOpen());
-			editFacility.setPrice(editFacility.getPrice());
+			editFacility.setHasTrainers(newFacility.isHasTrainers());
+			editFacility.setBrand(newFacility.getBrand());
+			editFacility.setName(newFacility.getName());
+			editFacility.setOwnerName(newFacility.getOwnerName());
+			editFacility.setAlwaysOpen(newFacility.isAlwaysOpen());
+			editFacility.setPrice(newFacility.getPrice());
+			editFacility.setActivities(newFacility.getActivities());
+			editFacility.setAddress(newFacility.getAddress());
 			em.flush();
 		}
 		return editFacility;

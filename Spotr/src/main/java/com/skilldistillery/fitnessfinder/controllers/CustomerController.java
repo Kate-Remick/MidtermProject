@@ -1,5 +1,8 @@
 package com.skilldistillery.fitnessfinder.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.fitnessfinder.data.CustomerDAO;
 import com.skilldistillery.fitnessfinder.entities.Address;
 import com.skilldistillery.fitnessfinder.entities.Customer;
+import com.skilldistillery.fitnessfinder.entities.CustomerActivity;
 import com.skilldistillery.fitnessfinder.entities.FacilityPreferences;
 import com.skilldistillery.fitnessfinder.entities.Gender;
 import com.skilldistillery.fitnessfinder.entities.Login;
@@ -25,12 +28,17 @@ public class CustomerController {
 
 	@RequestMapping(path = "createCustomer.do", method = RequestMethod.POST)
 	public ModelAndView createCustomer(@RequestParam("loggedInUser") Login login, Customer customer, Address address,
-			Gender gender, FacilityPreferences prefs, HttpSession session) {
+			Gender gender, FacilityPreferences prefs, HttpSession session, @RequestParam("activities")CustomerActivity... activities) {
 		ModelAndView mav = new ModelAndView();
 		customer.setAddress(address);
 		customer.setGender(gender);
 		customer.setFacilityPreferences(prefs);
 		// customer.setCustomerActivities(customer activities from JSP)
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+				customer.addCustomerActivity(activities[i]);
+			}
+		}
 		customer = customerDao.createCustomer(login, customer);
 		session.setAttribute("customer", customer);
 		mav.setViewName("customer");
@@ -85,5 +93,28 @@ public class CustomerController {
 		mav.setViewName("redirect:editedCustomerInfo.do");
 		return mav;
 	}
+	
+	@RequestMapping(path="editCustomerActivities.do", method = RequestMethod.GET)
+	public String editCustomerAcivities() {
+		return "customerActivitiesForm";
+	}
+	
+	@RequestMapping(path="editCustomerActivities.do", method = RequestMethod.POST)
+	public String editCustomerActivities(@RequestParam("customer")Customer customer, @RequestParam("activities")CustomerActivity... activities) {
+		List<CustomerActivity> newActivities = new ArrayList<>();
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+				newActivities.add(activities[i]);
+			}
+		}
+		customerDao.editActivities(customer.getId(), newActivities);
+		return "redirect:editedCustomerActivites.do";
+	}
+	
+	@RequestMapping(path="editedCustomerActivites.do", method = RequestMethod.GET)
+	public String editedActivities() {
+		return "customer";
+	}
+	
 
 }
