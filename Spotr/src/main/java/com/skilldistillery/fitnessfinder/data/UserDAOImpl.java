@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO {
 	public Boolean checkIfUsernameExists(String username) {
 		boolean exists;
 		String jpql = "SELECT l FROM Login l WHERE username = :username";
-		Login login = em.createQuery(jpql, Login.class).setParameter("username", username).getResultList().get(0);
+		List<Login> login = em.createQuery(jpql, Login.class).setParameter("username", username).getResultList();
 		exists = !(login == null);
 		return exists;
 	}
