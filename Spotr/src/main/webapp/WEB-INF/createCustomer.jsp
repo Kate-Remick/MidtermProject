@@ -134,27 +134,28 @@
 	<p><strong>Choose Your Preferred Activities</strong></p>
 	
 	<div class="row  d-inline-flex">
- 
- 		<div class="col">
- 		<div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="weightlifting">
-        <label class="form-check-label" for="weightlifting">
-          Weightlifting
-        </label>
-    	</div>
-    </div>
-	
-		<select class="skill-level" name="weightliftingSkill" id="weightliftingSkill">
-	    <option value="">--Please choose a skill level--</option>
-	    <option value="1">Beginner</option>
-	    <option value="2">Intermediate</option>
-	    <option value="3">Advanced</option>
-		</select>
-		</div>
- 
- 		<c:forEach var="activity" items="${activities }">
- 		<div class="col">
+						<c:forEach var="activity" items="${activities }">
+
+							<div class="col">
+								<div class="form-group">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											id="weightlifting" value="${activity}"> <label class="form-check-label"
+											for="weightlifting"> ${activity.name} </label>
+									</div>
+								</div>
+
+								<select class="skill-level" name="weightliftingSkill"
+									id="weightliftingSkill">
+									<option value="">--Please choose a skill level--</option>
+									<option value="1">Beginner</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advanced</option>
+								</select>
+							</div>
+						</c:forEach>
+
+						<div class="col">
  		<div class="form-group">
 	    <div class="form-check">
   	    <input class="form-check-input" type="checkbox" id="powerlifting" value="${activity }">
@@ -162,7 +163,6 @@
       	  Powerlifting
       	</label>
    	 </div>
-   	 </c:forEach>
 
 			<select class="skill-level" name="powerliftingSkill" id="powerliftingSkill">
 		    <option value="">--Please choose a skill level--</option>
