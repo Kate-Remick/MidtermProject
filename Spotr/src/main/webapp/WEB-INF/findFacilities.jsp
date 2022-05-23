@@ -9,7 +9,7 @@
 </head>
 <body>
 <h3>${addedMessage }</h3>
-	<div class="findBy">
+	<div id="findBy">
 		<h3>Facilities matching your search</h3>
 		<label>Search by method:</label>
 		<form action="findFacilities.do" method="post">
@@ -34,7 +34,7 @@
 			<button type="submit">Find by location</button>
 		</form>
 	</div>
-	<div class="results">
+	<div id="results">
 		<label for="resultsTable">Search Results:</label>
 		<table id="resultsTable">
 
