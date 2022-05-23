@@ -36,7 +36,7 @@ public class CustomerJournalController {
 		return mav;
 	}
 
-	@RequestMapping(path = "removeJournal.do", method = RequestMethod.POST)
+	@RequestMapping(path = "removeJournal.do", method = RequestMethod.GET)
 	public ModelAndView removeJournalPage(@RequestParam("journal") Journal journal) {
 		ModelAndView mav = new ModelAndView();
 		boolean removed = customerDao.removeJournalEntry(journal);
@@ -61,7 +61,7 @@ public class CustomerJournalController {
 		return mav;
 	}
 
-	@RequestMapping(path = "removeGoal.do", method = RequestMethod.POST)
+	@RequestMapping(path = "removeGoal.do", method = RequestMethod.GET)
 	public ModelAndView removeGoalPage(@RequestParam("goal") Goal goal) {
 		ModelAndView mav = new ModelAndView();
 		boolean removed = customerDao.removeGoals(goal);

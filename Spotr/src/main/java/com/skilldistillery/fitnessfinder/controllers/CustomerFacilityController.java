@@ -27,6 +27,8 @@ public class CustomerFacilityController {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> preferredFacilities = customerDao.searchFacilityByPreferences(customer.getFacilityPreferences());
 		mav.addObject("preferredFacilities", preferredFacilities);
+		mav.addObject("activities", customerDao.getAllActivities());
+		mav.addObject("categories", customerDao.getAllCategories());
 		mav.setViewName("findFacilities");
 		return mav;
 	}
@@ -35,6 +37,8 @@ public class CustomerFacilityController {
 	public ModelAndView findFacilitiesByCategory(@RequestParam("category") Category category) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
+		mav.addObject("activities", customerDao.getAllActivities());
+		mav.addObject("categories", customerDao.getAllCategories());
 		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
@@ -44,6 +48,8 @@ public class CustomerFacilityController {
 	public ModelAndView findFacilitiesByLocation(@RequestParam("address") Address address) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
+		mav.addObject("activities", customerDao.getAllActivities());
+		mav.addObject("categories", customerDao.getAllCategories());
 		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
@@ -53,6 +59,8 @@ public class CustomerFacilityController {
 	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") Activity activity) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByActivity(activity);
+		mav.addObject("activities", customerDao.getAllActivities());
+		mav.addObject("categories", customerDao.getAllCategories());
 		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
@@ -64,6 +72,8 @@ public class CustomerFacilityController {
 			@RequestParam("facilityId") int facilityId) {
 		ModelAndView mav = new ModelAndView();
 		Facility facility = customerDao.addFacility(customer.getId(), facilityId);
+		mav.addObject("activities", customerDao.getAllActivities());
+		mav.addObject("categories", customerDao.getAllCategories());
 		mav.addObject("addedMessage",
 				"The following facility has been added to your facilities list" + facility.getName());
 		mav.setViewName("findFacilities");

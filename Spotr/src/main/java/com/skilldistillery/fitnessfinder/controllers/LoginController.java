@@ -57,14 +57,14 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "create.do", method = RequestMethod.POST)
-	public ModelAndView createdLogin(Login login, HttpSession session) {
+	public ModelAndView createdLogin(@RequestParam("roleId")int roleId, Login login, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		if (userDao.checkIfUsernameExists(login.getUsername())) {
 			mav.addObject("message", "Username already exists");
 			mav.setViewName("createLogin");
 		} else {
-			switch (login.getRole().getId()) {
+			switch (roleId) {
 			case 1:
 				login = userDao.createCustomerUser(login.getUsername(), login.getPassword());
 				session.setAttribute("loggedInUser", login);

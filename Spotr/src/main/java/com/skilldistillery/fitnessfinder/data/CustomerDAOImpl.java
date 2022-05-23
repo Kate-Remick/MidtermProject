@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -198,6 +199,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 				.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
 				.getResultList();
 		return facilities;
+	}
+
+	@Override
+	public List<Activity> getAllActivities() {
+		List<Activity> activities = new ArrayList<>();
+		String jpql = "SELECT a from Activity a";
+		activities = em.createQuery(jpql, Activity.class).getResultList();
+		return activities;
+	}
+
+	@Override
+	public List<Category> getAllCategories() {
+		List<Category> categories = new ArrayList<>();
+		String jpql = "SELECT c from Category c";
+		categories = em.createQuery(jpql, Category.class).getResultList();
+		return categories;
 	}
 
 }

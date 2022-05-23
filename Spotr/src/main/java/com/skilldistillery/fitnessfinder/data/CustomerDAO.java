@@ -33,6 +33,8 @@ public interface CustomerDAO {
 	List<Facility> searchFacilityByCategory(Category category);
 	List<Facility> searchFacilityByLocation(Address address);
 	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
+	List<Activity> getAllActivities();
+	List<Category> getAllCategories();
 	
 
 }
