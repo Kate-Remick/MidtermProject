@@ -51,6 +51,7 @@ public class UserDAOImpl implements UserDAO {
 		login.setRole(em.find(Role.class, 1));
 		login.setUsername(username);
 		login.setPassword(password);
+		login.setActive(true);
 		em.persist(login);
 		return login;
 	}
@@ -61,6 +62,7 @@ public class UserDAOImpl implements UserDAO {
 		login.setRole(em.find(Role.class, 2));
 		login.setUsername(username);
 		login.setPassword(password);
+		login.setActive(true);
 		em.persist(login);
 		return login;
 	}
