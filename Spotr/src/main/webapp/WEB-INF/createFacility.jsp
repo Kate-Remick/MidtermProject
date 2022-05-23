@@ -38,7 +38,7 @@
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
-		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here">	
+		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="${login.username }">	
 		</div> <br>
 
 <%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
