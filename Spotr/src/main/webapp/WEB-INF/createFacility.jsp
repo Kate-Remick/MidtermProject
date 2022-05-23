@@ -34,15 +34,15 @@
 
 		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
 		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
-		<div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="id"></div>
+		<div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="${login.id }"></div>
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
 		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here">	
 		</div> <br>
 
-		<input type="text" hidden="true" name="id" value="${login.id }">
-		
+<%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
+ --%>		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="name"><strong>Name of facility:</strong></label></span>
 		<input type="text" name="name" id="name" class="form-control" placeholder="Facility Name">
