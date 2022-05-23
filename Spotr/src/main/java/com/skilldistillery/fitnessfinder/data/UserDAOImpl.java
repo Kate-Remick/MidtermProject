@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 		boolean exists;
 		String jpql = "SELECT l FROM Login l WHERE username = :username";
 		List<Login> login = em.createQuery(jpql, Login.class).setParameter("username", username).getResultList();
-		exists = !(login == null);
+		exists = !(login == null || login.size() == 0);
 		return exists;
 	}
 
