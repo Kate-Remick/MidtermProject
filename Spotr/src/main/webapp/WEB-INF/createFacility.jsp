@@ -1,40 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Create Facility</title>
-</head>
 
+<jsp:include page="bootstrapHead.jsp"></jsp:include>
+
+<link rel="stylesheet" href="css/new_customer.css">
+
+</head>
 
 <body>
 
-<form action="createFacility.do" method="POST">
+<main class="container-fluid">
 
-		<input type="text" hidden="true" name="id" value="${login.id }">
+		<div class="container-fluid">
+		<section class="header" id="header">
+			<div class="banner" id="banner">
+			<a href="/"><img src="images/spotr_logo.png"
+				class="logo" id="logo" /></a>
+				
+			<span class="tagline" id="tagline">Local Fitness Finder</span>
+			<span class="button" id="login"><a href="logout.do">Logout</a></span>
+			</div>
+		</section>
+		</div>
 		
-		<label for="name">Name of facility:</label> 
-		<input type="text" name=name value="Name"> <br> 
 
-		<label for="name">Mission statement:</label> 
-		<input type="text" name=name value="Description"> <br> 
+		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
+		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
+		<div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="${login.id }"></div>
 		
-		<label for="brand">Brand of facility:</label> 
-		<input type="text" name=name value="Brand"> <br> 
+		<div class="row d-inline-flex">
+		<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
+		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="${login.username }">	
+		</div> <br>
+
+<%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
+ --%>		
+		<div class="row d-inline-flex">
+		<span class="label"><label for="name"><strong>Name of facility:</strong></label></span>
+		<input type="text" name="name" id="name" class="form-control" placeholder="Facility Name">
+		</div> <br>
 		
-		<label for="ownerName">Owner of facility:</label> 
-		<input type="text" name=name value="Owner Name"> <br> 
+		<div class="row d-inline-flex">
+		<span class="label"><label for="missionStatement"><strong>Mission statement:</strong></label></span>
+		<input type="text" name="missionStatement" id="missionStatement" class="form-control" placeholder="Description">
+		</div> <br>
+		
+		<div class="row d-inline-flex">
+		<span class="label"><label for="brand"><strong>Brand of facility:</strong></label></span>
+		<input type="text" name="brand" id="brand" class="form-control" placeholder="Brand">
+		</div> <br>
+		
+		<div class="row d-inline-flex">
+		<span class="label"><label for="ownerName"><strong>Owner of facility:</strong></label></span>
+		<input type="text" name="ownerName" id="ownerName" class="form-control" placeholder="Owner Name">
+		</div> <br>
+		
+		<!-- <div class="row d-inline-flex">
+		<span class="label"><label for="hasTrainers"><strong>Does the facility have personal trainers:</strong></label></span>
+		<input type="checkbox" name="hasTrainers" id="hasTrainers" class="form-control" value="true">
+		</div> <br> -->
+		
+		<div class="row d-inline-flex">
+	        <input class="form-check-input" type="checkbox" id="hasTrainers">
+	        <label class="form-check-label" for="hasTrainers">
+	          Does the facility have personal trainers:
+	        </label></div>
+	    	
+	    <div class="row d-inline-flex">
+	        <input class="form-check-input" type="checkbox" id="hasTrainers">
+	        <label class="form-check-label" for="hasTrainers">
+	          Is the facility open 24/7:
+	        </label></div>
+		
+		<!-- <div class="row d-inline-flex">
+		<span class="label"><label for="alwaysOpen"><strong>Is the facility open 24/7:</strong></label></span>
+		<input type="checkbox" name="alwaysOpen" id="alwaysOpen" class="form-control" value="true">
+		</div> <br> -->
 		 
-		<label for="alwaysOpen">Is the facility 24/7:</label> 
-		<input type="checkbox" name="Is facility 24/7" value="true"> <br>
+		<div class="row d-inline-flex">
+		<span class="label"><label for="price"><strong>Price ($) :</strong></label></span>
+		<input type="number" name="price" id="price" class="form-control" placeholder="$50">
+		</div> <br>
 		 
-		<label for="price">Price ($) :</label>
-		<input type="number" name=price value="$"> <br>
-		
-		<label for="url">Website Link:</label> 
-		<input type="text" name=url value="URL"> <br>
+		<div class="row d-inline-flex">
+		<span class="label"><label for="url"><strong>Website Link:</strong></label></span>
+		<input type="url" name="url" id="url" class="form-control" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+		</div> <br>
 		 
 		<div class="mb-3">
 		<label for="address1"><strong>Street Address 1:</strong></label>
@@ -111,116 +170,29 @@
 		</div>
 		
 		<p><strong>Facility Activities</strong></p>
-	
+		
+		<c:forEach var="activity" items="${activities}">
+		
 		<div class="row  d-inline-flex">
 	 
 	 		<div class="col">
 	 		<div class="form-group">
 	      <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="weightlifting">
-	        <label class="form-check-label" for="weightlifting">
-	          Weightlifting
+	        <input class="form-check-input" type="checkbox" id="${activity.name }" value="${activity}">
+	        <label class="form-check-label" for="${activity.name }">
+	          ${activity.name }
 	        </label>
 	    	</div>
 	    </div>
-	 
-	 		<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="powerlifting">
-	    	  <label class="form-check-label" for="powerlifting">
-	      	  Powerlifting
-	      	</label>
-	   	 </div>
-	
-			<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="crossfit">
-	    	  <label class="form-check-label" for="crossfit">
-	      	  Powerlifting
-	      	</label>
-	   	 </div>
-	
-			
-		</div>
-	  
-	  <form>
-	 	<div class="row  d-inline-flex">
-	 
-	 		<div class="col">
-	 		<div class="form-group">
-	      <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="dancing">
-	        <label class="form-check-label" for="dancing">
-	          Dancing
-	        </label>
-	    	</div>
 	    </div>
+	    </div>
+	 </c:forEach>
 		
-	 
-	 		<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="swimming">
-	    	  <label class="form-check-label" for="swimming">
-	      	  Swimming
-	      	</label>
-	   	 </div>
-	
-	
-			<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="running">
-	    	  <label class="form-check-label" for="running">
-	      	  Running
-	      	</label>
-	   	 </div>
-	
-		</div>
-	 
-		<div class="row  d-inline-flex">
-	 
-	 		<div class="col">
-	 		<div class="form-group">
-	      <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="cardio">
-	        <label class="form-check-label" for="cardio">
-	          Cardio
-	        </label>
-	    	</div>
-	    </div>
-		
-	 
-	 		<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="calisthenics">
-	    	  <label class="form-check-label" for="calisthenics">
-	      	  Powerlifting
-	      	</label>
-	   	 </div>
-	
-	
-			<div class="col">
-	 		<div class="form-group">
-		    <div class="form-check">
-	  	    <input class="form-check-input" type="checkbox" id="yoga">
-	    	  <label class="form-check-label" for="yoga">
-	      	  Powerlifting
-	      	</label>
-	   	 </div>
-	
-		</div>	
-		 
 		<input type="submit" value="Create new Facility">
 	</form><br>
-
-	<a href="Home.do">Home</a>
 	
+	</main>
 </body>
-
 
 </html>
 
