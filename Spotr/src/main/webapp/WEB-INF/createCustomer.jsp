@@ -41,33 +41,33 @@
 	<input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here">	
 	</div></br>
 	<div class="row d-inline-flex">
-	<span class="label"><label for="firstname"><strong>First Name:</strong></label></span>
-	<input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
+	<span class="label"><label for="firstName"><strong>First Name:</strong></label></span>
+	<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
 	</div></br>
 	<div class="row d-inline-flex">
-	<label for="lastname"><strong>Last Name:</strong></label>
-	<input type="text" name="lastname" id="lastname">
+	<label for="lastName"><strong>Last Name:</strong></label>
+	<input type="text" name="lastName" id="lastName">
 	</div><br>
 	<div class="row d-inline-flex">
-	<label for="birth_date"><strong>Date of Birth:</strong></label>
-	<input type="date" name="birth_date" id="birth_date">
+	<label for="birthDate"><strong>Date of Birth:</strong></label>
+	<input type="date" name="birthDate" id="birthDate">
 	</div><br>
 	<div class="row  d-inline-flex">
 	<label for="gender"><strong>Gender:</strong></label>
-	<select name="gender" id="gender">
+	<select name="name" id="gender">
     <option value="">--Please choose an option--</option>
-    <option value="1">Male</option>
-    <option value="2">Female</option>
-    <option value="3">Something Else/Choose Not to Say</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Something Else/Choose Not to Say</option>
 	</select>
 	</div></br>
 	<div class="row  d-inline-flex">
-	<label for="address1"><strong>Street Address 1:</strong></label>
-	<input type="text" name="address1" id="address1"><br>
+	<label for="streetAddress1"><strong>Street Address 1:</strong></label>
+	<input type="text" name="streetAddress1" id="streetAddress1"><br>
 	</div>
 	<div class="row  d-inline-flex">
-	<label for="address2"><strong>Street Address 2:</strong></label>
-	<input type="text" name="address2" id="address2"><br>
+	<label for="streetAddress2"><strong>Street Address 2:</strong></label>
+	<input type="text" name="streetAddress2" id="streetAddress2"><br>
 	</div>
 	<div class="row  d-inline-flex">
 	<label for="city"><strong>City:</strong></label>
@@ -128,35 +128,37 @@
     <option value="WY">WY</option>
    	</select>
 	<label for="zip"><strong>Zip Code:</strong></label>
-	<input type="text" name="address1" id="address1"><br>
+	<input type="text" name="zip" id="zip"><br>
 	</div>
 	
 	<p><strong>Choose Your Preferred Activities</strong></p>
 	
 	<div class="row  d-inline-flex">
- 
- 		<div class="col">
- 		<div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="weightlifting">
-        <label class="form-check-label" for="weightlifting">
-          Weightlifting
-        </label>
-    	</div>
-    </div>
-	
-		<select class="skill-level" name="weightliftingSkill" id="weightliftingSkill">
-	    <option value="">--Please choose a skill level--</option>
-	    <option value="1">Beginner</option>
-	    <option value="2">Intermediate</option>
-	    <option value="3">Advanced</option>
-		</select>
-		</div>
- 
- 		<div class="col">
+						<c:forEach var="activity" items="${activities }">
+
+							<div class="col">
+								<div class="form-group">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											id="weightlifting" value="${activity}"> <label class="form-check-label"
+											for="weightlifting"> ${activity.name} </label>
+									</div>
+								</div>
+
+								<select class="skill-level" name="weightliftingSkill"
+									id="weightliftingSkill">
+									<option value="">--Please choose a skill level--</option>
+									<option value="1">Beginner</option>
+									<option value="2">Intermediate</option>
+									<option value="3">Advanced</option>
+								</select>
+							</div>
+						</c:forEach>
+
+						<div class="col">
  		<div class="form-group">
 	    <div class="form-check">
-  	    <input class="form-check-input" type="checkbox" id="powerlifting">
+  	    <input class="form-check-input" type="checkbox" id="powerlifting" value="${activity }">
     	  <label class="form-check-label" for="powerlifting">
       	  Powerlifting
       	</label>
@@ -174,7 +176,7 @@
 		<div class="col">
  		<div class="form-group">
 	    <div class="form-check">
-  	    <input class="form-check-input" type="checkbox" id="crossfit">
+  	    <input class="form-check-input" type="checkbox" id="crossfit" value="${activity }">
     	  <label class="form-check-label" for="crossfit">
       	  Powerlifting
       	</label>
