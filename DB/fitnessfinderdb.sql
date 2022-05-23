@@ -1345,6 +1345,7 @@ START TRANSACTION;
 USE `fitnessfinderdb`;
 INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `skill_level`) VALUES (1, 1, 1);
 INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `skill_level`) VALUES (2, 1, 2);
+INSERT INTO `customer_activity` (`activity_id`, `customer_id`, `skill_level`) VALUES (6, 1, 3);
 
 COMMIT;
 
