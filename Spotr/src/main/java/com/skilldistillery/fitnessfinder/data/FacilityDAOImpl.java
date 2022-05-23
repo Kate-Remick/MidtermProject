@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -64,4 +65,13 @@ public class FacilityDAOImpl implements FacilityDAO {
 		return activities;
 	}
 
+	@Override
+	public List<Activity> getAllActivities() {
+		List<Activity> activities = new ArrayList<>();
+		String jpql = "SELECT a FROM a=Activity a";
+		activities = em.createQuery(jpql, Activity.class).getResultList();
+		return activities;
+	}
+
+	
 }

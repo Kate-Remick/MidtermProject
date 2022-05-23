@@ -33,7 +33,6 @@ public class CustomerController {
 		customer.setAddress(address);
 		customer.setGender(gender);
 		customer.setFacilityPreferences(prefs);
-		// customer.setCustomerActivities(customer activities from JSP)
 		if (activities != null && activities.length > 0) {
 			for (int i = 0; i < activities.length; i++) {
 				customer.addCustomerActivity(activities[i]);

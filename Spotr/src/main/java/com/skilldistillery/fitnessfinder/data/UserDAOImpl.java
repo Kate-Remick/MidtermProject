@@ -1,11 +1,15 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fitnessfinder.entities.Activity;
 import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Facility;
 import com.skilldistillery.fitnessfinder.entities.Login;
@@ -83,6 +87,13 @@ public class UserDAOImpl implements UserDAO {
 		return facility;
 	}
 
+	@Override
+	public List<Activity> getAllActivities() {
+		List<Activity> activities = new ArrayList<>();
+		String jpql = "SELECT a FROM a=Activity a";
+		activities = em.createQuery(jpql, Activity.class).getResultList();
+		return activities;
+	}
 //	@Override
 //	public Login createTrainerUser(String username, String password) {
 //		Login login = new Login(); 

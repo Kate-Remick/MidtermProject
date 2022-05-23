@@ -28,8 +28,11 @@ public class FacilityController {
 	}
 
 	@RequestMapping(path = "createFacility.do", method = RequestMethod.GET)
-	public String createFacilityForm() {
-		return "createFacilityForm";
+	public ModelAndView createFacilityForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("activities", facilityDAO.getAllActivities());
+		mv.setViewName("createFacility");
+		return mv;
 	}
 
 	@RequestMapping(path="createFacility.do", method = RequestMethod.POST)
