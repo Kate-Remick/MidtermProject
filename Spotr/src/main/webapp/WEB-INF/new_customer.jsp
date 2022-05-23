@@ -39,24 +39,26 @@
 	<div name="inputs" id="inputs" class="col-sm-6 offset-3">
 	<form action="newUser.do" method="POST" name="new_customer_form" class="new_customer_form" id="new_customer_form">
   <div class="form-group">
+  
+  <div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="id"></div>
 	
 	<div class="row d-inline-flex">
-	<div class="col"></div><label for="disabledUsername"><strong>Username:</strong></label></div>
-	<div class="col"><input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here"></div>	
+	<label for="disabledUsername"><strong>Username:</strong></label></div>
+	<input disabled type="text" id="disabledUsername" class="form-control" placeholder="username goes here">	
 	</div></br>
-	<div class="row">
+	<div class="row d-inline-flex">
 	<label for="firstname"><strong>First Name:</strong></label>
 	<input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
 	</div></br>
-	<div class="row">
+	<div class="row d-inline-flex">
 	<label for="lastname"><strong>Last Name:</strong></label>
 	<input type="text" name="lastname" id="lastname">
 	</div><br>
-	<div class="row mb-3">
+	<div class="row d-inline-flex">
 	<label for="birth_date"><strong>Date of Birth:</strong></label>
 	<input type="date" name="birth_date" id="birth_date">
 	</div><br>
-	<div class="mb-3">
+	<div class="row  d-inline-flex">
 	<label for="gender"><strong>Gender:</strong></label>
 	<select name="gender" id="gender">
     <option value="">--Please choose an option--</option>
@@ -65,19 +67,17 @@
     <option value="3">Something Else/Choose Not to Say</option>
 	</select>
 	</div></br>
-	<div class="mb-3">
+	<div class="row  d-inline-flex">
 	<label for="address1"><strong>Street Address 1:</strong></label>
 	<input type="text" name="address1" id="address1"><br>
 	</div>
-	<div class="mb-3">
+	<div class="row  d-inline-flex">
 	<label for="address2"><strong>Street Address 2:</strong></label>
 	<input type="text" name="address2" id="address2"><br>
 	</div>
-	<div class="mb-3">
+	<div class="row  d-inline-flex">
 	<label for="city"><strong>City:</strong></label>
 	<input type="text" name="city" id="city">
-	</div>
-	<div class="mb-3">
 	<label for="state"><strong>State:</strong></label>
 	<select name="state" id="state">
     <option value="">--Please choose an option--</option>
@@ -133,195 +133,188 @@
     <option value="WI">WI</option>
     <option value="WY">WY</option>
    	</select>
-	</div>
-	<div class="mb-3">
 	<label for="zip"><strong>Zip Code:</strong></label>
 	<input type="text" name="address1" id="address1"><br>
 	</div>
 	
- 	<div class="form-group row">
+	<p><strong>Choose Your Preferred Activities</strong></p>
+	
+	<div class="row  d-inline-flex">
+ 
+ 		<div class="col">
+ 		<div class="form-group">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="weightlifting">
         <label class="form-check-label" for="weightlifting">
           Weightlifting
         </label>
-      </div>
+    	</div>
+    </div>
 	
-	<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="weightlifting" id="weightlifting">
-  <label class="form-check-label" for="weightlifting">
-    Default checkbox
-  </label>
-</div>
-	
-	
-	
-	
-	
-			<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button" id="weightliftingDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  				Skill Level
- 			</button>
-			  <div class="dropdown-menu" aria-labelledby="weightliftingDropdown">
-		    <a class="dropdown-item" value="Beginner">Beginner</a>
-		    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-		    <a class="dropdown-item" value="Advanced">Advanced</a>
-		  </div>
-		  </div>
+		<select class="skill-level" name="weightliftingSkill" id="weightliftingSkill">
+	    <option value="">--Please choose a skill level--</option>
+	    <option value="1">Beginner</option>
+	    <option value="2">Intermediate</option>
+	    <option value="3">Advanced</option>
+		</select>
+		</div>
+ 
+ 		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="powerlifting">
+    	  <label class="form-check-label" for="powerlifting">
+      	  Powerlifting
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="powerliftingSkill" id="powerliftingSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
+		</div>
+
+		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="crossfit">
+    	  <label class="form-check-label" for="crossfit">
+      	  Powerlifting
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="crossfitSkill" id="crossfitSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
 		</div>
 		
-		
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="powerlifting">
-      <label class="form-check-label" for="powerlifting">
-        Powerlifting
-      </label>
-    </div>
-		<div class="dropdown">
- 			<button class="btn btn-secondary dropdown-toggle" type="button" id="powerliftingDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  				Skill Level
- 			</button>
-			  <div class="dropdown-menu" aria-labelledby="powerliftingDropdown">
-		    <a class="dropdown-item" value="Beginner">Beginner</a>
-		    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-		    <a class="dropdown-item" value="Advanced">Advanced</a>
-		 		</div>
-		</div>
-  </div>
+	</div>
   
-  
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="crossfit">
-      <label class="form-check-label" for="crossfit">
-        Crossfit
-      </label>
-    </div>
-		<div class="dropdown">
- 			<button class="btn btn-secondary dropdown-toggle" type="button" id="crossfitDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  				Skill Level
- 			</button>
-			  <div class="dropdown-menu" aria-labelledby="crossfitDropdown">
-		    <a class="dropdown-item" value="Beginner">Beginner</a>
-		    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-		    <a class="dropdown-item" value="Advanced">Advanced</a>
-		  </div>
-		</div>
-  </div>
-  </br>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="dancing" id="dancing">
-      <label class="form-check-label" for="dancing">
-        Dancing
-      </label>
-    </div>
-		<div class="dropdown">
- 			<button class="btn btn-secondary dropdown-toggle" type="button" id="dancingDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  				Skill Level
- 			</button>
-		  <div class="dropdown-menu" aria-labelledby="dancingDropdown">
-		    <a class="dropdown-item" value="Beginner">Beginner</a>
-		    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-		    <a class="dropdown-item" value="Advanced">Advanced</a>
-		  </div>
-		</div>			
-  </div>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="swimming" id="swimming">
-      <label class="form-check-label" for="swimming">
-        Dancing
-      </label>
-    </div>
- 			<div class="dropdown">
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="swimmingDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   				Skill Level
-  			</button>
- 			  <div class="dropdown-menu" aria-labelledby="swimmingDropdown">
-			    <a class="dropdown-item" value="Beginner">Beginner</a>
-			    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-			    <a class="dropdown-item" value="Advanced">Advanced</a>
-			  </div>
-			</div>			
-  </div>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="running" id="running">
-      <label class="form-check-label" for="running">
-        Running
-      </label>
-    </div>
- 			<div class="dropdown">
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="runningDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   				Skill Level
-  			</button>
- 			  <div class="dropdown-menu" aria-labelledby="runningDropdown">
-			    <a class="dropdown-item" value="Beginner">Beginner</a>
-			    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-			    <a class="dropdown-item" value="Advanced">Advanced</a>
-			  </div>
-			</div>			
-  </div>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="cardio" id="cardio">
-      <label class="form-check-label" for="cardio">
-        Cardio
-      </label>
-    </div>
-		<div class="dropdown">
- 			<button class="btn btn-secondary dropdown-toggle" type="button" id="cardioDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  				Skill Level
- 			</button>
-			  <div class="dropdown-menu" aria-labelledby="cardioDropdown">
-		    <a class="dropdown-item" value="Beginner">Beginner</a>
-		    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-		    <a class="dropdown-item" value="Advanced">Advanced</a>
-		  </div>
-		</div>			
-  </div>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="calisthenics" id="calisthenics">
-      <label class="form-check-label" for="calisthenics">
-        Calisthenics
-      </label>
-    </div>
-		<div class="dropdown">
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="calisthenicsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   				Skill Level
-  			</button>
- 			  <ul class="dropdown-menu" aria-labelledby="calisthenicsDropdown">
-			    <li><a class="dropdown-item" value="Beginner">Beginner</a></li>
-			    <li><a class="dropdown-item" value="Intermediate">Intermediate</a></li>
-			    <li><a class="dropdown-item" value="Advanced">Advanced</a></li>
-		    </ul>
-		</div>			
-  </div>
- 	<div class="form-group row">
-    <div class="form-check">
-      <input class="form-check-input" type="yoga" id="yoga">
-      <label class="form-check-label" for="yoga">
-        Yoga
-      </label>
-    </div>
-		<div class="dropdown">
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="yogaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   				Skill Level
-  			</button>
- 			  <div class="dropdown-menu" aria-labelledby="yogaDropdown">
-			    <a class="dropdown-item" value="Beginner">Beginner</a>
-			    <a class="dropdown-item" value="Intermediate">Intermediate</a>
-			    <a class="dropdown-item" value="Advanced">Advanced</a>
-			  </div>
-			</div>			
+  <form>
+ 	<div class="row  d-inline-flex">
+ 
+ 		<div class="col">
+ 		<div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="dancing">
+        <label class="form-check-label" for="dancing">
+          Dancing
+        </label>
+    	</div>
     </div>
 	
+		<select class="skill-level" name="dancingSkill" id="dancingSkill">
+	    <option value="">--Please choose a skill level--</option>
+	    <option value="1">Beginner</option>
+	    <option value="2">Intermediate</option>
+	    <option value="3">Advanced</option>
+		</select>
+		</div>
+ 
+ 		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="swimming">
+    	  <label class="form-check-label" for="swimming">
+      	  Swimming
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="swimmingSkill" id="swimmingSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
+		</div>
+
+		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="running">
+    	  <label class="form-check-label" for="running">
+      	  Running
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="runningSkill" id="runningSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
+		</div>
+		
+	</div>
+ 
+	<div class="row  d-inline-flex">
+ 
+ 		<div class="col">
+ 		<div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cardio">
+        <label class="form-check-label" for="cardio">
+          Cardio
+        </label>
+    	</div>
+    </div>
+	
+		<select class="skill-level" name="cardioSkill" id="cardioSkill">
+	    <option value="">--Please choose a skill level--</option>
+	    <option value="1">Beginner</option>
+	    <option value="2">Intermediate</option>
+	    <option value="3">Advanced</option>
+		</select>
+		</div>
+ 
+ 		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="calisthenics">
+    	  <label class="form-check-label" for="calisthenics">
+      	  Powerlifting
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="calisthenicsSkill" id="calisthenicsSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
+		</div>
+
+		<div class="col">
+ 		<div class="form-group">
+	    <div class="form-check">
+  	    <input class="form-check-input" type="checkbox" id="yoga">
+    	  <label class="form-check-label" for="yoga">
+      	  Powerlifting
+      	</label>
+   	 </div>
+
+			<select class="skill-level" name="yogaSkill" id="yogaSkill">
+		    <option value="">--Please choose a skill level--</option>
+		    <option value="1">Beginner</option>
+		    <option value="2">Intermediate</option>
+		    <option value="3">Advanced</option>
+			</select>
+		</div>
+		</div>
+		
+	</div>	
 	
 	<input type="submit" value="Submit" class="btn btn-primary">
-	</div>
 	</form>
 	</div>
 	
