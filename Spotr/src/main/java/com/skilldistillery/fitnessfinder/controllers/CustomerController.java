@@ -98,6 +98,7 @@ public class CustomerController {
 		return mav;
 	}
 
+
 	@RequestMapping(path = "editedCustomerInfo.do", method = RequestMethod.GET)
 	public String editedCustomerPage() {
 		return "customer";
