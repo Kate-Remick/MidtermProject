@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Facility</title>
+<title>Update Facility</title>
 
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 
@@ -38,30 +38,26 @@
 		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="${loggedInUser.username}">	
 		</div> <br>
 
-		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
+		<form action="editFacility.do" method="POST" name="editFacility" class="editFacility" id="editFacility">
 		
-		<%-- <div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div> --%>
-
-<%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
- --%>		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="name"><strong>Name of facility:</strong></label></span>
-		<input type="text" name="name" id="name" class="form-control" placeholder="Facility Name">
+		<input type="text" name="name" id="name" class="form-control" value="${facility.name }">
 		</div> <br>
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="missionStatement"><strong>Mission statement:</strong></label></span>
-		<input type="text" name="missionStatement" id="missionStatement" class="form-control" placeholder="Description">
+		<input type="text" name="missionStatement" id="missionStatement" class="form-control" value="${facility.missionStatement }">
 		</div> <br>
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="brand"><strong>Brand of facility:</strong></label></span>
-		<input type="text" name="brand" id="brand" class="form-control" placeholder="Brand">
+		<input type="text" name="brand" id="brand" class="form-control" value="${facility.brand }">
 		</div> <br>
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="ownerName"><strong>Owner of facility:</strong></label></span>
-		<input type="text" name="ownerName" id="ownerName" class="form-control" placeholder="Owner Name">
+		<input type="text" name="ownerName" id="ownerName" class="form-control" value="${facility.ownerName }">
 		</div> <br>
 		
 		<div class="row d-inline-flex">
@@ -78,20 +74,20 @@
 		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="price"><strong>Price ($) :</strong></label></span>
-		<input type="number" name="price" id="price" class="form-control" value="50">
+		<input type="number" name="price" id="price" class="form-control" value="${facility.price }">
 		</div> <br>
 		 
 		<div class="mb-3">
 		<label for="address1"><strong>Street Address 1:</strong></label>
-		<input type="text" name="streetAddress1" id="address1" value="100 D Street"><br>
+		<input type="text" name="streetAddress1" id="address1" value="${facility.address.streetAddress1 }"><br>
 		</div>
 		<div class="mb-3">
 		<label for="address2"><strong>Street Address 2:</strong></label>
-		<input type="text" name="streetAddress2" id="address2" value="Unit 104"><br>
+		<input type="text" name="streetAddress2" id="address2" value="${facility.address.streetAddress2 }"><br>
 		</div>
 		<div class="mb-3">
 		<label for="city"><strong>City:</strong></label>
-		<input type="text" name="city" id="city" value="Boston">
+		<input type="text" name="city" id="city" value="${facility.address.city }">
 		</div>
 		<div class="mb-3">
 		<label for="state"><strong>State:</strong></label>
@@ -152,29 +148,29 @@
 		</div>
 		<div class="mb-3">
 		<label for="zip"><strong>Zip Code:</strong></label>
-		<input type="text" name="zip" id="zip" value="00000"><br>
+		<input type="text" name="zip" id="zip" value="${facility.address.zip }"><br>
 		</div>
 		
 		<div class="mb-3">
 		<label for="phone"><strong>Phone number:</strong></label>
-		<input type="text" name="phone" id="phone" value="867-5309"><br>
+		<input type="text" name="phone" id="phone" value="${facility.address.phone }"><br>
 		</div>
 		
 		<div class="mb-3">
 		<label for="email"><strong>Email:</strong></label>
-		<input type="text" name="email" id="email" value="bobloblaw@lawblog.com"><br>
+		<input type="text" name="email" id="email" value="${facility.address.email }"><br>
 		</div>
 		
 		<div class="mb-3">
 		<label for="url"><strong>Website Link:</strong></label>
-		<input type="text" name="url" id="url" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><br>
+		<input type="text" name="url" id="url" value="${facility.address.url }"><br>
 		</div>
 		
 		<p><strong>Facility Activities</strong></p>
 		
+		<div class="row  d-inline-flex">
 		<c:forEach var="activity" items="${activities}">
 		
-		<div class="row  d-inline-flex">
 	 
 	 		<div class="col">
 	 		<div class="form-group">
@@ -186,10 +182,10 @@
 	    	</div>
 	    </div>
 	    </div>
-	    </div>
 	 </c:forEach>
+	    </div>
 		
-		<input type="submit" value="Create new Facility" class="btn btn-primary">
+		<input type="submit" value="Edit Facility" class="btn btn-primary">
 	</form><br>
 	</div>
 	</main>
