@@ -40,42 +40,43 @@ ACTIVITES & SKILL LEVELS
 -->
 	<div name="customer" id="customer" class="customer">
 		<table>
-		<tr><td class="customer_labels">Username:</td><td class="customer_data">FlashGordon</td></tr>
-		<tr><td class="customer_labels">First Name:</td><td class="customer_data">Flash</td></tr>
-		<tr><td class="customer_labels">Last Name:</td><td class="customer_data">Gordon</td></tr>		
+		<tr><td class="customer_labels">Username:</td><td class="customer_data">${customer.login.username}</td></tr>
+		<tr><td class="customer_labels">First Name:</td><td class="customer_data">${customer.firstName}</td></tr>
+		<tr><td class="customer_labels">Last Name:</td><td class="customer_data">${customer.lastName}</td></tr>		
 		</table>
 	</br>
-	<a href="editCustomer.do"><button>Update Personal Profile</button></a>
-	<a href="journal.do"><button>Your Fitness Journal</button></a>
+	<a href="editCustomerInfo.do"><button>Update Personal Profile</button></a>
+	<a href="viewJournal.do"><button>Your Fitness Journal</button></a>
 	</div>
 	</br>
 	
 	<div name="facilities" id="facilities" class="facilities">
 		<table>
 		<thead>
-		<th>Fitness FIrm</th><th>Location</th>
+		<th>Fitness FIrm</th><th>Location</th><th></th>
 		</thead>
 		<tbody>
-			<tr><td>Test Facility</td><td>101 Main St Suite 100, Denver, CO 80111</td></tr>
-
+		<c:forEach var="facility" items="${customer.facilities}">
+			<tr><td>${facility.name}</td><td>${facility.address}</td><td> <a href="removeFacilities.do?facilityId=${facility.id}"><button>Remove Facility</button></a></td></tr>
+		</c:forEach>
 		</tbody>
 		</table>
-	</br>
-	<a href="editFacilities.do"><button>Update Fitness Locations</button></a>
 	</div>
 	</br>
 	<div name="activities" id="activities" class="activities">
 		<table>
 		<thead>
-		<th>Acitivity</th><th>Goal</th>
+		<th>Acitivity</th><th>Goal</th><th></th>
 		</thead>
 		<tbody>
-			<tr><td>Test Activity</td><td>Bench 500 like Ronnie Coleman</td></tr>
-
+		<c:forEach var="customerActivity" items="${customer.customerActivities}">
+		<!-- FIX MEEEEEEEEEEEEEE -->
+			<tr><td>${customerActivity.activity.name}</td><td>${customerActivity.skillLevel}</td><td><a href="FIXME"><button>Remove Activity</button></a></td></tr>
+		</c:forEach>
 		</tbody>
 		</table>
 	</br>
-	<a href="editActivities.do"><button>Update Fitness Activities</button></a> <a href="editGoals.do"><button>Update Fitness Goals</button></a>
+	<a href="editCustomerActivities.do"><button>Update Fitness Activities</button></a>
 	</div>
 	</br>
 	
