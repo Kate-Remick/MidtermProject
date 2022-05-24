@@ -24,25 +24,25 @@
 		</c:forEach>
 	</ul>
 	<div class="journalEntry">
-			<br>
-			<h5>Date: ${recentEntry.createdAt}</h5>
-			<h5>Goal: ${recentEntry.goal.getName()}, completed?
-				${recentEntry.goal.isCompleted()}</h5>
-			<p>${recentEntry.entry}</p>
-			<a href="removeJournal.do?journal=${entry}"><button>Delete Entry</button></a>
-			<br>
-		</div>
+		<br>
+		<h5>Date: ${recentEntry.createdAt}</h5>
+		<h5>Goal: ${recentEntry.goal.getName()}, completed?
+			${recentEntry.goal.isCompleted()}</h5>
+		<p>${recentEntry.entry}</p>
+		<a href="removeJournal.do?journal=${entry}"><button>Delete
+				Entry</button></a> <br>
+		<c:forEach var="entry" items="${customer.logs}">
+			<div class="journalEntry">
+				<br>
+				<h5>Date: ${entry.createdAt}</h5>
+				<h5>Goal: ${entry.goal.getName()}, completed?
+					${entry.goal.isCompleted()}</h5>
+				<p>${entry.entry}</p>
+				<a href="removeJournal.do?journal=${entry}"><button>Delete
+						Entry</button></a> <br>
+			</div>
+		</c:forEach>
+	</div>
 	<a href="addGoal.do"><button>Add new goal</button></a>
-	<c:forEach var="entry" items="${customer.logs}">
-		<div class="journalEntry">
-			<br>
-			<h5>Date: ${entry.createdAt}</h5>
-			<h5>Goal: ${entry.goal.getName()}, completed?
-				${entry.goal.isCompleted()}</h5>
-			<p>${entry.entry}</p>
-			<a href="removeJournal.do?journal=${entry}"><button>Delete Entry</button></a>
-			<br>
-		</div>
-	</c:forEach>
 </body>
 </html>

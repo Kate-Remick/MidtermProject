@@ -40,7 +40,7 @@
 
 		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
 		
-		<div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div>
+		<%-- <div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div> --%>
 
 <%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
  --%>		
@@ -64,28 +64,18 @@
 		<input type="text" name="ownerName" id="ownerName" class="form-control" placeholder="Owner Name">
 		</div> <br>
 		
-		<!-- <div class="row d-inline-flex">
-		<span class="label"><label for="hasTrainers"><strong>Does the facility have personal trainers:</strong></label></span>
-		<input type="checkbox" name="hasTrainers" id="hasTrainers" class="form-control" value="true">
-		</div> <br> -->
-		
 		<div class="row d-inline-flex">
-	        <input class="form-check-input" type="checkbox" id="hasTrainers">
-	        <label class="form-check-label" for="hasTrainers">
+	    <input value="${true}" class="form-check-input" name="hasTrainers" type="checkbox" id="hasTrainers">
+	    <label class="form-check-label" for="hasTrainers" >
 	          Does the facility have personal trainers:
-	        </label></div>
+	    </label></div>
 	    	
 	    <div class="row d-inline-flex">
-	        <input class="form-check-input" type="checkbox" id="hasTrainers">
-	        <label class="form-check-label" for="hasTrainers">
+	    <input value="${true}" class="form-check-input" name="alwaysOpen" type="checkbox" id="alwaysOpen">
+	    <label class="form-check-label" for=alwaysOpen>
 	          Is the facility open 24/7:
-	        </label></div>
+	    </label></div>
 		
-		<!-- <div class="row d-inline-flex">
-		<span class="label"><label for="alwaysOpen"><strong>Is the facility open 24/7:</strong></label></span>
-		<input type="checkbox" name="alwaysOpen" id="alwaysOpen" class="form-control" value="true">
-		</div> <br> -->
-		 
 		<div class="row d-inline-flex">
 		<span class="label"><label for="price"><strong>Price ($) :</strong></label></span>
 		<input type="number" name="price" id="price" class="form-control" value="50">
@@ -190,19 +180,18 @@
 	 		<div class="form-group">
 	      <div class="form-check">
 	        <input class="form-check-input" type="checkbox" 
-	        name="activities" id="${activity.name }" value="${activity}">
-	        <label class="form-check-label" for="${activity.name }">
-	          ${activity.name }
-	        </label>
+	        name="activityarray" value="${activity.id}">
+	        <label class="form-check-label" for="activityarray">
+	          ${activity.name } </label>
 	    	</div>
 	    </div>
 	    </div>
 	    </div>
 	 </c:forEach>
 		
-		<input type="submit" value="Create new Facility">
+		<input type="submit" value="Create new Facility" class="btn btn-primary">
 	</form><br>
-	
+	</div>
 	</main>
 </body>
 
