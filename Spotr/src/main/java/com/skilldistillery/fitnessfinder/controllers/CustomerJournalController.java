@@ -45,9 +45,9 @@ public class CustomerJournalController {
 	}
 
 	@RequestMapping(path = "removeJournal.do", method = RequestMethod.GET)
-	public ModelAndView removeJournalPage(@RequestParam("journalId") int journalId) {
+	public ModelAndView removeJournalPage(@RequestParam("journalId") String journalId) {
 		ModelAndView mav = new ModelAndView();
-		boolean removed = customerDao.removeJournalEntry(journalId);
+		boolean removed = customerDao.removeJournalEntry(Integer.parseInt(journalId));
 		if (removed) {
 			mav.addObject("removed", "Removal successful");
 		}
@@ -70,9 +70,9 @@ public class CustomerJournalController {
 	}
 
 	@RequestMapping(path = "removeGoal.do", method = RequestMethod.GET)
-	public ModelAndView removeGoalPage(@RequestParam("goalId") int goalId) {
+	public ModelAndView removeGoalPage(@RequestParam("goalId") String goalId) {
 		ModelAndView mav = new ModelAndView();
-		boolean removed = customerDao.removeGoals(goalId);
+		boolean removed = customerDao.removeGoals(Integer.parseInt(goalId));
 		if (removed) {
 			mav.addObject("removed", "Removal successful");
 		}
