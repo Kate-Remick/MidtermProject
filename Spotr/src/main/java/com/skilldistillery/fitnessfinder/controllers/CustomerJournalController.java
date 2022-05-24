@@ -61,11 +61,14 @@ public class CustomerJournalController {
 	}
 
 	@RequestMapping(path = "addGoal.do", method = RequestMethod.POST)
-	public ModelAndView addGoalPage(Goal goal) {
+	public ModelAndView addGoalPage(Goal goal, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		goal = customerDao.addGoals(goal);
+		Customer customer = (Customer)session.getAttribute("customer");
+		goal.setCustomer(customer);
+		customer = customerDao.addGoals(goal);
 		mav.addObject("newGoal", goal);
-		mav.setViewName("goal");
+		session.setAttribute("customer", customer);
+		mav.setViewName("journal");
 		return mav;
 	}
 
@@ -76,7 +79,7 @@ public class CustomerJournalController {
 		if (removed) {
 			mav.addObject("removed", "Removal successful");
 		}
-		mav.setViewName("goal");
+		mav.setViewName("journal");
 		return mav;
 	}
 }

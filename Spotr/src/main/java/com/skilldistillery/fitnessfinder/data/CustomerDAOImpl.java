@@ -63,12 +63,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Goal addGoals(Goal goal) {
+	public Customer addGoals(Goal goal) {
 		Customer customer = em.find(Customer.class, goal.getCustomer().getId());
 		em.persist(goal);
 		goal.setCustomer(customer);
+		customer.addGoal(goal);
 		em.flush();
-		return goal;
+		return customer;
 	}
 
 	@Override
