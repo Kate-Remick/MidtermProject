@@ -30,12 +30,12 @@
 		</div>
 
 		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
-					<div class="row d-inline-flex">
-						<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
-						<input disabled type="text" id="disabledUsername"
-							class="form-control" placeholder="${loggedInUser.username}">
-					</div>
-			<form action="createCustomer.do" method="POST"
+			<div class="row d-inline-flex">
+				<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
+				<input disabled type="text" id="disabledUsername"
+					class="form-control" placeholder="${loggedInUser.username}">
+			</div>
+			<form action="editCustomerInfo.do" method="POST"
 				name="new_customer_form" class="new_customer_form"
 				id="new_customer_form">
 				<div class="form-group">
@@ -44,23 +44,25 @@
 					<div class="row d-inline-flex">
 						<span class="label"><label for="firstName"><strong>First
 									Name:</strong></label></span> <input type="text" name="firstName" id="firstName"
-							class="form-control" placeholder="First Name">
+							class="form-control" placeholder="First Name"
+							value="${customer.firstName}">
 					</div>
 					</br>
 					<div class="row d-inline-flex">
 						<label for="lastName"><strong>Last Name:</strong></label> <input
-							type="text" name="lastName" id="lastName">
+							type="text" name="lastName" id="lastName"
+							value="${customer.lastName}">
 					</div>
 					<br>
 					<div class="row d-inline-flex">
 						<label for="dob"><strong>Date of Birth:</strong></label> <input
-							type="date" name="dob" id="dob">
+							type="date" name="dob" id="dob" value="${customer.birthDate}">
 					</div>
 					<br>
 					<div class="row  d-inline-flex">
 						<label for="gender"><strong>Gender:</strong></label> <select
 							name="name" id="gender">
-							<option value="">--Please choose an option--</option>
+							<option value="${customer.gender.id}">${customer.gender.name}</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="other">Something Else/Choose Not to Say</option>
@@ -70,18 +72,18 @@
 					<div class="row  d-inline-flex">
 						<label for="streetAddress1"><strong>Street
 								Address 1:</strong></label> <input type="text" name="streetAddress1"
-							id="streetAddress1"><br>
+							id="streetAddress1" value="${ customer.address.streetAddress1}"><br>
 					</div>
 					<div class="row  d-inline-flex">
 						<label for="streetAddress2"><strong>Street
 								Address 2:</strong></label> <input type="text" name="streetAddress2"
-							id="streetAddress2"><br>
+							id="streetAddress2" value="${ customer.address.streetAddress2}"><br>
 					</div>
 					<div class="row  d-inline-flex">
 						<label for="city"><strong>City:</strong></label> <input
 							type="text" name="city" id="city"> <label for="state"><strong>State:</strong></label>
 						<select name="state" id="state">
-							<option value="">--Please choose an option--</option>
+							<option value="${customer.address.state}">${customer.address.state}</option>
 							<option value="AL">AL</option>
 							<option value="AK">AK</option>
 							<option value="AZ">AZ</option>
@@ -134,7 +136,7 @@
 							<option value="WI">WI</option>
 							<option value="WY">WY</option>
 						</select> <label for="zip"><strong>Zip Code:</strong></label> <input
-							type="text" name="zip" id="zip"><br>
+							type="text" name="zip" id="zip" value="${customer.address.zip}"><br>
 					</div>
 
 					<p>
@@ -142,7 +144,7 @@
 					</p>
 
 					<div class="row  d-inline-flex">
-						<c:forEach var="activity" items="${activities }">
+						<c:forEach var="activity" items="${activities}">
 
 							<div class="col">
 								<div class="form-group">
@@ -154,8 +156,7 @@
 									</div>
 								</div>
 
-								<select class="skill-level" name="skillLevel"
-									id="skillLevel">
+								<select class="skill-level" name="skillLevel" id="skillLevel">
 									<option value=1>--Please choose a skill level--</option>
 									<option value=1>Beginner</option>
 									<option value=2>Intermediate</option>
@@ -164,12 +165,13 @@
 							</div>
 						</c:forEach>
 					</div>
-	
+
 					<p>
-						<strong>Tell others about yourself and your fitness goals, if you'd like:</strong>
+						<strong>Tell others about yourself and your fitness
+							goals, if you'd like:</strong>
 					</p>
-					<textarea class="bio" name="bio" id="bio" placeholder="I'm looking for another woman to joing me on my fitness journey. My goal is to run a marathon.  I currently run several 10k events each year."></textarea>
-	
+					<textarea class="bio" name="bio" id="bio">${customer.bio}</textarea>
+
 					<input type="submit" value="Submit" class="btn btn-primary">
 					</div>
 			</form>
