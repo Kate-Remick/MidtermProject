@@ -43,17 +43,17 @@ public class CustomerController {
 		Login login = (Login) session.getAttribute("loggedInUser"); // HELPED FROM JEREMY
 		customer = customerDao.createCustomer(login, customer);
 		List<CustomerActivity> customerActivities = new ArrayList<CustomerActivity>();
-//		if (activityId != null && activityId.length > 0) {
-//			for (int i = 0; i < activityId.length; i++) {
-//				CustomerActivity ca = new CustomerActivity();
-//				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activityId[i])));
-//				ca.setSkillLevel(skillLevels[i]);
-//				ca.setCustomer(customer);
-////				customer.removeCustomerActivity(ca);
-//				customerActivities.add(ca);
-//			}
-//		}
-//		customerDao.addCustomerActivities(customerActivities);
+		if (activityId != null && activityId.length > 0) {
+			for (int i = 0; i < activityId.length; i++) {
+				CustomerActivity ca = new CustomerActivity();
+				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activityId[i])));
+				ca.setSkillLevel(skillLevels[i]);
+				ca.setCustomer(customer);
+//				customer.removeCustomerActivity(ca);
+				customerActivities.add(ca);
+			}
+		}
+		customerDao.addCustomerActivities(customerActivities);
 		session.setAttribute("customer", customer);
 		mav.setViewName("customer");
 		return mav;
@@ -61,8 +61,11 @@ public class CustomerController {
 	
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.GET)
-	public String editCustomerPage() {
-		return "customerInfo";
+	public ModelAndView editCustomerPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("activities", customerDao.getAllActivities());
+		mv.setViewName("updateCustomer");
+		return mv;
 	}
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.POST)
@@ -91,12 +94,16 @@ public class CustomerController {
 	}
 
 	@RequestMapping(path = "editCustomerActivities.do", method = RequestMethod.POST)
-	public String editCustomerActivities(@RequestParam("customer") Customer customer,
-			@RequestParam("activities") CustomerActivity... activities) {
+	public String editCustomerActivities(@RequestParam("activities") int[] activities, @RequestParam("skillLevels") int[] skillLevels ) {
 		List<CustomerActivity> newActivities = new ArrayList<>();
 		if (activities != null && activities.length > 0) {
 			for (int i = 0; i < activities.length; i++) {
-				newActivities.add(activities[i]);
+				CustomerActivity ca = new CustomerActivity();
+				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activityId[i])));
+				ca.setSkillLevel(skillLevels[i]);
+				ca.setCustomer(customer);
+//				customer.removeCustomerActivity(ca);
+				customerActivities.add(ca);
 			}
 		}
 		customerDao.editActivities(customer.getId(), newActivities);
