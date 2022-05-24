@@ -26,7 +26,7 @@
 				class="logo" id="logo" /></a>
 				
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="logout.do">Logout</a></span>
+			<div class="logout"><span class="button" id="logout"><a href="logout.do" id="logout_link">Logout</a></span></div>
 			</div>
 		</section>
 		</div>
@@ -40,10 +40,6 @@
 
 		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
 		
-		<%-- <div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div> --%>
-
-<%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
- --%>		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="name"><strong>Name of facility:</strong></label></span>
 		<input type="text" name="name" id="name" class="form-control" placeholder="Facility Name">
