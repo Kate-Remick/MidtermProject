@@ -39,14 +39,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Journal addJournalEntry(Journal log) {
+	public Customer addJournalEntry(Journal log) {
 		log.setCreatedAt(LocalDateTime.now());
 		Goal goal = log.getGoal();
 		goal.setCompleted(log.getGoal().isCompleted());
 		em.persist(log);
 		Customer customer = em.find(Customer.class, log.getCustomer().getId());
+		log.setCustomer(customer);
+		customer.addJournal(log);
 		em.flush();
-		return log;
+		return customer;
 	}
 
 	@Override

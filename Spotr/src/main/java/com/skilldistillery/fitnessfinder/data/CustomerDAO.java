@@ -16,7 +16,7 @@ import com.skilldistillery.fitnessfinder.entities.Login;
 public interface CustomerDAO {
 	
 	Customer createCustomer(Login user, Customer customer);
-	Journal addJournalEntry(Journal log);
+	Customer addJournalEntry(Journal log);
 	boolean removeJournalEntry(int logId);
 	Customer addGoals(Goal goal);
 	Customer completeGoals(int goalId);
