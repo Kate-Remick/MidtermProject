@@ -196,12 +196,3 @@
 </body>
 
 </html>
-
-<!-- 	-hidden field for login id
-	-Address
-		-same as customer
-		-url
-		
-	-Activities
-		-checkbox for each
-	Submit (goes to createFacility.do, post) -->
