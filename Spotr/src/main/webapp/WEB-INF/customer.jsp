@@ -49,7 +49,7 @@ ACTIVITES & SKILL LEVELS
 	<a href="viewJournal.do"><button>Your Fitness Journal</button></a>
 	</div>
 	</br>
-	
+	<a href="findFacilities.do"><button>Find Fitness Facilities</button></a>
 	<div name="facilities" id="facilities" class="facilities">
 		<table>
 		<thead>

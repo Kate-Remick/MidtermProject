@@ -26,7 +26,6 @@ public interface CustomerDAO {
 	boolean removeFacility(int customerId, Facility facility);
 	Customer editCustomerInfo(Customer customer, int id);
 	Customer editActivities(int customerId, List<CustomerActivity> activities);
-	boolean removeActivities(int customerId, CustomerActivity activity);
 	List<Facility> searchFacilityByActivity(Activity activity);
 	List<Facility> searchFacilityByCategory(Category category);
 	List<Facility> searchFacilityByLocation(Address address);

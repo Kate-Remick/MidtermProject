@@ -2,6 +2,8 @@ package com.skilldistillery.fitnessfinder.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.fitnessfinder.data.CustomerDAO;
 import com.skilldistillery.fitnessfinder.entities.Activity;
-import com.skilldistillery.fitnessfinder.entities.Address;
 import com.skilldistillery.fitnessfinder.entities.Category;
 import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Facility;
@@ -23,8 +24,9 @@ public class CustomerFacilityController {
 	private CustomerDAO customerDao;
 
 	@RequestMapping(path = "findFacilities.do", method = RequestMethod.GET)
-	public ModelAndView findFacilities(@RequestParam("customer") Customer customer) {
+	public ModelAndView findFacilities(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		Customer customer = (Customer)session.getAttribute("customer");
 		List<Facility> preferredFacilities = customerDao.searchFacilityByPreferences(customer.getFacilityPreferences());
 		mav.addObject("preferredFacilities", preferredFacilities);
 		mav.addObject("activities", customerDao.getAllActivities());
@@ -34,29 +36,29 @@ public class CustomerFacilityController {
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "category", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByCategory(@RequestParam("category") Category category) {
+	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category) {
 		ModelAndView mav = new ModelAndView();
-		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
+//		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+//		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "address", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByLocation(@RequestParam("address") Address address) {
+	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address) {
 		ModelAndView mav = new ModelAndView();
-		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
+//		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+//		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "activity", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") Activity activity) {
+	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") int activity) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByActivity(activity);
 		mav.addObject("activities", customerDao.getAllActivities());

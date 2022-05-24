@@ -150,37 +150,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
-		System.out.println("*************************1");
 		Customer editCustomer = em.find(Customer.class, customerId);
-//		if(editCustomer.getCustomerActivities() != null) {
-//			System.out.println("*************************deleting customerActivities");
-//			editCustomer.setCustomerActivities(null);
-//			editCustomer.setCustomerActivities(new ArrayList<>());
-//		}
-//		for (CustomerActivity customerActivity : activities) {
-//			customerActivity.setCustomer(editCustomer);
-//			System.out.println("*************************persisting customerActivities");
-//			if(em.contains(customerActivity)) {
-//				CustomerActivity ca = em.find(CustomerActivity.class, customerActivity.getId());
-//				ca.setSkillLevel(customerActivity.getSkillLevel());
-//			}else {
-//				em.persist(customerActivity);
-//			}
-//		}
-//		System.out.println("************************* associating customerActivities");
 		String sql = "DELETE FROM CustomerActivity ca WHERE ca.customer.id = :id";
 		em.createQuery(sql).setParameter("id", editCustomer.getId()).executeUpdate();
 		em.flush();
 		em.clear();
 		editCustomer = em.find(Customer.class, customerId);
-		System.out.println("**************AfterDelete");
 		List<CustomerActivity> newActivities = new ArrayList<>();
 		for (CustomerActivity ca : activities) {
-			System.out.println("************** assigning activity to ca");
 			ca.setActivity(em.find(Activity.class, ca.getActivity().getId()));
-			System.out.println("************** assigning ca customer");
 			ca.setCustomer(editCustomer);
-			System.out.println("************** persisting new ca");
 			em.persist(ca);
 			newActivities.add(ca);
 		}
@@ -190,35 +169,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 	
 
-	@Override
-	public boolean removeActivities(int customerId, CustomerActivity activity) {
-//		System.out.println("************************* Enterint delete method");
-//		Customer editCustomer = em.find(Customer.class, customerId);
-//		String sql = "DELETE FROM CustomerActivity ca WHERE ca.customer.id = :id";
-//		em.createQuery(sql).setParameter("id", editCustomer.getId());
-//		System.out.println("**************AfterDelete");
-//		List<CustomerActivity> newActivities = new ArrayList<>();
-//		for (CustomerActivity ca : activities) {
-//			System.out.println("************** assigning ca customer");
-//			ca.setCustomer(editCustomer);
-//			System.out.println("************** persisting new cas");
-//			em.persist(ca);
-//			newActivities.add(ca);
-//		}
-//		System.out.println("************** Setting cas  for customer");
-//		editCustomer.setCustomerActivities(newActivities);
-//		
-//		
-//		boolean removed = false;
-//		Customer removingCustomer = em.find(Customer.class, customerId);
-//		CustomerActivity removeActivity = em.find(CustomerActivity.class, activity.getId());
-//		if (removeActivity != null) {
-//			removingCustomer.removeCustomerActivity(activity);
-//			em.remove(removeActivity);
-//			removed = !em.contains(removeActivity);
-//		}
-		return false;
-	}
+
 
 	@Override
 	public List<Facility> searchFacilityByActivity(Activity activity) {
