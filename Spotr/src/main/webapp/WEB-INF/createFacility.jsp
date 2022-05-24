@@ -83,11 +83,11 @@
 		 
 		<div class="mb-3">
 		<label for="address1"><strong>Street Address 1:</strong></label>
-		<input type="text" name="address1" id="address1" value="100 D Street"><br>
+		<input type="text" name="streetAddress1" id="address1" value="100 D Street"><br>
 		</div>
 		<div class="mb-3">
 		<label for="address2"><strong>Street Address 2:</strong></label>
-		<input type="text" name="address2" id="address2" value="Unit 104"><br>
+		<input type="text" name="streetAddress2" id="address2" value="Unit 104"><br>
 		</div>
 		<div class="mb-3">
 		<label for="city"><strong>City:</strong></label>
