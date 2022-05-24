@@ -157,7 +157,7 @@
 									</div>
 								</div>
 
-								<select class="skill-level" name="skillLevel" id="skillLevel">
+								<select class="skill-level" name="skillLevels" id="skillLevel">
 									<option value=1>--Please choose a skill level--</option>
 									<option value=1>Beginner</option>
 									<option value=2>Intermediate</option>

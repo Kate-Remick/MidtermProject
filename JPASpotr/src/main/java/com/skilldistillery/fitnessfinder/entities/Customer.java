@@ -47,6 +47,7 @@ public class Customer {
 
 	@ManyToMany
 	@JoinTable(name = "customer_facility", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Facility> facilities;
 
 	@ManyToOne
@@ -68,6 +69,7 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer")
 	@Cascade(CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<CustomerActivity> customerActivities;
 
 	@OneToOne

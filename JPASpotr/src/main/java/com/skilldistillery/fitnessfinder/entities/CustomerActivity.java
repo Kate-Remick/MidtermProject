@@ -37,13 +37,6 @@ public class CustomerActivity {
 	
 
 	
-	
-//	ProductUser(Integer productId, Integer userId, Double rating){
-//	    this.id = new ProductUserId(productId, userId);
-//	    this.rating = rating
-//	}
-
-
 	public CustomerActivityId getId() {
 		return id;
 	}
