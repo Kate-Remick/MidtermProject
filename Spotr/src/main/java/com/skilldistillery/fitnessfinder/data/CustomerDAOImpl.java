@@ -1,5 +1,6 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Journal addJournalEntry(Journal log) {
+		log.setCreatedAt(LocalDateTime.now());
 		em.persist(log);
+		Customer customer = em.find(Customer.class, log.getCustomer().getId());
 		em.flush();
 		return log;
 	}
@@ -229,5 +232,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 		customer.setCustomerActivities(ca);
 		return ca;
 	}
+
+	@Override
+	public Goal findGoalById(int goalId) {
+		Goal goal = em.find(Goal.class, goalId);
+		return goal;
+	}
+	
+	
 
 }

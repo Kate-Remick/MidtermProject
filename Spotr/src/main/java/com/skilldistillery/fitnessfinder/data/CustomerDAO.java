@@ -37,6 +37,7 @@ public interface CustomerDAO {
 	List<Category> getAllCategories();
 	Activity findActivityById(int activityId);
 	List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca);
+	Goal findGoalById(int goalId);
 	
 
 }
