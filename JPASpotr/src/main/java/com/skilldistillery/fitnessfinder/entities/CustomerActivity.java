@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 public class CustomerActivity {
 
 	@EmbeddedId
-	private CustomerActivityId id;
+	private CustomerActivityId id = new CustomerActivityId();
 
 	@Column(name = "skill_level")
 	private Integer skillLevel;
@@ -33,6 +34,15 @@ public class CustomerActivity {
 	public CustomerActivity() {
 		super();
 	}
+	
+
+	
+	
+//	ProductUser(Integer productId, Integer userId, Double rating){
+//	    this.id = new ProductUserId(productId, userId);
+//	    this.rating = rating
+//	}
+
 
 	public CustomerActivityId getId() {
 		return id;

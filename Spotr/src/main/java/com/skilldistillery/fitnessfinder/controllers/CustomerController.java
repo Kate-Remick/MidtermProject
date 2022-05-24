@@ -53,6 +53,7 @@ public class CustomerController {
 				customerActivities.add(ca);
 			}
 		}
+		System.out.println("*******************88 entering edit activities");
 		customer = customerDao.editActivities(customer.getId(), customerActivities);
 		
 		session.setAttribute("customer", customer);

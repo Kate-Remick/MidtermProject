@@ -30,6 +30,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(Login user, Customer customer) {
+		System.out.println("******************creating customer");
 		user = em.find(Login.class, user.getId());
 		customer.setLogin(user);
 		em.persist(customer);
@@ -150,13 +151,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
+		System.out.println("*************************1");
 		Customer editCustomer = em.find(Customer.class, customerId);
 		if(editCustomer.getCustomerActivities() != null) {
-			editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+			System.out.println("*************************deleting customerActivities");
+			editCustomer.setCustomerActivities(null);
+			editCustomer.setCustomerActivities(new ArrayList<>());
 		}
 		for (CustomerActivity customerActivity : activities) {
 			customerActivity.setCustomer(editCustomer);
+			System.out.println("*************************persisting customerActivities");
 			em.persist(customerActivity);
+			System.out.println("************************* associating customerActivities");
 			editCustomer.addCustomerActivity(customerActivity); // POSSIBLY EXTRANEOUS LINE?
 		}
 		return editCustomer;
