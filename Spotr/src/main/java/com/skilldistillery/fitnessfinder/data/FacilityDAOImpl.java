@@ -53,7 +53,7 @@ public class FacilityDAOImpl implements FacilityDAO {
 
 	@Override
 	public Activity findActivityById(int activityId) {
-		Activity activity =  em.find(Activity.class, activityId)
+		Activity activity =  em.find(Activity.class, activityId);
 		return activity;
 	}
 

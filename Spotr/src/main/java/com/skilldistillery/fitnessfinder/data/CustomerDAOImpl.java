@@ -86,12 +86,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return removed;
 	}
 
-	@Override
-	public Customer editFacilityPreferences(int customerId, FacilityPreferences prefs) {
-		Customer customer = em.find(Customer.class, customerId);
-		customer.setFacilityPreferences(prefs);
-		return customer;
-	}
+	
 
 	@Override
 	public Facility addFacility(int customerId, int facilityId) {
@@ -131,15 +126,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		return editCustomer;
 	}
-
+	
 	
 	@Override
-	public Customer editCustomerPrefs(FacilityPreferences prefs) {
-		FacilityPreferences updatedPrefs = em.find(FacilityPreferences.class, prefs.getId());
+	public Customer editFacilityPreferences(int customerId, FacilityPreferences prefs) {
+		Customer customer = em.find(Customer.class, customerId);
+		FacilityPreferences updatedPrefs =  customer.getFacilityPreferences();
 		updatedPrefs.setAlwaysOpen(prefs.isAlwaysOpen());
 		updatedPrefs.setPriceMax(prefs.getPriceMax());
 		updatedPrefs.setHasTrainers(prefs.isHasTrainers());
-		return null;
+		customer.setFacilityPreferences(updatedPrefs);
+		return customer;
 	}
 
 	@Override
@@ -232,7 +229,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public Journal findJournalById(int id) {
 		Journal journal = em.find(Journal.class, id);
 		return journal;
@@ -255,10 +252,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Login login = em.find(Login.class, id);
 		return login;
 	}
-	
 
-	
-=======
 	public Goal findGoalById(int goalId) {
 		Goal goal = em.find(Goal.class, goalId);
 		return goal;
@@ -266,5 +260,4 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	
 
->>>>>>> frontend
 }

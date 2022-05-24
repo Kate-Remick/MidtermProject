@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.fitnessfinder.data.CustomerDAO;
 import com.skilldistillery.fitnessfinder.entities.Address;
@@ -70,52 +71,18 @@ public class CustomerController {
 		ModelAndView mav = new ModelAndView();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		customer.setBirthDate(LocalDate.parse(dob, formatter));
-		System.out.println(customer.getBirthDate());
 		customer.setAddress(address);
 		customer.setGender(gender);
-		customer.setFacilityPreferences(prefs);
-		Customer editedCustomer = customerDao.editCustomerInfo(customer);
-		Login login = (Login) session.getAttribute("loggedInUser"); // HELPED FROM JEREMY
-		customer = customerDao.createCustomer(login, customer);
-		
-		session.setAttribute("customer", customer);
-		mav.setViewName("customer");
+		Customer editedCustomer = customerDao.editCustomerInfo(customer,((Customer) session.getAttribute("customer")).getId());
+		editedCustomer = customerDao.editFacilityPreferences(editedCustomer.getId(), prefs);
+		session.setAttribute("customer", editedCustomer);
+		mav.setViewName("redirect:editedCustomerInfo.do");
 		return mav;
 	}
 
 	@RequestMapping(path = "editedCustomerInfo.do", method = RequestMethod.GET)
 	public String editedCustomerPage() {
 		return "customer";
-	}
-
-	@RequestMapping(path = "editCustomerAddress.do", method = RequestMethod.GET)
-	public String editCustomerAddressPage() {
-		return "customerAddress";
-	}
-
-	@RequestMapping(path = "editCustomerAddress.do", method = RequestMethod.POST)
-	public ModelAndView editCustomerAddress(@RequestParam("customer") Customer customer, Address address,
-			HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		customer = customerDao.editCustomerAddress(customer, address);
-		session.setAttribute("customer", customer);
-		mav.setViewName("redirect:editedCustomerInfo.do");
-		return mav;
-	}
-
-	@RequestMapping(path = "editCustomerPrefs.do", method = RequestMethod.GET)
-	public String editCustomerPrefsPage() {
-		return "customerPrefs";
-	}
-
-	@RequestMapping(path = "editCustomerPrefs.do", method = RequestMethod.POST)
-	public ModelAndView editCustomerPrefs(@RequestParam("customer") Customer customer, FacilityPreferences prefs,
-			HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		customer = customerDao.editFacilityPreferences(customer.getId(), prefs);
-		session.setAttribute("customer", customer);
-		mav.setViewName("redirect:editedCustomerInfo.do");
-		return mav;
 	}
 
 	@RequestMapping(path = "editCustomerActivities.do", method = RequestMethod.GET)

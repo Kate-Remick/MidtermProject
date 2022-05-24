@@ -16,12 +16,10 @@ public interface FacilityDAO {
 	Facility editFacilityAddress(Address address, Facility facility);
 	List<Activity> editActivities(int facilityId, List<Activity> activities);
 	List<Activity> getAllActivities();
-<<<<<<< HEAD
 	Journal findJournalById(int id);
 	Customer findCustomerById(int id);
 	Facility findFacilityById(int id);
 	Login findLoginById(int id);
-=======
 	Activity findActivityById(int activityId);
->>>>>>> frontend
+
 }
