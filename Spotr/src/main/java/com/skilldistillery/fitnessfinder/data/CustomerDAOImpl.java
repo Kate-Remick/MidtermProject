@@ -172,36 +172,61 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 
 	@Override
-	public List<Facility> searchFacilityByActivity(Activity activity) {
+	public List<Facility> searchFacilityByActivity(int activityId) {
 		String jpql = "SELECT f FROM Facility f JOIN f.activities a WHERE a.id = :activityId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activity)
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activityId)
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
-	public List<Facility> searchFacilityByCategory(Category category) {
-		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca WHERE fa.id = ca.id AND c.id = :categoryId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", category)
+	public List<Facility> searchFacilityByCategory(int categoryId) {
+		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca  ON fa.id = ca.id WHERE c.id = :categoryId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", categoryId)
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
-	public List<Facility> searchFacilityByLocation(Address address) {
-		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 1), '%');
-		String jpql = "SELECT f FROM Facility f WHERE f.address.zip IS LIKE :addressId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", partialZip)
+	public List<Facility> searchFacilityByLocation(int addressId) {
+		Address address = em.find(Address.class, addressId);
+//		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 1), '%');
+//		partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 2), '%');
+		String jpql = "SELECT f FROM Facility f WHERE f.address.city = :city";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("city", address.getCity())
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByPreferences(FacilityPreferences prefs) {
-		String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price <= :prefsPrice";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
-				.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
-				.getResultList();
+		List<Facility> facilities = new ArrayList<>();
+		if(prefs.getPriceMax() != null) {
+			if(prefs.isAlwaysOpen() && prefs.isHasTrainers()) {
+				String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price < :prefsPrice";
+				facilities = em.createQuery(jpql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
+						.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+				
+			}else if(prefs.isAlwaysOpen()) {
+				String openql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :openPrefs AND f.price < :prefsPrice ";
+				facilities = em.createQuery(openql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
+						.setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+				
+			} else if(prefs.isHasTrainers()) {
+				String trainerql = "SELECT f FROM Facility f WHERE f.hasTrainers = :trainerPrefs";
+				facilities = em.createQuery(trainerql, Facility.class)
+						.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+			}else {
+				String jpql = "SELECT f FROM Facility f WHERE f.price < :prefsPrice";
+				facilities = em.createQuery(jpql, Facility.class).setParameter("prefsPrice", prefs.getPriceMax()).getResultList();
+			}
+		}else {
+			String jpql = "SELECT f FROM Facility f";
+			facilities = em.createQuery(jpql, Facility.class).getResultList();
+		}
 		return facilities;
 	}
 
@@ -264,6 +289,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return goal;
 	}
 	
-	
+	public List<Facility> getAllFacilites(){
+		String jpql = "SELECT f FROM Facility f";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).getResultList();
+		return facilities;
+	}
 
 }

@@ -61,7 +61,7 @@
 					</tr>
 				</c:forEach>
 			</c:if>
-			<c:if test="${! empty preferredFacilites }">
+			<c:if test="${! empty preferredFacilities }">
 				<c:forEach var="facility" items="${preferredFacilities }">
 					<tr>
 						<th>${facility.name }</th>

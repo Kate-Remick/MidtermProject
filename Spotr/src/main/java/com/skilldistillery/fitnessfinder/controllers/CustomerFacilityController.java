@@ -28,6 +28,7 @@ public class CustomerFacilityController {
 		ModelAndView mav = new ModelAndView();
 		Customer customer = (Customer)session.getAttribute("customer");
 		List<Facility> preferredFacilities = customerDao.searchFacilityByPreferences(customer.getFacilityPreferences());
+		System.out.println("**************************88" +preferredFacilities);
 		mav.addObject("preferredFacilities", preferredFacilities);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
@@ -38,10 +39,10 @@ public class CustomerFacilityController {
 	@RequestMapping(path = "findFacilities.do", params = "category", method = RequestMethod.POST)
 	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category) {
 		ModelAndView mav = new ModelAndView();
-//		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
+		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-//		mav.addObject("facilities", facilities);
+		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
@@ -49,10 +50,10 @@ public class CustomerFacilityController {
 	@RequestMapping(path = "findFacilities.do", params = "address", method = RequestMethod.POST)
 	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address) {
 		ModelAndView mav = new ModelAndView();
-//		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
+		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-//		mav.addObject("facilities", facilities);
+		mav.addObject("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
