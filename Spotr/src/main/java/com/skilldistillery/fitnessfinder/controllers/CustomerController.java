@@ -57,6 +57,7 @@ public class CustomerController {
 		mav.setViewName("customer");
 		return mav;
 	}
+	
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.GET)
 	public String editCustomerPage() {
@@ -64,12 +65,21 @@ public class CustomerController {
 	}
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.POST)
-	public ModelAndView editCustomer(Customer customer, Gender gender, HttpSession session) {
+	public ModelAndView editCustomer(Customer customer, String dob, Address address, Gender gender,
+			FacilityPreferences prefs, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		customer.setBirthDate(LocalDate.parse(dob, formatter));
+		System.out.println(customer.getBirthDate());
+		customer.setAddress(address);
 		customer.setGender(gender);
-		customer = customerDao.editCustomerInfo(customer);
+		customer.setFacilityPreferences(prefs);
+		Customer editedCustomer = customerDao.editCustomerInfo(customer);
+		Login login = (Login) session.getAttribute("loggedInUser"); // HELPED FROM JEREMY
+		customer = customerDao.createCustomer(login, customer);
+		
 		session.setAttribute("customer", customer);
-		mav.setViewName("redirect:editedCustomerInfo.do");
+		mav.setViewName("customer");
 		return mav;
 	}
 

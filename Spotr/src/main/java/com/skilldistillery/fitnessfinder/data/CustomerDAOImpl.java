@@ -111,34 +111,32 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer editCustomerInfo(Customer customer) {
-		Customer editCustomer = em.find(Customer.class, customer.getId());
+	public Customer editCustomerInfo(Customer customer, int customerId) {
+		Customer editCustomer = em.find(Customer.class, customerId);
 		if (editCustomer != null) {
 			editCustomer.setFirstName(customer.getFirstName());
 			editCustomer.setLastName(customer.getLastName());
 			editCustomer.setBirthDate(customer.getBirthDate());
 			editCustomer.setBio(customer.getBio());
+			if (!em.contains(customer.getAddress())) {
+			em.persist(customer.getAddress());
+		}
+		editCustomer.setAddress(customer.getAddress());
+		em.flush();
+			
 			em.flush();
 		}
 		return editCustomer;
 	}
 
+	
 	@Override
-	public Customer editCustomerAddress(Customer customer, Address address) {
-		if (!em.contains(address)) {
-			em.persist(address);
-		}
-		customer.setAddress(address);
-		em.flush();
-		return customer;
-	}
-
-	@Override
-	public void editCustomerPrefs(FacilityPreferences prefs) {
+	public Customer editCustomerPrefs(FacilityPreferences prefs) {
 		FacilityPreferences updatedPrefs = em.find(FacilityPreferences.class, prefs.getId());
 		updatedPrefs.setAlwaysOpen(prefs.isAlwaysOpen());
 		updatedPrefs.setPriceMax(prefs.getPriceMax());
 		updatedPrefs.setHasTrainers(prefs.isHasTrainers());
+		return null;
 	}
 
 	@Override
@@ -230,4 +228,30 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return ca;
 	}
 
+	@Override
+	public Journal findJournalById(int id) {
+		Journal journal = em.find(Journal.class, id);
+		return journal;
+	}
+
+	@Override
+	public Customer findCustomerById(int id) {
+		Customer customer = em.find(Customer.class, id);
+		return customer;
+	}
+
+	@Override
+	public Facility findFacilityById(int id) {
+		Facility facility = em.find(Facility.class, id);
+		return facility;
+	}
+
+	@Override
+	public Login findLoginById(int id) {
+		Login login = em.find(Login.class, id);
+		return login;
+	}
+	
+
+	
 }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.fitnessfinder.entities.Activity;
 import com.skilldistillery.fitnessfinder.entities.Address;
+import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Facility;
+import com.skilldistillery.fitnessfinder.entities.Journal;
 import com.skilldistillery.fitnessfinder.entities.Login;
 
 @Service
@@ -73,5 +75,27 @@ public class FacilityDAOImpl implements FacilityDAO {
 		return activities;
 	}
 
-	
+	@Override
+	public Journal findJournalById(int id) {
+		Journal journal = em.find(Journal.class, id);
+		return journal;
+	}
+
+	@Override
+	public Customer findCustomerById(int id) {
+		Customer customer = em.find(Customer.class, id);
+		return customer;
+	}
+
+	@Override
+	public Facility findFacilityById(int id) {
+		Facility facility = em.find(Facility.class, id);
+		return facility;
+	}
+
+	@Override
+	public Login findLoginById(int id) {
+		Login login = em.find(Login.class, id);
+		return login;
+	}
 }

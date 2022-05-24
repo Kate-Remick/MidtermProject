@@ -24,10 +24,9 @@ public interface CustomerDAO {
 	Customer editFacilityPreferences(int customerId, FacilityPreferences prefs);
 	Facility addFacility(int customerId, int facilityId);
 	boolean removeFacility(int customerId, Facility facility);
-	Customer editCustomerInfo(Customer customer);
-	Customer editCustomerAddress(Customer customer, Address address);
-	void editCustomerPrefs(FacilityPreferences prefs);
+	Customer editCustomerInfo(Customer customer, int id);
 	Customer editActivities(int customerId, List<CustomerActivity> activities);
+	Customer editCustomerPrefs(FacilityPreferences prefs);
 	boolean removeActivities(int customerId, CustomerActivity activity);
 	List<Facility> searchFacilityByActivity(Activity activity);
 	List<Facility> searchFacilityByCategory(Category category);
@@ -35,8 +34,12 @@ public interface CustomerDAO {
 	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
 	List<Activity> getAllActivities();
 	List<Category> getAllCategories();
-	Activity findActivityById(int activityId);
 	List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca);
+	Activity findActivityById(int activityId);
+	Journal findJournalById(int id);
+	Customer findCustomerById(int id);
+	Facility findFacilityById(int id);
+	Login findLoginById(int id);
 	
 
 }

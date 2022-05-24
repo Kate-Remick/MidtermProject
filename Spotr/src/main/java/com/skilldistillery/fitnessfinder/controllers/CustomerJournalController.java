@@ -37,7 +37,7 @@ public class CustomerJournalController {
 	}
 
 	@RequestMapping(path = "removeJournal.do", method = RequestMethod.GET)
-	public ModelAndView removeJournalPage(@RequestParam("journal") Journal journal) {
+	public ModelAndView removeJournalPage(@RequestParam("journalId") int journalId) {
 		ModelAndView mav = new ModelAndView();
 		boolean removed = customerDao.removeJournalEntry(journal);
 		if (removed) {
