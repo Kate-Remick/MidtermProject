@@ -142,7 +142,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
 		Customer editCustomer = em.find(Customer.class, customerId);
-		editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		if(editCustomer.getCustomerActivities() != null) {
+			editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		}
 		for (CustomerActivity customerActivity : activities) {
 			customerActivity.setCustomer(editCustomer);
 			em.persist(customerActivity);
