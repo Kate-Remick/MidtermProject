@@ -36,8 +36,6 @@
 					<li>${goal.name }
 						<ul>
 							<li>${goal.description }</li>
-							<li><a href="completeGoal.do?goalId=${goal.id}"><button>Goal
-										Completed</button></a></li>
 						</ul>
 					</li>
 				</c:if>
