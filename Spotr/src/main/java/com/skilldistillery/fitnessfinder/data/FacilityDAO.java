@@ -14,4 +14,5 @@ public interface FacilityDAO {
 	Facility editFacilityAddress(Address address, Facility facility);
 	List<Activity> editActivities(int facilityId, List<Activity> activities);
 	List<Activity> getAllActivities();
+	Activity findActivityById(int activityId);
 }

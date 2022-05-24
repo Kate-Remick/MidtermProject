@@ -29,16 +29,14 @@ public class FacilityController {
 
 
 	@RequestMapping(path="createFacility.do", method = RequestMethod.POST)
-	public ModelAndView createFacility(Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView createFacility(Facility facility, Address address, HttpSession session, @RequestParam ("activities")int... activities) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
-		if (activity != null && activity.length > 0) {
-			for (int i = 0; i < activity.length; i++) {
-				
-					facilityActivity.add(activity[i]);
-				
-				
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+					Activity activity = facilityDAO.findActivityById(activities[i]);
+					facilityActivity.add(activity);
 			}
 		}
 		facility.setActivities(facilityActivity);
