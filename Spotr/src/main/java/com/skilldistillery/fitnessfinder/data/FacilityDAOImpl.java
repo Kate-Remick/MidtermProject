@@ -28,6 +28,7 @@ public class FacilityDAOImpl implements FacilityDAO {
 		facility.setLogin(user);
 		user = em.find(Login.class, facility.getId());
 		em.persist(facility);
+		facility.setActivities(facility.getActivities());
 		em.flush();
 		return facility;
 	}

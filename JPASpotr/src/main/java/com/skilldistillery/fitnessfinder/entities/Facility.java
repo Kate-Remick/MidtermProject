@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -53,7 +54,8 @@ public class Facility {
 	@JoinColumn(name = "login_id")
 	private Login login;
 
-	@ManyToMany(mappedBy = "facilities")
+	@ManyToMany
+	@JoinTable(name = "facility_activity", joinColumns = @JoinColumn(name = "facility_id"), inverseJoinColumns = @JoinColumn(name = "activity_id"))
 	private List<Activity> activities;
 
 	public Facility() {

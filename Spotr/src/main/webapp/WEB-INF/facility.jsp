@@ -46,34 +46,36 @@ ACTIVITES & SKILL LEVELS
 -->
 	<div name="facility" id="facility" class="facility">
 		<table>
-		<tr><td class="facility_labels">Company:</td><td class="facility_data">GloboGym Denver</td></tr>
-		<tr><td class="facility_labels">Franchiser:</td><td class="facility_data">GloboGym International</td></tr>
-		<tr><td class="facility_labels">Owner:</td><td class="facility_data">Ben Stiller</td></tr>
-		<tr><td class="facility_labels">Address:</td><td class="facility_data">100 Main Street suite 202, Denver, CO 80111</td></tr>
-		<tr><td class="facility_labels">Site has trainers:</td><td class="facility_data">YES</td></tr>
-		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">YES</td></tr>
-		<tr><td class="facility_labels">Price:</td><td class="facility_data">$10.00</td></tr>
+		<tr><td class="facility_labels">Company:</td><td class="facility_data">${facility.name}</td></tr>
+		<tr><td class="facility_labels">Franchiser:</td><td class="facility_data">${facility.brand}</td></tr>
+		<tr><td class="facility_labels">Owner:</td><td class="facility_data">${facility.ownerName}</td></tr>
+		<tr><td class="facility_labels">Address:</td><td class="facility_data">${facility.address}</td></tr>
+		<tr><td class="facility_labels">Phone Number:</td><td class="facility_data">${facility.address.phone}</td></tr>
+		<tr><td class="facility_labels">Email:</td><td class="facility_data">${facility.address.email}</td></tr>
+		<tr><td class="facility_labels">Website:</td><td class="facility_data">${facility.address.url}</td></tr>
+		<tr><td class="facility_labels">Site has trainers:</td><td class="facility_data">${facility.hasTrainers}</td></tr>
+		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">${facility.alwaysOpen}</td></tr>
+		<tr><td class="facility_labels">Price:</td><td class="facility_data">$${facility.price}</td></tr>
 		</table>
-	</br>
+	<br>
 	<a href="editFacility.do"><button>Update Company Profile</button></a>
 	</div>
-	</br>
+	<br>
 	<div name="activities" id="activities" class="activities">
 		<table>
+		<th>Activity</th>
 		<thead>
-		<th>Acitivity</th>
 		</thead>
 		<tbody>
-			<tr><td>Weightlifting</td></tr>
-			<tr><td>CrossFit</td></tr>
-			<tr><td>Powerlifting</td></tr>
-
+		<c:forEach var="activity" items="${activities}">
+			<tr><td>${activity.name}</td></tr>
+			</c:forEach>
 		</tbody>
 		</table>
-	</br>
+	<br>
 	<a href="editActivities.do"><button>Update Company Activity Offerings</button></a>
 	</div>
-	</br>
+	<br>
 
 </section>
 </main>
