@@ -33,13 +33,14 @@
 		
 
 		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
-		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
-		<div class="row d-inline-flex"><input !important hidden type="text" name="id" id="id" value="${login.id }"></div>
-		
 		<div class="row d-inline-flex">
 		<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
-		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="${login.username }">	
+		<input disabled type="text" id="disabledUsername" class="form-control" placeholder="${loggedInUser.username}">	
 		</div> <br>
+
+		<form action="createFacility.do" method="POST" name="createFacility" class="createFacility" id="createFacility">
+		
+		<div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div>
 
 <%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
  --%>		
@@ -87,25 +88,20 @@
 		 
 		<div class="row d-inline-flex">
 		<span class="label"><label for="price"><strong>Price ($) :</strong></label></span>
-		<input type="number" name="price" id="price" class="form-control" placeholder="$50">
-		</div> <br>
-		 
-		<div class="row d-inline-flex">
-		<span class="label"><label for="url"><strong>Website Link:</strong></label></span>
-		<input type="url" name="url" id="url" class="form-control" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+		<input type="number" name="price" id="price" class="form-control" value="50">
 		</div> <br>
 		 
 		<div class="mb-3">
 		<label for="address1"><strong>Street Address 1:</strong></label>
-		<input type="text" name="address1" id="address1"><br>
+		<input type="text" name="address1" id="address1" value="100 D Street"><br>
 		</div>
 		<div class="mb-3">
 		<label for="address2"><strong>Street Address 2:</strong></label>
-		<input type="text" name="address2" id="address2"><br>
+		<input type="text" name="address2" id="address2" value="Unit 104"><br>
 		</div>
 		<div class="mb-3">
 		<label for="city"><strong>City:</strong></label>
-		<input type="text" name="city" id="city">
+		<input type="text" name="city" id="city" value="Boston">
 		</div>
 		<div class="mb-3">
 		<label for="state"><strong>State:</strong></label>
@@ -166,7 +162,22 @@
 		</div>
 		<div class="mb-3">
 		<label for="zip"><strong>Zip Code:</strong></label>
-		<input type="text" name="address1" id="address1"><br>
+		<input type="text" name="zip" id="zip" value="00000"><br>
+		</div>
+		
+		<div class="mb-3">
+		<label for="phone"><strong>Phone number:</strong></label>
+		<input type="text" name="phone" id="phone" value="867-5309"><br>
+		</div>
+		
+		<div class="mb-3">
+		<label for="email"><strong>Email:</strong></label>
+		<input type="text" name="email" id="email" value="bobloblaw@lawblog.com"><br>
+		</div>
+		
+		<div class="mb-3">
+		<label for="url"><strong>Website Link:</strong></label>
+		<input type="text" name="url" id="url" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><br>
 		</div>
 		
 		<p><strong>Facility Activities</strong></p>
@@ -178,7 +189,8 @@
 	 		<div class="col">
 	 		<div class="form-group">
 	      <div class="form-check">
-	        <input class="form-check-input" type="checkbox" id="${activity.name }" value="${activity}">
+	        <input class="form-check-input" type="checkbox" 
+	        name="activities" id="${activity.name }" value="${activity}">
 	        <label class="form-check-label" for="${activity.name }">
 	          ${activity.name }
 	        </label>
