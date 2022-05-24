@@ -16,11 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Customer {
@@ -55,9 +55,11 @@ public class Customer {
 	private Gender gender;
 
 	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Journal> logs;
 
 	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Goal> goals;
 
 	@OneToOne

@@ -23,6 +23,15 @@
 			</li>
 		</c:forEach>
 	</ul>
+	<div class="journalEntry">
+			<br>
+			<h5>Date: ${recentEntry.createdAt}</h5>
+			<h5>Goal: ${recentEntry.goal.getName()}, completed?
+				${recentEntry.goal.isCompleted()}</h5>
+			<p>${recentEntry.entry}</p>
+			<a href="removeJournal.do?journal=${entry}"><button>Delete Entry</button></a>
+			<br>
+		</div>
 	<a href="addGoal.do"><button>Add new goal</button></a>
 	<c:forEach var="entry" items="${customer.logs}">
 		<div class="journalEntry">

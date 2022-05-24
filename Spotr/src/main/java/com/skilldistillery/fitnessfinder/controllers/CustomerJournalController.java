@@ -1,5 +1,7 @@
 package com.skilldistillery.fitnessfinder.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.fitnessfinder.data.CustomerDAO;
+import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Goal;
 import com.skilldistillery.fitnessfinder.entities.Journal;
 
@@ -18,7 +21,7 @@ public class CustomerJournalController {
 	private CustomerDAO customerDao;
 
 	@RequestMapping(path = "viewJournal.do", method = RequestMethod.GET)
-	public String viewJournalPage() {
+	public String viewJournalPage(HttpSession session) {
 		return "journal";
 	}
 
@@ -28,9 +31,14 @@ public class CustomerJournalController {
 	}
 
 	@RequestMapping(path = "addJournal.do", method = RequestMethod.POST)
-	public ModelAndView addJournalPage(Journal journal) {
+	public ModelAndView addJournalPage(Journal journal, HttpSession session, int goalId, boolean accomplished) {
 		ModelAndView mav = new ModelAndView();
+		Goal goal = customerDao.findGoalById(goalId);
+		goal.setCompleted(accomplished);
+		journal.setGoal(goal);
+		journal.setCustomer((Customer) session.getAttribute("customer"));
 		journal = customerDao.addJournalEntry(journal);
+		session.setAttribute("customer", journal.getCustomer());
 		mav.addObject("recentEntry", journal);
 		mav.setViewName("journal");
 		return mav;

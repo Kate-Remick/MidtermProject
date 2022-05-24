@@ -35,11 +35,15 @@ public interface CustomerDAO {
 	List<Activity> getAllActivities();
 	List<Category> getAllCategories();
 	List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca);
+<<<<<<< HEAD
 	Activity findActivityById(int activityId);
 	Journal findJournalById(int id);
 	Customer findCustomerById(int id);
 	Facility findFacilityById(int id);
 	Login findLoginById(int id);
+=======
+	Goal findGoalById(int goalId);
+>>>>>>> frontend
 	
 
 }

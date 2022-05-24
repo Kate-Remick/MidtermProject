@@ -49,6 +49,13 @@ public class FacilityDAOImpl implements FacilityDAO {
 		}
 		return editFacility;
 	}
+	
+
+	@Override
+	public Activity findActivityById(int activityId) {
+		Activity activity =  em.find(Activity.class, activityId)
+		return activity;
+	}
 
 	@Override
 	public Facility editFacilityAddress(Address address, Facility facility) {
@@ -74,6 +81,7 @@ public class FacilityDAOImpl implements FacilityDAO {
 		activities = em.createQuery(jpql, Activity.class).getResultList();
 		return activities;
 	}
+	
 
 	@Override
 	public Journal findJournalById(int id) {
