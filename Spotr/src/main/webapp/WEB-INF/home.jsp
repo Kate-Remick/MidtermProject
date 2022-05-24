@@ -26,7 +26,7 @@
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
 			<span class="button" id="login"><a href="customer.do">Customer</a></span>
 			<span class="button" id="new_account"><a href="facility.do">Facility</a></span>
-			<span class="button" id="new_account"><a href="newCustomer.do">New Customer</a></span>
+			<span class="button" id="banner"><a href="banner.do">Banner</a></span>
 			</div>
 		</section>
 	<section class="main" id="main">

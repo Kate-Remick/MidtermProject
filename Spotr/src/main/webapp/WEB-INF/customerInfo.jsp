@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -81,7 +82,7 @@
 					</div>
 					<div class="row  d-inline-flex">
 						<label for="city"><strong>City:</strong></label> <input
-							type="text" name="city" id="city"> <label for="state"><strong>State:</strong></label>
+							type="text" name="city" id="city" value="${customer.address.city}"> <label for="state"><strong>State:</strong></label>
 						<select name="state" id="state">
 							<option value="${customer.address.state}">${customer.address.state}</option>
 							<option value="AL">AL</option>
