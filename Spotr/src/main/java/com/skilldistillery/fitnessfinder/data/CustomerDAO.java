@@ -17,10 +17,10 @@ public interface CustomerDAO {
 	
 	Customer createCustomer(Login user, Customer customer);
 	Journal addJournalEntry(Journal log);
-	boolean removeJournalEntry(Journal log);
+	boolean removeJournalEntry(int logId);
 	Goal addGoals(Goal goal);
-	Goal completeGoals(Goal goal);
-	boolean removeGoals(Goal goal);
+	Customer completeGoals(int goalId);
+	boolean removeGoals(int goalId);
 	Customer editFacilityPreferences(int customerId, FacilityPreferences prefs);
 	Facility addFacility(int customerId, int facilityId);
 	boolean removeFacility(int customerId, Facility facility);

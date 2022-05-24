@@ -41,6 +41,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public Journal addJournalEntry(Journal log) {
 		log.setCreatedAt(LocalDateTime.now());
+		Goal goal = log.getGoal();
+		goal.setCompleted(log.getGoal().isCompleted());
 		em.persist(log);
 		Customer customer = em.find(Customer.class, log.getCustomer().getId());
 		em.flush();
@@ -48,12 +50,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public boolean removeJournalEntry(Journal log) {
+	public boolean removeJournalEntry(int log) {
 		boolean removed = false;
-		Journal removeLog = em.find(Journal.class, log.getId());
-		Customer customer = em.find(Customer.class, log.getCustomer().getId());
+		Journal removeLog = em.find(Journal.class, log);
+		Customer customer = em.find(Customer.class, removeLog.getCustomer().getId());
 		if (removeLog != null) {
 			customer.removeJournal(removeLog);
+			removeLog.setCustomer(null);
 		}
 		removed = !customer.getLogs().contains(removeLog);
 		return removed;
@@ -65,22 +68,25 @@ public class CustomerDAOImpl implements CustomerDAO {
 		em.persist(goal);
 		goal.setCustomer(customer);
 		em.flush();
-		return null;
-	}
-
-	@Override
-	public Goal completeGoals(Goal goal) {
-		goal.setCompleted(true);
 		return goal;
 	}
 
 	@Override
-	public boolean removeGoals(Goal goal) {
+	public Customer completeGoals(int goalId) {
+		Goal goal = em.find(Goal.class, goalId);
+		goal.setCompleted(true);
+		Customer customer = goal.getCustomer();
+		return customer;
+	}
+
+	@Override
+	public boolean removeGoals(int goalId) {
 		boolean removed = false;
-		Goal removeGoal = em.find(Goal.class, goal.getId());
+		Goal removeGoal = em.find(Goal.class, goalId);
 		Customer customer = em.find(Customer.class, removeGoal.getCustomer().getId());
 		if (removeGoal != null) {
 			customer.removeGoal(removeGoal);
+			removeGoal.setCustomer(null);
 		}
 		removed = !customer.getGoals().contains(removeGoal);
 		return removed;
