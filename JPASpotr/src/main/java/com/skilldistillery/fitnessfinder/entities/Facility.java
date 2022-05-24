@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Facility {
 
@@ -40,6 +43,7 @@ public class Facility {
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
+	@Cascade(CascadeType.PERSIST)
 	private Address address;
 
 	@ManyToMany(mappedBy = "facilities")

@@ -23,11 +23,10 @@ public class FacilityDAOImpl implements FacilityDAO {
 
 	@Override
 	public Facility createFacility(Login user, Facility facility) {
-		user = em.find(Login.class, facility.getId());
 		facility.setLogin(user);
+		user = em.find(Login.class, facility.getId());
 		em.persist(facility);
 		em.flush();
-		// TODO add cascade type to facility entity
 		return facility;
 	}
 
@@ -51,7 +50,7 @@ public class FacilityDAOImpl implements FacilityDAO {
 
 	@Override
 	public Activity findActivityById(int activityId) {
-		Activity activity =  em.find(Activity.class, activityId)
+		Activity activity =  em.find(Activity.class, activityId);
 		return activity;
 	}
 
