@@ -46,16 +46,16 @@ ACTIVITES & SKILL LEVELS
 -->
 	<div name="facility" id="facility" class="facility">
 		<table>
-		<tr><td class="facility_labels">Company:</td><td class="facility_data">${facility.name}</td></tr>
-		<tr><td class="facility_labels">Franchiser:</td><td class="facility_data">${facility.brand}</td></tr>
-		<tr><td class="facility_labels">Owner:</td><td class="facility_data">${facility.ownerName}</td></tr>
-		<tr><td class="facility_labels">Address:</td><td class="facility_data">${facility.address}</td></tr>
-		<tr><td class="facility_labels">Phone Number:</td><td class="facility_data">${facility.address.phone}</td></tr>
-		<tr><td class="facility_labels">Email:</td><td class="facility_data">${facility.address.email}</td></tr>
-		<tr><td class="facility_labels">Website:</td><td class="facility_data">${facility.address.url}</td></tr>
-		<tr><td class="facility_labels">Site has trainers:</td><td class="facility_data">${facility.hasTrainers}</td></tr>
-		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">${facility.alwaysOpen}</td></tr>
-		<tr><td class="facility_labels">Price:</td><td class="facility_data">$${facility.price}</td></tr>
+		<tr><td class="facility_labels"><strong>Company:</strong></td><td class="facility_data">${facility.name}</td></tr>
+		<tr><td class="facility_labels"><strong>Franchiser:</strong></td><td class="facility_data">${facility.brand}</td></tr>
+		<tr><td class="facility_labels"><strong>Owner:</strong></td><td class="facility_data">${facility.ownerName}</td></tr>
+		<tr><td class="facility_labels"><strong>Address:</strong></td><td class="facility_data">${facility.address}</td></tr>
+		<tr><td class="facility_labels"><strong>Phone Number:</strong></td><td class="facility_data">${facility.address.phone}</td></tr>
+		<tr><td class="facility_labels"><strong>Email:</strong></td><td class="facility_data">${facility.address.email}</td></tr>
+		<tr><td class="facility_labels"><strong>Website:</strong></td><td class="facility_data">${facility.address.url}</td></tr>
+		<tr><td class="facility_labels"><strong>Site has trainers:</strong></td><td class="facility_data">${facility.hasTrainers}</td></tr>
+		<tr><td class="facility_labels"><strong>Site open 24 hours:</strong></td><td class="facility_data">${facility.alwaysOpen}</td></tr>
+		<tr><td class="facility_labels"><strong>Price:</strong></td><td class="facility_data">$${facility.price}</td></tr>
 		</table>
 	<br>
 	<a href="editFacility.do"><button>Update Company Profile</button></a>
@@ -63,7 +63,7 @@ ACTIVITES & SKILL LEVELS
 	<br>
 	<div name="activities" id="activities" class="activities">
 		<table>
-		<th>Activity</th>
+		<th>Our Facility Provides:</th>
 		<thead>
 		</thead>
 		<tbody>
@@ -73,7 +73,7 @@ ACTIVITES & SKILL LEVELS
 		</tbody>
 		</table>
 	<br>
-	<a href="editActivities.do"><button>Update Company Activity Offerings</button></a>
+	
 	</div>
 	<br>
 
