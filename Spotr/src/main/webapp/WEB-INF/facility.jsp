@@ -67,7 +67,7 @@ ACTIVITES & SKILL LEVELS
 		<thead>
 		</thead>
 		<tbody>
-		<c:forEach var="activity" items="${activities}">
+		<c:forEach var="activity" items="${facility.activities}">
 			<tr><td>${activity.name}</td></tr>
 			</c:forEach>
 		</tbody>
