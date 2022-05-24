@@ -39,59 +39,63 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Journal addJournalEntry(Journal log) {
+	public Customer addJournalEntry(Journal log) {
 		log.setCreatedAt(LocalDateTime.now());
+		Goal goal = log.getGoal();
+		goal.setCompleted(log.getGoal().isCompleted());
 		em.persist(log);
 		Customer customer = em.find(Customer.class, log.getCustomer().getId());
+		log.setCustomer(customer);
+		customer.addJournal(log);
 		em.flush();
-		return log;
+		return customer;
 	}
 
 	@Override
-	public boolean removeJournalEntry(Journal log) {
+	public boolean removeJournalEntry(int log) {
 		boolean removed = false;
-		Journal removeLog = em.find(Journal.class, log.getId());
-		Customer customer = em.find(Customer.class, log.getCustomer().getId());
+		Journal removeLog = em.find(Journal.class, log);
+		Customer customer = em.find(Customer.class, removeLog.getCustomer().getId());
 		if (removeLog != null) {
 			customer.removeJournal(removeLog);
+			removeLog.setCustomer(null);
 		}
 		removed = !customer.getLogs().contains(removeLog);
 		return removed;
 	}
 
 	@Override
-	public Goal addGoals(Goal goal) {
+	public Customer addGoals(Goal goal) {
 		Customer customer = em.find(Customer.class, goal.getCustomer().getId());
 		em.persist(goal);
 		goal.setCustomer(customer);
+		customer.addGoal(goal);
 		em.flush();
-		return null;
+		return customer;
 	}
 
 	@Override
-	public Goal completeGoals(Goal goal) {
+	public Customer completeGoals(int goalId) {
+		Goal goal = em.find(Goal.class, goalId);
 		goal.setCompleted(true);
-		return goal;
+		Customer customer = goal.getCustomer();
+		return customer;
 	}
 
 	@Override
-	public boolean removeGoals(Goal goal) {
+	public boolean removeGoals(int goalId) {
 		boolean removed = false;
-		Goal removeGoal = em.find(Goal.class, goal.getId());
+		Goal removeGoal = em.find(Goal.class, goalId);
 		Customer customer = em.find(Customer.class, removeGoal.getCustomer().getId());
 		if (removeGoal != null) {
 			customer.removeGoal(removeGoal);
+			removeGoal.setCustomer(null);
 		}
 		removed = !customer.getGoals().contains(removeGoal);
 		return removed;
 	}
 
-	@Override
-	public Customer editFacilityPreferences(int customerId, FacilityPreferences prefs) {
-		Customer customer = em.find(Customer.class, customerId);
-		customer.setFacilityPreferences(prefs);
-		return customer;
-	}
+	
 
 	@Override
 	public Facility addFacility(int customerId, int facilityId) {
@@ -114,40 +118,42 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer editCustomerInfo(Customer customer) {
-		Customer editCustomer = em.find(Customer.class, customer.getId());
+	public Customer editCustomerInfo(Customer customer, int customerId) {
+		Customer editCustomer = em.find(Customer.class, customerId);
 		if (editCustomer != null) {
 			editCustomer.setFirstName(customer.getFirstName());
 			editCustomer.setLastName(customer.getLastName());
 			editCustomer.setBirthDate(customer.getBirthDate());
 			editCustomer.setBio(customer.getBio());
+			if (!em.contains(customer.getAddress())) {
+			em.persist(customer.getAddress());
+		}
+		editCustomer.setAddress(customer.getAddress());
+		em.flush();
+			
 			em.flush();
 		}
 		return editCustomer;
 	}
-
+	
+	
 	@Override
-	public Customer editCustomerAddress(Customer customer, Address address) {
-		if (!em.contains(address)) {
-			em.persist(address);
-		}
-		customer.setAddress(address);
-		em.flush();
-		return customer;
-	}
-
-	@Override
-	public void editCustomerPrefs(FacilityPreferences prefs) {
-		FacilityPreferences updatedPrefs = em.find(FacilityPreferences.class, prefs.getId());
+	public Customer editFacilityPreferences(int customerId, FacilityPreferences prefs) {
+		Customer customer = em.find(Customer.class, customerId);
+		FacilityPreferences updatedPrefs =  customer.getFacilityPreferences();
 		updatedPrefs.setAlwaysOpen(prefs.isAlwaysOpen());
 		updatedPrefs.setPriceMax(prefs.getPriceMax());
 		updatedPrefs.setHasTrainers(prefs.isHasTrainers());
+		customer.setFacilityPreferences(updatedPrefs);
+		return customer;
 	}
 
 	@Override
 	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
 		Customer editCustomer = em.find(Customer.class, customerId);
-		editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		if(editCustomer.getCustomerActivities() != null) {
+			editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		}
 		for (CustomerActivity customerActivity : activities) {
 			customerActivity.setCustomer(editCustomer);
 			em.persist(customerActivity);
@@ -234,6 +240,30 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
+
+	public Journal findJournalById(int id) {
+		Journal journal = em.find(Journal.class, id);
+		return journal;
+	}
+
+	@Override
+	public Customer findCustomerById(int id) {
+		Customer customer = em.find(Customer.class, id);
+		return customer;
+	}
+
+	@Override
+	public Facility findFacilityById(int id) {
+		Facility facility = em.find(Facility.class, id);
+		return facility;
+	}
+
+	@Override
+	public Login findLoginById(int id) {
+		Login login = em.find(Login.class, id);
+		return login;
+	}
+
 	public Goal findGoalById(int goalId) {
 		Goal goal = em.find(Goal.class, goalId);
 		return goal;

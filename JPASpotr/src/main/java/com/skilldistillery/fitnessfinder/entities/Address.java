@@ -134,9 +134,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", streetAddress1=" + streetAddress1 + ", streetAddress2=" + streetAddress2
-				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", phone=" + phone + ", email=" + email
-				+ ", url=" + url + "]";
+		return streetAddress1 + " " + streetAddress2  + " " + city + " " + state + " " + zip;
 	}
 
 	@Override

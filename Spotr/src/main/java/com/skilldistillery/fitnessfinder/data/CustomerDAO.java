@@ -16,17 +16,15 @@ import com.skilldistillery.fitnessfinder.entities.Login;
 public interface CustomerDAO {
 	
 	Customer createCustomer(Login user, Customer customer);
-	Journal addJournalEntry(Journal log);
-	boolean removeJournalEntry(Journal log);
-	Goal addGoals(Goal goal);
-	Goal completeGoals(Goal goal);
-	boolean removeGoals(Goal goal);
+	Customer addJournalEntry(Journal log);
+	boolean removeJournalEntry(int logId);
+	Customer addGoals(Goal goal);
+	Customer completeGoals(int goalId);
+	boolean removeGoals(int goalId);
 	Customer editFacilityPreferences(int customerId, FacilityPreferences prefs);
 	Facility addFacility(int customerId, int facilityId);
 	boolean removeFacility(int customerId, Facility facility);
-	Customer editCustomerInfo(Customer customer);
-	Customer editCustomerAddress(Customer customer, Address address);
-	void editCustomerPrefs(FacilityPreferences prefs);
+	Customer editCustomerInfo(Customer customer, int id);
 	Customer editActivities(int customerId, List<CustomerActivity> activities);
 	boolean removeActivities(int customerId, CustomerActivity activity);
 	List<Facility> searchFacilityByActivity(Activity activity);
@@ -35,9 +33,16 @@ public interface CustomerDAO {
 	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
 	List<Activity> getAllActivities();
 	List<Category> getAllCategories();
-	Activity findActivityById(int activityId);
 	List<CustomerActivity> addCustomerActivities(List<CustomerActivity> ca);
+	
+	Activity findActivityById(int activityId);
+	Journal findJournalById(int id);
+	Customer findCustomerById(int id);
+	Facility findFacilityById(int id);
+	Login findLoginById(int id);
+
 	Goal findGoalById(int goalId);
+
 	
 
 }

@@ -26,8 +26,7 @@ public class Activity {
 	private List<Category> categories;
 	
 
-	@ManyToMany
-	@JoinTable(name = "facility_activity", joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
+	@ManyToMany(mappedBy = "activities")
 	private List<Facility> facilities;
 
 	public Activity() {
