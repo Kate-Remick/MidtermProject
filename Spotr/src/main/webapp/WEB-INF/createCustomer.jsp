@@ -166,10 +166,21 @@
 					</div>
 	
 					<p>
+						<strong>Set your fitness facility preferences:</strong>
+					</p>
+					
+					<div id="fitnessprefs">
+						<input type="checkbox" name="hasTrainers" id="hasTrainers" value="${true}"><label for="hasTrainers">Has personal trainers</label>
+						<input type="checkbox" name="open247" id="open247" value="${true}"><label for="open247">Open all hours</label>
+						$<input type="number" step="0.01" placeholder="0.00" min="0.00" step="1" name="maxPrice" id="maxPrice"/><label for="maxPrice">Price range maximum</label>
+					</div>
+
+	
+					<p>
 						<strong>Tell others about yourself and your fitness goals, if you'd like:</strong>
 					</p>
-					<textarea class="bio" name="bio" id="bio" placeholder="I'm looking for another woman to joing me on my fitness journey. My goal is to run a marathon.  I currently run several 10k events each year."></textarea>
-	
+					<textarea class="bio" name="bio" id="bio" placeholder="My goal is to run a marathon.  I currently run several 10k events each year."></textarea>
+					<br>
 					<input type="submit" value="Submit" class="btn btn-primary">
 					</div>
 			</form>
