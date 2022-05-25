@@ -7,13 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Create a new goal</h3>
+	<h3>Let's set a new goal!</h3>
 	<form action="addGoal.do" method="post">
-		
-		<label for="name">Give your goal a short name: </label><input
-			type="text" name="name" /> <label for="description">Description:
-		</label><input type="text" name="description" />
-		<button type="submit">Create New Goal</button>
+
+		<div class="goal">
+			<label for="name">What do you want to achieve? </label><input
+				type="text" name="name" /><br> <label for="description">How
+				do you plan to achieve your goal, and what motivates you? </label><input
+				type="text" name="description" />
+		</div>
+		<button type="submit">Set New Goal</button>
 
 	</form>
 
