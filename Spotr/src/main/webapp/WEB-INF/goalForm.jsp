@@ -8,17 +8,19 @@
 </head>
 <body>
 	<h3>Let's set a new goal!</h3>
-	<form action="addGoal.do" method="post">
+	<fieldset>
+		<form action="addGoal.do" method="post">
 
-		<div class="goal">
-			<label for="name">What do you want to achieve? </label><input
-				type="text" name="name" /><br> <label for="description">How
-				do you plan to achieve your goal, and what motivates you? </label><input
-				type="text" name="description" />
-		</div>
-		<button type="submit">Set New Goal</button>
+			<div class="goal">
+				<label for="name">What do you want to achieve? </label><input
+					type="text" name="name" /><br> <label for="description">How
+					do you plan to achieve your goal, and what motivates you? </label><input
+					type="text" name="description" />
+			</div>
+			<button type="submit">Set New Goal</button>
 
-	</form>
+		</form>
+	</fieldset>
 
 </body>
 </html>
