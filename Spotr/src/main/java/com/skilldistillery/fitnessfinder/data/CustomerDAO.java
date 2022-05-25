@@ -41,6 +41,8 @@ public interface CustomerDAO {
 	Login findLoginById(int id);
 	List<Facility> getAllFacilites();
 	Goal findGoalById(int goalId);
+	boolean customerHasUncompletedGoals(int customerId);
+	List<Goal> incompleteGoals(int customerId);
 
 	
 
