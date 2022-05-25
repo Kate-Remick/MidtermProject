@@ -12,9 +12,12 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/createCustomer.css">
+<link rel="stylesheet" href="../css/updateFacility.css">
+<link rel="stylesheet" href="../css/template.css">
+
 
 </head>
+
 <body>
 
 	<main class="container-fluid">
@@ -24,67 +27,85 @@
 				<div class="banner" id="banner">
 					<a href="/"><img src="images/spotr_logo.png" class="logo"
 						id="logo" /></a> <span class="tagline" id="tagline">Local
-						Fitness Finder</span> <span class="button" id="login"><a
-						href="logout.do">Logout</a></span>
+						Fitness Finder</span>
+					<div class="logout">
+						<span class="button" id="logout"><a href="logout.do"
+							id="logout_link">Logout</a></span>
+					</div>
 				</div>
 			</section>
 		</div>
 
-		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
-			<div class="row d-inline-flex">
-				<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
-				<input disabled type="text" id="disabledUsername"
-					class="form-control" placeholder="${loggedInUser.username}">
-			</div>
-			<form action="editCustomerInfo.do" method="POST"
-				name="new_customer_form" class="new_customer_form"
-				id="new_customer_form">
-				<div class="form-group">
 
-					</br>
+		<div class="inputs" id="inputs" class="col-sm-6 offset-3">
+			<div class="row col-sm-6 offset-3">
+				<div class="right">
+					<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
+					<input disabled type="text" id="disabledUsername"
+						class="form-control" placeholder="${loggedInUser.username}">
+				</div>
+			</div>
+			<br> <br>
+			<div class="legend col-sm-4 offset-4">New Customer Information:</div>
+			<form action="editCustomerInfo.do" method="POST"
+				name="new_customer_form" class="new_customer_form col-sm-6 offset-3"
+				id="new_customer_form">
+				<div class="form-alignment">
+
 					<div class="row d-inline-flex">
 						<span class="label"><label for="firstName"><strong>First
 									Name:</strong></label></span> <input type="text" name="firstName" id="firstName"
 							class="form-control" placeholder="First Name"
 							value="${customer.firstName}">
 					</div>
-					</br>
+					<br>
+
 					<div class="row d-inline-flex">
-						<label for="lastName"><strong>Last Name:</strong></label> <input
-							type="text" name="lastName" id="lastName"
-							value="${customer.lastName}">
+						<span class="label"><label for="lastName"><strong>Last
+									Name:</strong></label></span> <input type="text" name="lastName" class="form-control"
+							id="lastName" value="${customer.lastName}">
 					</div>
 					<br>
+
 					<div class="row d-inline-flex">
-						<label for="dob"><strong>Date of Birth:</strong></label> <input
-							type="date" name="dob" id="dob" value="${customer.birthDate}">
+						<span class="label"><label for="dob"><strong>Date
+									of Birth:</strong></label></span> <input type="date" name="dob" class="form-control"
+							id="dob" value="${customer.birthDate}">
 					</div>
 					<br>
+
 					<div class="row  d-inline-flex">
-						<label for="gender"><strong>Gender:</strong></label> <select
-							name="name" id="gender">
+						<span class="label"><label for="gender"><strong>Gender:</strong></label></span>
+						<select name="name" class="form-control" id="gender">
 							<option value="${customer.gender.id}">${customer.gender.name}</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="other">Something Else/Choose Not to Say</option>
 						</select>
 					</div>
-					</br>
+					<br>
+
 					<div class="row  d-inline-flex">
 						<label for="streetAddress1"><strong>Street
-								Address 1:</strong></label> <input type="text" name="streetAddress1"
-							id="streetAddress1" value="${ customer.address.streetAddress1}"><br>
+								Address 1:</strong></label> <input type="text" class="form-control"
+							name="streetAddress1" id="streetAddress1"
+							value="${ customer.address.streetAddress1}"><br>
 					</div>
 					<div class="row  d-inline-flex">
 						<label for="streetAddress2"><strong>Street
-								Address 2:</strong></label> <input type="text" name="streetAddress2"
-							id="streetAddress2" value="${ customer.address.streetAddress2}"><br>
+								Address 2:</strong></label> <input type="text" class="form-control"
+							name="streetAddress2" id="streetAddress2"
+							value="${ customer.address.streetAddress2}"><br>
 					</div>
 					<div class="row  d-inline-flex">
-						<label for="city"><strong>City:</strong></label> <input
-							type="text" name="city" id="city"
+					<div>
+						<span class="label"><label for="city"><strong>City:</strong></label> </span><input
+							type="text" class="form-control" name="city" id="city"
 							value="${customer.address.city}"> <label for="state"><strong>State:</strong></label>
-						<select name="state" id="state">
+						</div>
+						<br><br>
+						<div>
+						<select name="state" class="form-control" id="state">
 							<option value="${customer.address.state}">${customer.address.state}</option>
 							<option value="AL">AL</option>
 							<option value="AK">AK</option>
@@ -137,24 +158,30 @@
 							<option value="WV">WV</option>
 							<option value="WI">WI</option>
 							<option value="WY">WY</option>
-						</select> <label for="zip"><strong>Zip Code:</strong></label> <input
-							type="text" name="zip" id="zip" value="${customer.address.zip}"><br>
+						</select> 
+						</div>
+						<br><div>
+						<label for="zip"><strong>Zip Code:</strong></label> <input
+							type="text" class="form-control" name="zip" id="zip"
+							value="${customer.address.zip}"><br>
+							
 					</div>
-
+					<br>
+					</div>
 					<p>
 						<strong>Choose Your Preferred Activities</strong>
 					</p>
 
 					<div class="row  d-inline-flex">
-					
+
 						<c:forEach var="activity" items="${activities}">
 
 							<div class="col">
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox"
-											name="activities" value="${activity.id}"> <label
-											class="form-check-label" for="activities">
+										<input class="form-check-input" class="form-control"
+											type="checkbox" name="activities" value="${activity.id}">
+										<label class="form-check-label" for="activities">
 											${activity.name} </label>
 									</div>
 								</div>
@@ -169,18 +196,17 @@
 						</c:forEach>
 
 					</div>
-
+					<br><br>
 					<p>
 						<strong>Tell others about yourself and your fitness
 							goals, if you'd like:</strong>
 					</p>
 					<textarea class="bio" name="bio" id="bio">${customer.bio}</textarea>
-
-					<input type="submit" value="Submit" class="btn btn-primary">
+					<br> <br> <input type="submit" class="form-control" value="Submit"
+						class="btn btn-primary">
 				</div>
 			</form>
 		</div>
-
 	</main>
 
 	<!-- ADD BOOTSTRAP INTO THE PROJECT -->
