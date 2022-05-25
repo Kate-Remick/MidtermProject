@@ -72,11 +72,6 @@ ACTIVITES & SKILL LEVELS
 		</tbody>
 		</table>
 	<br>
-<<<<<<< HEAD
-	
-=======
-	<a href="editFacility.do"><button>Update Company Activity Offerings</button></a>
->>>>>>> c604c0cd83a7dc51f5cfa6a197100f7c06f9c9a8
 	</div>
 	<br>
 
