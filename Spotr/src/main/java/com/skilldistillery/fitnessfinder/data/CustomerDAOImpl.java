@@ -181,11 +181,20 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<Facility> searchFacilityByCategory(int categoryId) {
-		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca  ON fa.id = ca.id WHERE c.id = :categoryId";
+//		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca  ON fa.id = ca.id WHERE c.id = :categoryId";
+		
+//		String jpql = "SELECT c FROM Category c WHERE c.id = :categoryId";
+		
+		
+		String jpql = "SELECT f FROM Facility f JOIN f.activities fa JOIN fa.categories fac WHERE fac.id = :categoryId";
+		// JOIN Category.activity ca JOIN Category c WHERE  c.id = :categoryId";
 		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", categoryId)
 				.getResultList();
 		return facilities;
 	}
+	//SELECT facility.* from facility join facility_activity on facility.id = facility_activity.facility_id join activity on 
+	//facility_activity.activity_id = activity.id join actategory on activity.id 
+	//= activity_category.activity_id join category on activity_category.category_id = category.id where category.id = 1;
 
 	@Override
 	public List<Facility> searchFacilityByLocation(int addressId) {
