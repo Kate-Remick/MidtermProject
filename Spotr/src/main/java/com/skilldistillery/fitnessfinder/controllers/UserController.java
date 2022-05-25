@@ -46,7 +46,7 @@ public class UserController {
 	//DUMMY METHOD FOR TESTING JSP PAGES
 	@RequestMapping(path = "banner.do")
 	public String dummyBanner(Model model) {
-		return "test_and_delete";
+		return "banner";
 	}
 
 }

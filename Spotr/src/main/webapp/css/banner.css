@@ -3,39 +3,40 @@
 
 .banner-wrapper {
 	width: 100%;
-}
-
-section.banner {
-		background-color: rgb(100,100, 255);
-/*  
-	  background-size:     cover;                     
-    background-repeat:   no-repeat;
-    background-position: center center;
-*/
-    /* optional, center the image */
+	height: 100px;
+	margin: 0;
+	padding: 0;
 }
 
 div.logo{
-     float:left;
-/*     width: 287px; */
-     height:100%;
-     display:block;    
-     margin: 0;
-     padding: 0;
+	background-image: url(../images/spotr_logo_sm.jpg);	
+	float:left;
+	/*     width: 287px; */
+	height:100%;
+	display:block;    
+	margin: 0;
+	padding: 0;
 }
 
 img.logo {
 	height: 100px;
 }
 
-div.tagline{
+div.banner{
 	display: inline; /* MIGHT NOT DO ANYTHING */
 	height: 100px;
 	vertical-align: middle;
-	text-align: center;
 	padding: 0;
 	margin: 0;
-	
+}
+
+div.tagline{
+  display: flex;
+  max-width: 90%;
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
 }
 
 h1.tagline {
@@ -46,141 +47,50 @@ h1.tagline {
   font-size: 60px;
   font-family: Impact, "Arial Black", sans-serif;
   font-style: oblique 90deg;
-  
-  
 }
 
-div.logout {
-	display: inline;
+section.header {
+	background-color: rgba(0,160,254,255);
+	background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;              /* optional, center the image */
+}
+
+span.buttons {
+	position: absolute;
+	right: 20px;
+}
+
+a.banner {
+	border: 2px;
+	margin: 5px;
+	padding: 5px;
+	background-color: light-gray;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: bold;
+  color: black;
+  	
+}
+
+/*
+div.banner{
+	display: inline; ** MIGHT NOT DO ANYTHING **
 	height: 100px;
-	float: right;
-}
-
-span.button {
-	display: inline-block;
-  position: relative;
-  right: 5%;
-  top:50%;
-  color:dark-gray; 
-  font-size: 12px;
-  background-color: #777777;
-  padding: 3px 3px 3px 3px;
-	border-radius: 5px 5px 5px;
-	border: 1px solid black;
-	padding-left: 25px;
-	float: right;	
-	text-align: center;
-	vertical-align: center;
-}
-
-a#logout_link {
-	color: black;
-	font-style: bold;
-	text-decoration: none;
-}
-
-div#customer {
-/*  display: inline-block;
-  vertical-align: middle; */
-  margin:auto;
-  width: auto;
-  height: auto;
-  text-align: left;
-  border: 3px solid red;
-  border-radius: 10px;
-  background-color: gray;
-  padding: 5px;
-}
-
-div#facilities {
-/*  display: inline-block;
-  vertical-align: middle; */
-  margin:auto;
-  width: auto;
-  height: auto;
-  text-align: left;
-  border: 3px solid red;
-  border-radius: 10px;
-  background-color: gray;
-  padding: 5px;
-}
-
-div#activities {
-/*  display: inline-block;
-  vertical-align: middle; */
-  margin:auto;
-  width: auto;
-  height: auto;
-  text-align: left;
-  border: 3px solid red;
-  border-radius: 10px;
-  background-color: gray;
-  padding: 5px;
-}
-
-.customer_labels {
-	text-align: right;
-	font-family: sans-serif;
-	font-weight: bold;
-}
-
-.customer_data {
-	text-align: left;
-	font-family: sans-serif;
-}
-
-
-
-.formLabels {
-	width: 20%;
-	text-align: right;
-}
-
-.inline {
-	display: inline;
-}
-
-/*  ----- ORIGINAL CODE BELOW ----- */
-
-
-.banner {
-	background-color: light-blue;
-	margin: 0;
+	vertical-align: middle;
 	padding: 0;
-}
-
-.banner.a.logo {
-	float: left;
-	overflow: flex-grow;
 	margin: 0;
-	padding: 0;
 }
 
 .tagline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-	color: Black;
-	font-size: 20%;
-	font-family: Impact, "Arial Black", sans-serif;
-	font-style: oblique 90deg;
-	margin: 0;
-	padding: 0;
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+  
+  
 }
-
-#logout {
-	overflow: flex-grow;
-	justify-content: center;
-	float: right;
-	width: 5%;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-}
-
-
-label {
-	align: left;
-	color: black;
-}
-
+*/

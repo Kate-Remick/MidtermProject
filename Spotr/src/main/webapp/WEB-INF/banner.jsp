@@ -17,24 +17,16 @@
 <body>
 
 	<div class="banner-wrapper">
-		<section class="banner" id="section-banner">
-			<div class="banner" id="div-banner">
+		<section class="header">
+		<div class="logo">
+			<a href="viewCustomer.do"><img class="logo" src="../images/spotr_logo_sm.jpg"
+				class="logo" id="logo" /></a>
+		</div>
 
-				<div class="logo">
-					<a href="viewCustomer.do"><img src="images/spotr_logo_sm.jpg" class="logo"
-						id="logo" /></a>
-				</div>
-				
-				<div class="tagline">
-					<h1 class="tagline">Local Fitness	Finder</h1>
-				</div>
-				
-				<div class="logout" id="div-logout">
-					<span class="span-logout" id="logout"><a href="logout.do"
-						id="logout_link">Logout</a></span>
-				</div>
-				
-			</div>
+		<div class="tagline">
+			<h1 class="tagline">Local Fitness Finder</h1>
+			<span class="buttons"><a href="customer.do" class="banner">User Page</a><a href="logout.do" class="banner">Logout</a></span>
+		</div>
 		</section>
 	</div>
 
