@@ -297,4 +297,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return facilities;
 	}
 
+	@Override
+	public boolean customerHasUncompletedGoals(int customerId) {
+		String sql = "SELECT cg FROM Customer c JOIN c.goals cg WHERE cg.completed = false AND c.id = :customerId";
+		List<Goal> incomplete = em.createQuery(sql, Goal.class).setParameter("customerId", customerId).getResultList();
+		return !(incomplete == null || incomplete.size() == 0);
+	}
+
+	@Override
+	public List<Goal> incompleteGoals(int customerId) {
+		String sql = "SELECT cg FROM Customer c JOIN c.goals cg WHERE cg.completed = false AND c.id = :customerId";
+		List<Goal> incomplete = em.createQuery(sql, Goal.class).setParameter("customerId", customerId).getResultList();
+		return incomplete;
+	}
+	
 }

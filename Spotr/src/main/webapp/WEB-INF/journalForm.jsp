@@ -15,14 +15,14 @@
 				id="entry">
 		</p>
 		<br>
-		<c:if test="${! empty customer.goals}">
+		<c:if test="${! empty incompleteGoals}">
 		<h4>I pursuit of goal:</h4>
 		<p>
 			<input id="accomplished" type="checkbox" name="accomplished"
 				value="${true}"> <label for="accomplished">Did you
 				achieve your goal?</label> <select name="goalId">
 
-				<c:forEach var="goal" items="${customer.goals}">
+				<c:forEach var="goal" items="${incompleteGoals}">
 					<c:if test="${!goal.completed }">
 						<option value="${goal.id}">${goal.name}</option>
 					</c:if>

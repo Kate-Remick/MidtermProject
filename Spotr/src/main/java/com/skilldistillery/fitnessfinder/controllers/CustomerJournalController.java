@@ -22,18 +22,25 @@ public class CustomerJournalController {
 	private CustomerDAO customerDao;
 
 	@RequestMapping(path = "viewJournal.do", method = RequestMethod.GET)
-	public String viewJournalPage(HttpSession session) {
-		return "journal";
+	public ModelAndView viewJournalPage(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("hasIncompleteGoals", customerDao.customerHasUncompletedGoals(((Customer)session.getAttribute("customer")).getId()));
+		mv.setViewName("journal");
+		return mv;
 	}
 
 	@RequestMapping(path = "addJournal.do", method = RequestMethod.GET)
-	public String addJournalPageForm() {
-		return "journalForm";
+	public ModelAndView addJournalPageForm(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("incompleteGoals", customerDao.incompleteGoals(((Customer)session.getAttribute("customer")).getId()));
+		mv.setViewName("journalForm");
+		return mv;
 	}
 
 	@RequestMapping(path = "addJournal.do", method = RequestMethod.POST)
 	public ModelAndView addJournalPage(Journal journal, HttpSession session, int goalId, boolean accomplished) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("hasIncompleteGoals", customerDao.customerHasUncompletedGoals(((Customer)session.getAttribute("customer")).getId()));
 		Goal goal = customerDao.findGoalById(goalId);
 		goal.setCompleted(accomplished);
 		journal.setGoal(goal);

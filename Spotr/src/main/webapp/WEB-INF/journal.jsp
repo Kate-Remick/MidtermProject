@@ -10,12 +10,13 @@
 <body>
 	<h3>Your Journal:</h3>
 	<h6>${removed }</h6>
-
-	<a href="addJournal.do"><button>Create New Journal Entry</button></a>
+	<c:if test="${hasIncompleteGoals }">
+		<a href="addJournal.do"><button>Create New Journal Entry</button></a>
+	</c:if>
 	<h3>Current Goals:</h3>
 	<ul>
 		<c:if test="${! empty customer.goals }">
-		<c:forEach var="goal" items="${customer.goals}">
+			<c:forEach var="goal" items="${customer.goals}">
 				<c:if test="${!goal.completed }">
 					<li>${goal.name }
 						<ul>
@@ -31,7 +32,7 @@
 	<h3>Completed Goals</h3>
 	<ul>
 		<c:if test="${! empty customer.goals }">
-		<c:forEach var="goal" items="${customer.goals}">
+			<c:forEach var="goal" items="${customer.goals}">
 				<c:if test="${goal.completed }">
 					<li>${goal.name }
 						<ul>
