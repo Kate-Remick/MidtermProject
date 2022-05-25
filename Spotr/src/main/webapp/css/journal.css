@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/rc_back.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+.buttons{
+	display: table-row;
+	
+}
+
+.buttons .btn{
+	display: table-cell;
+}
+
+
+.field-body {
+	background: white; 
+	opacity: 0.75;
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+}
+
+
+
+.tagline {
+	background: rgba(0, 0,0, 0.7);
+	text-align:center;
+  display: inline-block;
+  position: relative;
+  
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+  width: 100%;
+}
+
+
+.legend {
+	  border-radius: 10px;
+	  background-color: lightgrey;
+	  border: 1px;
+	  border-color: black;
+	  padding: 5px 10px;
+	  
+}
+
+.journal{
+margin:auto;
+  width: 100%;
+  height: auto;
+  display: table;
+  background-color: rgba(205, 233, 233, 0.3);
+  
+}
+
+.goal-info{
+	display:table-cell;
+}
+
+
+#goal-name{
+	width: 47%;
+	text-align: left;
+}
+#goal-description{
+	width: 47%;
+	text-align: left;
+}
+#complete{
+	width: 6%;
+	text-align: center;
+}
+
+
+#date{
+	width: 20%;
+	text-align: center;
+}
+#journal-goal{
+	width: 600%;
+	text-align: center;
+}
+#journal-complete{
+	width: 20%;
+	text-align: center;
+}
+
+
+
+
+
+#gcn{
+	width: 50%;
+	text-align: center;
+}
+#gcd{
+	width: 50%;
+	text-align: center;
+}
+
+
+
+fieldset {
+	background: white; 
+	opacity: 0.75;
+  border-radius: 10px;
+  border: 3px solid #000000;	
+}
+

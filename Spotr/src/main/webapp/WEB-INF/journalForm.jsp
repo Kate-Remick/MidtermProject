@@ -8,7 +8,7 @@
 <title>New Journal Entry</title>
 </head>
 <body>
-	<h2>Add A New Journal Entry</h2>
+	<h2>New Journal Entry</h2>
 	<form action="addJournal.do" method="POST">
 		<p>
 			<label for="entry">Entry</label> <input type="text" name="entry"
