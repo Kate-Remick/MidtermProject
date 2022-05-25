@@ -70,11 +70,12 @@ public class CustomerFacilityController {
 	}
 
 	// TODO add from facility page
-	@RequestMapping(path = "addFacilities.do", method = RequestMethod.POST)
-	public ModelAndView addFacilities(@RequestParam("customer") Customer customer,
-			@RequestParam("facilityId") int facilityId) {
+	@RequestMapping(path = "addFacilities.do", method = RequestMethod.GET)
+	public ModelAndView addFacilities(@RequestParam("facilityId") int facilityId, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		Customer customer  =(Customer)session.getAttribute("customer");
 		Facility facility = customerDao.addFacility(customer.getId(), facilityId);
+		customer = customerDao.findCustomerById(customer.getId());
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
 		mav.addObject("addedMessage",
