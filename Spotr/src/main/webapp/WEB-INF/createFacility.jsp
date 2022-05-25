@@ -11,7 +11,7 @@
 
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 
-<link rel="stylesheet" href="../css/updateCustomer.css">
+<link rel="stylesheet" href="../css/updateFacility.css">
 
 </head>
 
@@ -33,22 +33,20 @@
 
 
 		<div class="inputs" id="inputs" class="col-sm-6 offset-3">
-			<div class="row d-inline-flex">
+			<div class="row col-sm-6 offset-3"> <div class="right">
 				<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
 				<input disabled type="text" id="disabledUsername"
 					class="form-control" placeholder="${loggedInUser.username}">
 			</div>
+			</div>
 			<br>
+			<br>
+			<fieldset class="col-sm-6 offset-3">
 
-			<fieldset>
 			  <legend>New Facility Information:</legend>			
 				<form action="createFacility.do" method="POST" name="createFacility"
 					class="createFacility" id="createFacility">
 
-					<%-- <div class="row d-inline-flex"><input !important hidden type="hidden" name="loggedInUser" id="id" value="${sessionScope.loggedInUser}"></div> --%>
-
-					<%-- 		<input type="text" hidden="true" name="id" value="${login.id }">
- --%>
 					<div class="row d-inline-flex">
 						<span class="label"><label for="name"><strong>Name
 									of facility:</strong></label></span> <input type="text" name="name" id="name"
@@ -81,15 +79,14 @@
 
 					<div class="row d-inline-flex">
 						<span class="label"> <label class="form-check-label"
-							for="hasTrainers"> Does the facility have personal
-								trainers: </label>
+							for="hasTrainers"> Has Personal Trainers: </label>
 						</span> <input value="${true}" class="form-check-input form-control"
 							name="hasTrainers" type="checkbox" id="hasTrainers">
 					</div>
 
 					<div class="row d-inline-flex">
 						<span class="label"> <label class="form-check-label"
-							for=alwaysOpen> Is the facility open 24/7: </label>
+							for=alwaysOpen> Open All Hours: </label>
 						</span> <input value="${true}" class="form-check-input" name="alwaysOpen"
 							type="checkbox" id="alwaysOpen">
 					</div>
@@ -116,12 +113,14 @@
 					</div>
 					<br>
 					<div class="row d-inline-flex">
-						<div class="col col-sm-3">
+						<div >
 						<span class="label"><label for="city"><strong>City:</strong></label></span> <input
 							type="text" name="city" id="city" class="form-control" placeholder="Denver">
 							</div>
-						<div class="col col-sm-1">
-						<span class="label form-control"><label for="state"><strong>State:</strong></label></span> <select
+							<br>
+							<br>
+						<div >
+						<span class="label"><label for="state"><strong>State:</strong></label></span> <select class="form-control"
 							name="state" id="state">
 							<option value="">--Please choose an option--</option>
 							<option value="AL">AL</option>
@@ -177,11 +176,15 @@
 							<option value="WY">WY</option>
 						</select>
 							</div>
-						<div class="col col-sm-2">
+							<br>
+							<br>
+						<div >
+						
+						<span class="warning">* Required Field *</span>
 						<span class="label"><label for="zip"><strong>Zip Code:</strong></label></span> <input
 							type="number" name="zip" id="zip" class="form-control" placeholder="80002"><br>
-						<span class="warning">* required field</span>
 						</div>
+						<br>
 					</div>
 					
 					<br>

@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/customer_background1.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+section.header {
+ 	background-image:
+      url(../images/banner2.png);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
+}
+
+section.div.a.logo{
+     float:left;
+/*     width: 287px; */
+     height:100%;
+     display:block;    
+     margin: 0;
+     padding: 0;
+}
+
+div.banner{
+	display: inline; /* MIGHT NOT DO ANYTHING */
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+.tagline {
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+  
+  
+}
+
+div#customer {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid red;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+
+div#facilities {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+
+div#activities {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+
+.customer_labels {
+	text-align: right;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.customer_data {
+	text-align: left;
+	font-family: sans-serif;
+}
+
+
+
+div fieldset {
+	margin: 10px;
+	width: 100%;
+	background: white; 
+	opacity: 0.75;
+  	border-radius: 10px;
+  	border: 3px solid #000000;
+  	text-align: center;
+    box-sizing: border-box;	
+}
+
+legend {
+	  border-radius: 10px;
+	  background-color: lightgrey;
+	  border: 1px;
+	  border-color: black;
+	  padding: 5px 10px;
+}
+
+form {
+	justify-content: space-between;
+}
+
+.formLabels {
+	text-align: center;
+    box-sizing: border-box;
+	width: 20%;
+	text-align: right;
+}
+
+.inline {
+	display: inline;
+}
+
+.warning {
+	background-color: lightred;
+	color: red;
+	font-style: bold;
+}
+
