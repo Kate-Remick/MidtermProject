@@ -11,7 +11,8 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/createCustomer.css">
+<link rel="stylesheet" href="../css/updateFacility.css">
+<link rel="stylesheet" href="../css/template.css">
 
 </head>
 <body>
@@ -29,58 +30,67 @@
 			</section>
 		</div>
 
-		<div name="inputs" id="inputs" class="col-sm-6 offset-3">
-					<div class="row d-inline-flex">
-						<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
-						<input disabled type="text" id="disabledUsername"
-							class="form-control" placeholder="${loggedInUser.username}">
-					</div>
+		<div class="inputs" id="inputs" class="col-sm-6 offset-3">
+			<div class="row col-sm-6 offset-3">
+				<div class="right">
+					<span class="label"><label for="disabledUsername"><strong>Username:</strong></label></span>
+					<input disabled type="text" id="disabledUsername"
+						class="form-control" placeholder="${loggedInUser.username}">
+				</div>
+			</div>
+			<br> <br>
+			<div class="legend col-sm-4 offset-4">New Customer Information:</div>
 			<form action="createCustomer.do" method="POST"
-				name="new_customer_form" class="new_customer_form"
+				name="new_customer_form" class="new_customer_form col-sm-6 offset-3"
 				id="new_customer_form">
-				<div class="form-group">
+				<div class="form-alignment">
 
-					</br>
+					
 					<div class="row d-inline-flex">
 						<span class="label"><label for="firstName"><strong>First
-									Name:</strong></label></span> <input type="text" name="firstName" id="firstName"
+									Name:</strong></label></span> <input type="text"  name="firstName" id="firstName"
 							class="form-control" placeholder="First Name">
 					</div>
-					</br>
+					<br>
 					<div class="row d-inline-flex">
 						<label for="lastName"><strong>Last Name:</strong></label> <input
-							type="text" name="lastName" id="lastName">
+							type="text" class="form-control" name="lastName" id="lastName">
 					</div>
 					<br>
 					<div class="row d-inline-flex">
 						<label for="dob"><strong>Date of Birth:</strong></label> <input
-							type="date" name="dob" id="dob">
+							class="form-control" type="date" name="dob" id="dob">
 					</div>
 					<br>
 					<div class="row  d-inline-flex">
-						<label for="gender"><strong>Gender:</strong></label> <select
-							name="name" id="gender">
+						<span class="label"><label for="gender"><strong>Gender:</strong></label> </span><select
+							class="form-control" name="name" id="gender">
 							<option value="">--Please choose an option--</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="other">Something Else/Choose Not to Say</option>
 						</select>
 					</div>
-					</br>
+					<br>
 					<div class="row  d-inline-flex">
 						<label for="streetAddress1"><strong>Street
-								Address 1:</strong></label> <input type="text" name="streetAddress1"
+								Address 1:</strong></label> <input type="text" class="form-control" name="streetAddress1"
 							id="streetAddress1"><br>
 					</div>
+					<br>
 					<div class="row  d-inline-flex">
 						<label for="streetAddress2"><strong>Street
-								Address 2:</strong></label> <input type="text" name="streetAddress2"
+								Address 2:</strong></label> <input type="text" class="form-control" name="streetAddress2"
 							id="streetAddress2"><br>
 					</div>
 					<div class="row  d-inline-flex">
+					<div>
 						<label for="city"><strong>City:</strong></label> <input
-							type="text" name="city" id="city"> <label for="state"><strong>State:</strong></label>
-						<select name="state" id="state">
+							type="text" class="form-control" name="city" id="city"> <label for="state"><strong>State:</strong></label>
+							</div>
+							<br><br>
+							<div>
+						<select name="state" class="form-control" id="state">
 							<option value="">--Please choose an option--</option>
 							<option value="AL">AL</option>
 							<option value="AK">AK</option>
@@ -133,8 +143,13 @@
 							<option value="WV">WV</option>
 							<option value="WI">WI</option>
 							<option value="WY">WY</option>
-						</select> <label for="zip"><strong>Zip Code:</strong></label> <input
-							type="text" name="zip" id="zip"><br>
+						</select>
+						</div>
+						<br><div>
+						 <label for="zip"><strong>Zip Code:</strong></label> <input
+							type="text" class="form-control" name="zip" id="zip"><br>
+							</div>
+							<br>
 					</div>
 
 					<p>
@@ -147,7 +162,7 @@
 							<div class="col">
 								<div class="form-group">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox"
+										<input class="form-check-input" class="form-control" type="checkbox"
 											name="activities" value="${activity.id}"> <label
 											class="form-check-label" for="activities">
 											${activity.name} </label>
@@ -181,7 +196,7 @@
 					</p>
 					<textarea class="bio" name="bio" id="bio" placeholder="My goal is to run a marathon.  I currently run several 10k events each year."></textarea>
 					<br>
-					<input type="submit" value="Submit" class="btn btn-primary">
+					<input type="submit" class="form-control" value="Submit" class="btn btn-primary">
 					</div>
 			</form>
 		</div>
