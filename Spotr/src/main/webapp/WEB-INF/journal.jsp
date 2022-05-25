@@ -15,22 +15,23 @@
 <body>
 	<main>
 		<div class="container-fluid">
-			<fieldset>
-				<h3 class="tagline">Your Fitness Journal</h3>
+			<h3 class="tagline">Your Fitness Journal</h3>
+			<fieldset class="col-sm-8 offset-2">
+				<br>
 				<div class="row buttons">
 					<c:if test="${hasIncompleteGoals }">
-						<a href="addJournal.do"><button class="btn btn-primary">Create
-								New Journal Entry</button></a>
+						<a href="addJournal.do"><button
+								class="btn btn-primary btn-left">Create New Journal
+								Entry</button></a>
 					</c:if>
-					<a href="addGoal.do"><button class="btn btn-primary">Add
-							new goal</button></a>
+					<a href="addGoal.do"><button class="btn btn-primary btn-right">Add
+							new goal</button></a> 
 				</div>
-				<br>
-				<br>
+
+					<br>
 
 
-
-				<div class="working col-sm-8 offset-2">
+				<div class="col">
 
 
 
@@ -44,8 +45,9 @@
 									<span class="goal-info" id="goal-name">${goal.name }</span> <span
 										class="goal-info" id="goal-description">${goal.description}</span>
 									<span class="goal-info" id="complete"><a
-										href="completeGoal.do?goalId=${goal.id}"><button>Accomplished</button></a></span>
+										href="completeGoal.do?goalId=${goal.id}"><button class="btn btn-primary">Accomplished</button></a></span><br>
 								</div>
+								<br>
 							</c:if>
 						</c:forEach>
 					</c:if>
@@ -57,24 +59,26 @@
 						<c:if test="${! empty customer.logs }">
 							<c:forEach var="entry" items="${customer.logs}">
 								<div class="journal row">
-									<span class="goal-info" id="date">Date: ${entry.createdAt}</span>
-									<span class="goal-info" id="journal-goal">Goal: ${entry.goal.getName()}</span>
-									<span class="goal-info" id="journal-complete"><c:if test="${entry.goal.isCompleted()}">
-										<h5>Goal met!</h5>
-									</c:if></span>
-									</div>
-									<div class="journal row">
-
-
-									
-									<p>${entry.entry}</p>
-									<a href="removeJournal.do?journalId=${entry.id}"><button>Delete
-											Entry</button></a> <br>
+									<span class="goal-info" id="date">Date:
+										${entry.createdAt.getYear()}, ${entry.createdAt.getMonth()},
+										${entry.createdAt.getDayOfMonth()}</span> <span class="goal-info"
+										id="journal-goal">Goal: ${entry.goal.getName()}</span> <span
+										class="goal-info" id="journal-complete"><c:if
+											test="${entry.goal.isCompleted()}">
+											<h5>Goal met!</h5>
+										</c:if></span> <span class="goal-info" id="delete"><a
+										href="removeJournal.do?journalId=${entry.id}"><button class="btn btn-primary btn-right">Delete</button></a></span>
 								</div>
+								<div class="journal row">
+									<span id="journal-text">${entry.entry} </span>
+								</div>
+								<br>
 							</c:forEach>
 						</c:if>
 					</div>
-					<br>
+					<br> <br>
+
+
 					<h3 class="legend">Completed Goals:</h3>
 					<c:if test="${! empty customer.goals }">
 						<c:forEach var="goal" items="${customer.goals}">
@@ -82,18 +86,19 @@
 							<c:if test="${goal.completed }">
 								<div class="row journal">
 									<span class="goal-info" id="gcn">${goal.name }</span> <span
-										class="goal-info" id="gcd">${goal.description}</span>
-									
+										class="goal-info" id="gcd">${goal.description}</span><br>
+
 								</div>
+								<br>
 							</c:if>
 						</c:forEach>
 					</c:if>
 
 
 
-
-
 				</div>
+				
+				
 			</fieldset>
 		</div>
 	</main>
