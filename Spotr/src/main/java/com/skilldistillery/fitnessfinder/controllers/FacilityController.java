@@ -52,20 +52,23 @@ public class FacilityController {
 	}
 	
 	@RequestMapping(path = "editFacility.do", method = RequestMethod.GET)
-	public String editFacilityForm() {
-		return "editFacilityForm";
+	public ModelAndView editFacilityForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("activities", facilityDAO.getAllActivities());
+		mv.setViewName("updateFacility");
+		return mv;
 	}
 	
 	@RequestMapping(path="editFacility.do", method = RequestMethod.POST)
-	public ModelAndView editFacility( Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView editFacility( Facility facility, Address address, HttpSession session, @RequestParam ("activityarray")String... activities) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
-		if (activity != null && activity.length > 0) {
-			for (int i = 0; i < activity.length; i++) {
-				
-					facilityActivity.add(activity[i]);
-				
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+					
+					Activity activity = facilityDAO.findActivityById(Integer.parseInt(activities[i]));
+					facilityActivity.add(activity);
 				
 			}
 		}
@@ -78,7 +81,7 @@ public class FacilityController {
 	
 	@RequestMapping(path = "editedFacility.do", method = RequestMethod.GET)
 	public String editedFacility() {
-		return "facility.do";
+		return "facility";
 	}
 
 }

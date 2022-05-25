@@ -52,6 +52,7 @@ public class CustomerController {
 				customerActivities.add(ca);
 			}
 		}
+		System.out.println("*******************88 entering edit activities");
 		customer = customerDao.editActivities(customer.getId(), customerActivities);
 		
 		session.setAttribute("customer", customer);
@@ -83,14 +84,14 @@ public class CustomerController {
 				CustomerActivity ca = new CustomerActivity();
 				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activities[i])));
 				ca.setSkillLevel(skillLevels[i]);
-				ca.setCustomer(customer);
+				ca.setCustomer((Customer)session.getAttribute("customer"));
 				newActivities.add(ca);
 			}
 		}
 		Customer editedCustomer = customerDao.editCustomerInfo(customer,((Customer) session.getAttribute("customer")).getId());
 		editedCustomer = customerDao.editActivities(editedCustomer.getId(), newActivities);
 		editedCustomer = customerDao.editFacilityPreferences(editedCustomer.getId(), prefs);
-		
+		editedCustomer = customerDao.findCustomerById(editedCustomer.getId());
 		
 		session.setAttribute("customer", editedCustomer);
 		mav.setViewName("redirect:editedCustomerInfo.do");

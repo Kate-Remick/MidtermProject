@@ -15,20 +15,23 @@
 				id="entry">
 		</p>
 		<br>
-		<c:if test="${! empty customer.goals}">
-		<h4>I pursuit of goal:</h4>
-		<p>
-			<input id="accomplished" type="checkbox" name="accomplished"
-				value="${true}"> <label for="accomplished">Did you
-				achieve your goal?</label> <select name="goalId">
-
-				<c:forEach var="goal" items="${customer.goals}">
-					<c:if test="${!goal.completed }">
-						<option value="${goal.id}">${goal.name}</option>
-					</c:if>
-				</c:forEach>
-			</select>
-		</p>
+		<br>
+		<c:if test="${! empty incompleteGoals}">
+			<div class="Journal Entry">
+				<div id="goalDrop">
+				<h4>I pursuit of goal:</h4>
+					<select name="goalId">
+						<c:forEach var="goal" items="${incompleteGoals}">
+							<c:if test="${!goal.completed }">
+								<option value="${goal.id}">${goal.name}</option>
+							</c:if>
+						</c:forEach>
+					</select>
+				</div>
+				<br>
+				<input id="accomplished" type="checkbox" name="accomplished"
+					value="${true}"> <label for="accomplished">Goal Accomplished!</label>
+			</div>
 		</c:if>
 		<br>
 		<button type="submit">Add new Entry</button>

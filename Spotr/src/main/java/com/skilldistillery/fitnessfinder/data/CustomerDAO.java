@@ -26,10 +26,9 @@ public interface CustomerDAO {
 	boolean removeFacility(int customerId, Facility facility);
 	Customer editCustomerInfo(Customer customer, int id);
 	Customer editActivities(int customerId, List<CustomerActivity> activities);
-	boolean removeActivities(int customerId, CustomerActivity activity);
-	List<Facility> searchFacilityByActivity(Activity activity);
-	List<Facility> searchFacilityByCategory(Category category);
-	List<Facility> searchFacilityByLocation(Address address);
+	List<Facility> searchFacilityByActivity(int activityId);
+	List<Facility> searchFacilityByCategory(int categoryId);
+	List<Facility> searchFacilityByLocation(int addressId);
 	List<Facility> searchFacilityByPreferences(FacilityPreferences prefs);
 	List<Activity> getAllActivities();
 	List<Category> getAllCategories();
@@ -40,8 +39,10 @@ public interface CustomerDAO {
 	Customer findCustomerById(int id);
 	Facility findFacilityById(int id);
 	Login findLoginById(int id);
-
+	List<Facility> getAllFacilites();
 	Goal findGoalById(int goalId);
+	boolean customerHasUncompletedGoals(int customerId);
+	List<Goal> incompleteGoals(int customerId);
 
 	
 

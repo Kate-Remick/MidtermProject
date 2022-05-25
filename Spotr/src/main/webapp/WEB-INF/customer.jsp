@@ -49,7 +49,7 @@ ACTIVITES & SKILL LEVELS
 	<a href="viewJournal.do"><button>Your Fitness Journal</button></a>
 	</div>
 	</br>
-	
+	<a href="findFacilities.do"><button>Find Fitness Facilities</button></a>
 	<div name="facilities" id="facilities" class="facilities">
 		<table>
 		<thead>
@@ -69,14 +69,16 @@ ACTIVITES & SKILL LEVELS
 		<th>Acitivity</th><th>Goal</th><th></th>
 		</thead>
 		<tbody>
+		<c:if test="${! empty customer.customerActivities }">
 		<c:forEach var="customerActivity" items="${customer.customerActivities}">
 		<!-- FIX MEEEEEEEEEEEEEE -->
-			<tr><td>${customerActivity.activity.name}</td><td>${customerActivity.skillLevel}</td><td><a href="FIXME"><button>Remove Activity</button></a></td></tr>
+			<tr><td>${customerActivity.activity.name}</td><td>${customerActivity.skillLevel}</td>
 		</c:forEach>
+		</c:if>
 		</tbody>
 		</table>
 	</br>
-	<a href="editCustomerActivities.do"><button>Update Fitness Activities</button></a>
+	
 	</div>
 	</br>
 	

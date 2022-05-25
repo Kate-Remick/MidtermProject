@@ -24,8 +24,7 @@
 				class="logo" id="logo" /></a>
 				
 			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="FIXME">Log In</a></span>
-			<span class="button" id="new_account"><a href="FIXME">New User</a></span>
+			<div class="logout"><span class="button" id="logout"><a href="logout.do" id="logout_link">Logout</a></span></div>
 			</div>
 		</section>
 	<section class="main" id="main">
@@ -63,7 +62,7 @@ ACTIVITES & SKILL LEVELS
 	<br>
 	<div name="activities" id="activities" class="activities">
 		<table>
-		<th>Activity</th>
+		<th>Our Facility Provides:</th>
 		<thead>
 		</thead>
 		<tbody>
@@ -73,7 +72,6 @@ ACTIVITES & SKILL LEVELS
 		</tbody>
 		</table>
 	<br>
-	<a href="editActivities.do"><button>Update Company Activity Offerings</button></a>
 	</div>
 	<br>
 

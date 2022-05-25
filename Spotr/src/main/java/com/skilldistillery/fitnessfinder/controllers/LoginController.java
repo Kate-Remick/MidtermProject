@@ -23,7 +23,7 @@ public class LoginController {
 			HttpSession session) {
 		if (session.getAttribute("loggedInUser") == null) {
 			Login login = userDao.findByUsernameAndPassword(username, password);
-			if (login == null) {
+			if (login == null ) {
 				return "home";
 			} else if (login.getRole().getId() == 1) {
 				session.setAttribute("loggedInUser", login);

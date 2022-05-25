@@ -30,11 +30,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(Login user, Customer customer) {
+		System.out.println("******************creating customer");
 		user = em.find(Login.class, user.getId());
 		customer.setLogin(user);
 		em.persist(customer);
 		em.flush();
-		// TODO add cascade type to customer entity
 		return customer;
 	}
 
@@ -101,7 +101,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public Facility addFacility(int customerId, int facilityId) {
 		Facility facility = em.find(Facility.class, facilityId);
 		Customer customer = em.find(Customer.class, customerId);
-		customer.addFacility(facility);
+		List<Facility> facilities = customer.getFacilities();
+		facilities.add(facility);
+		customer.setFacilities(facilities);
 		return facility;
 	}
 
@@ -151,62 +153,82 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public Customer editActivities(int customerId, List<CustomerActivity> activities) {
 		Customer editCustomer = em.find(Customer.class, customerId);
-		if(editCustomer.getCustomerActivities() != null) {
-			editCustomer.getCustomerActivities().removeAll(editCustomer.getCustomerActivities());
+		String sql = "DELETE FROM CustomerActivity ca WHERE ca.customer.id = :id";
+		em.createQuery(sql).setParameter("id", editCustomer.getId()).executeUpdate();
+		em.flush();
+		em.clear();
+		editCustomer = em.find(Customer.class, customerId);
+		List<CustomerActivity> newActivities = new ArrayList<>();
+		for (CustomerActivity ca : activities) {
+			ca.setActivity(em.find(Activity.class, ca.getActivity().getId()));
+			ca.setCustomer(editCustomer);
+			em.persist(ca);
+			newActivities.add(ca);
 		}
-		for (CustomerActivity customerActivity : activities) {
-			customerActivity.setCustomer(editCustomer);
-			em.persist(customerActivity);
-			editCustomer.addCustomerActivity(customerActivity); // POSSIBLY EXTRANEOUS LINE?
-		}
+		System.out.println("************** Setting cas  for customer");
+		editCustomer.setCustomerActivities(newActivities);
 		return editCustomer;
 	}
+	
+
+
 
 	@Override
-	public boolean removeActivities(int customerId, CustomerActivity activity) {
-
-		boolean removed = false;
-		Customer removingCustomer = em.find(Customer.class, customerId);
-		CustomerActivity removeActivity = em.find(CustomerActivity.class, activity.getId());
-		if (removeActivity != null) {
-			removingCustomer.removeCustomerActivity(activity);
-			em.remove(removeActivity);
-			removed = !em.contains(removeActivity);
-		}
-		return removed;
-	}
-
-	@Override
-	public List<Facility> searchFacilityByActivity(Activity activity) {
+	public List<Facility> searchFacilityByActivity(int activityId) {
 		String jpql = "SELECT f FROM Facility f JOIN f.activities a WHERE a.id = :activityId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activity)
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("activityId", activityId)
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
-	public List<Facility> searchFacilityByCategory(Category category) {
-		String jpql = "SELECT f FROM Facility f JOIN Category c JOIN f.activities fa JOIN c.activities ca WHERE fa.id = ca.id AND c.id = :categoryId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", category)
+	public List<Facility> searchFacilityByCategory(int categoryId) {
+		String jpql = "SELECT f FROM Facility f JOIN f.activities fa JOIN fa.categories fac WHERE fac.id = :categoryId";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("categoryId", categoryId)
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
-	public List<Facility> searchFacilityByLocation(Address address) {
-		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 1), '%');
-		String jpql = "SELECT f FROM Facility f WHERE f.address.zip IS LIKE :addressId";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("addressId", partialZip)
+	public List<Facility> searchFacilityByLocation(int addressId) {
+		Address address = em.find(Address.class, addressId);
+//		String partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 1), '%');
+//		partialZip = address.getZip().replace(address.getZip().charAt(address.getZip().length() - 2), '%');
+		String jpql = "SELECT f FROM Facility f WHERE f.address.city = :city";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("city", address.getCity())
 				.getResultList();
 		return facilities;
 	}
 
 	@Override
 	public List<Facility> searchFacilityByPreferences(FacilityPreferences prefs) {
-		String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price <= :prefsPrice";
-		List<Facility> facilities = em.createQuery(jpql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
-				.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
-				.getResultList();
+		List<Facility> facilities = new ArrayList<>();
+		if(prefs.getPriceMax() != null) {
+			if(prefs.isAlwaysOpen() && prefs.isHasTrainers()) {
+				String jpql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :prefsOpen AND f.hasTrainers = :prefsTrainers AND f.price < :prefsPrice";
+				facilities = em.createQuery(jpql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
+						.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+				
+			}else if(prefs.isAlwaysOpen()) {
+				String openql = "SELECT f FROM Facility f WHERE f.alwaysOpen = :openPrefs AND f.price < :prefsPrice ";
+				facilities = em.createQuery(openql, Facility.class).setParameter("prefsOpen", prefs.isAlwaysOpen())
+						.setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+				
+			} else if(prefs.isHasTrainers()) {
+				String trainerql = "SELECT f FROM Facility f WHERE f.hasTrainers = :trainerPrefs";
+				facilities = em.createQuery(trainerql, Facility.class)
+						.setParameter("prefsTrainers", prefs.isHasTrainers()).setParameter("prefsPrice", prefs.getPriceMax())
+						.getResultList();
+			}else {
+				String jpql = "SELECT f FROM Facility f WHERE f.price < :prefsPrice";
+				facilities = em.createQuery(jpql, Facility.class).setParameter("prefsPrice", prefs.getPriceMax()).getResultList();
+			}
+		}else {
+			String jpql = "SELECT f FROM Facility f";
+			facilities = em.createQuery(jpql, Facility.class).getResultList();
+		}
 		return facilities;
 	}
 
@@ -269,6 +291,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return goal;
 	}
 	
-	
+	public List<Facility> getAllFacilites(){
+		String jpql = "SELECT f FROM Facility f";
+		List<Facility> facilities = em.createQuery(jpql, Facility.class).getResultList();
+		return facilities;
+	}
 
+	@Override
+	public boolean customerHasUncompletedGoals(int customerId) {
+		String sql = "SELECT cg FROM Customer c JOIN c.goals cg WHERE cg.completed = false AND c.id = :customerId";
+		List<Goal> incomplete = em.createQuery(sql, Goal.class).setParameter("customerId", customerId).getResultList();
+		return !(incomplete == null || incomplete.size() == 0);
+	}
+
+	@Override
+	public List<Goal> incompleteGoals(int customerId) {
+		String sql = "SELECT cg FROM Customer c JOIN c.goals cg WHERE cg.completed = false AND c.id = :customerId";
+		List<Goal> incomplete = em.createQuery(sql, Goal.class).setParameter("customerId", customerId).getResultList();
+		return incomplete;
+	}
+	
 }
