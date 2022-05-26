@@ -18,15 +18,38 @@
 
 	<div class="banner-wrapper">
 		<section class="header">
-		<div class="logo">
-			<a href="viewCustomer.do"><img class="logo" src="../images/spotr_logo_sm.jpg"
-				class="logo" id="logo" /></a>
-		</div>
+			<div class="logo">
+				<c:if test="${! empty loggedInUser}">
+					<c:if test="${! empty customer }">
+						<a href="viewCustomer.do"><img class="logo"
+							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+					</c:if>
+					<c:if test="${! empty facility }">
+						<a href="viewFacility.do"><img class="logo"
+							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+					</c:if>
+				</c:if>
+				<c:if test="${empty loggedInUser }">
+						<a href="home.do"><img class="logo"
+							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+				</c:if>
+			</div>
 
-		<div class="tagline">
-			<h1 class="tagline">Local Fitness Finder</h1>
-			<span class="buttons"><a href="customer.do" class="banner">User Page</a><a href="logout.do" class="banner">Logout</a></span>
-		</div>
+			<div class="tagline">
+				<h1 class="tagline">Local Fitness Finder</h1>
+				<c:if test="${! empty loggedInUser}">
+					<c:if test="${! empty customer }">
+						<span class="buttons"><a href="viewCustomer.do" class="banner">Home Page</a><a href="logout.do" class="banner">Logout</a></span>
+					</c:if>
+					<c:if test="${! empty facility }">
+						<span class="buttons"><a href="viewFacility.do" class="banner">Home Page</a><a href="logout.do" class="banner">Logout</a></span>
+					</c:if>
+				</c:if>
+				<c:if test="${empty loggedInUser }">
+						<span class="buttons"><a href="home.do" class="banner">Login
+						Page</a></span>
+				</c:if>
+			</div>
 		</section>
 	</div>
 

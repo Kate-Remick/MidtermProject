@@ -26,6 +26,8 @@ public class FacilityController {
 
 	@RequestMapping(path = "viewFacility.do", method = RequestMethod.GET)
 	public String viewFacility(HttpSession session) {
+		Facility facility = (Facility)session.getAttribute("facility");
+		session.setAttribute("facility", facility);
 		return "viewFacility";
 	}
 
