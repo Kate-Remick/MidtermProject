@@ -53,7 +53,7 @@ class FacilityTest {
 	void test2() {
 		assertNotNull(facility);
 		assertNotNull(facility.getAddress());
-		assertEquals("100 Elm", facility.getAddress().getStreetAddress1());
+		assertEquals("100 Elm St", facility.getAddress().getStreetAddress1());
 	}
 	@Test
 	@DisplayName("Testing customer mapping")
