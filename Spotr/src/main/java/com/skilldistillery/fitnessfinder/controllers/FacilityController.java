@@ -35,7 +35,6 @@ public class FacilityController {
 	@RequestMapping(path="createFacility.do", method = RequestMethod.POST)
 	public ModelAndView createFacility(Facility facility, Address address, HttpSession session, @RequestParam ("activityarray")String... activities) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("===============TESTING CONTROLLER==================" + session.getAttribute("loggedInUser"));
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
 		if (activities != null && activities.length > 0) {
