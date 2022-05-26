@@ -79,13 +79,21 @@ public class CustomerController {
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.POST)
 	public ModelAndView editCustomer(Customer customer, String dob, Address address, Gender gender,
-			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activities, @RequestParam("skillLevels") int[] skillLevels ) {
+			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activities, @RequestParam("skillLevels") Integer[] skillLevels ) {
 		ModelAndView mav = new ModelAndView();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		customer.setBirthDate(LocalDate.parse(dob, formatter));
 		customer.setAddress(address);
 		customer.setGender(gender);
-		
+		Integer[] usableSkillLevels = new Integer[activities.length];
+		int skillCount = 0;
+		for (Integer skill : skillLevels) {
+			System.out.println(skill);
+			if( skill != null) {
+				usableSkillLevels[skillCount] = skill;
+				skillCount ++;
+			}
+		}
 		List<CustomerActivity> newActivities = new ArrayList<>();
 		if (activities != null && activities.length > 0) {
 			for (int i = 0; i < activities.length; i++) {
