@@ -65,6 +65,7 @@
 						<th>Price</th>
 						<th>Always Open</th>
 						<th>Address</th>
+						<th>View Facility</th>
 						<th>Add Facility</th>
 					</tr>
 					<c:if test="${! empty facilities }">
@@ -75,6 +76,8 @@
 								<th><c:if test="${facility.alwaysOpen }">Yes</c:if> <c:if
 										test="${!facility.alwaysOpen }">No</c:if></th>
 								<th>${facility.address}</th>
+								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button>View
+											Facility Info</button></a></th>
 								<th><a href="addFacilities.do?facilityId=${facility.id}"><button>Add
 											Facility</button></a></th>
 							</tr>
@@ -88,6 +91,8 @@
 								<th><c:if test="${facility.alwaysOpen }">Yes</c:if> <c:if
 										test="${!facility.alwaysOpen }">No</c:if></th>
 								<th>${facility.address}</th>
+								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button>View
+											Facility Info</button></a></th>
 								<th><a href="addFacilities.do?facilityId=${facility.id}"><button>Add
 											Facility</button></a></th>
 							</tr>

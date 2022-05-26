@@ -29,7 +29,7 @@ public class CustomerFacilityController {
 		Customer customer = (Customer)session.getAttribute("customer");
 		List<Facility> preferredFacilities = customerDao.searchFacilityByPreferences(customer.getFacilityPreferences());
 		System.out.println("**************************88" +preferredFacilities);
-		mav.addObject("preferredFacilities", preferredFacilities);
+		session.setAttribute("facilities", preferredFacilities);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
 		mav.setViewName("findFacilities");
@@ -37,34 +37,34 @@ public class CustomerFacilityController {
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "category", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category) {
+	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "address", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address) {
+	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "activity", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") int activity) {
+	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") int activity, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByActivity(activity);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
@@ -78,22 +78,33 @@ public class CustomerFacilityController {
 		customer = customerDao.findCustomerById(customer.getId());
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
+		session.setAttribute("facilities", customerDao.searchFacilityByPreferences(customer.getFacilityPreferences()));
 		mav.addObject("addedMessage",
 				"The following facility has been added to your facilities list" + facility.getName());
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
-	@RequestMapping(path = "removeFacilities.do", method = RequestMethod.POST)
-	public ModelAndView removeFacilities(@RequestParam("customer") Customer customer,
-			@RequestParam("facility") Facility facility) {
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(path = "removeFacilities.do", method = RequestMethod.GET)
+	public ModelAndView removeFacilities(@RequestParam("facilityId") int facilityId, HttpSession session) {
+		Customer customer = (Customer)session.getAttribute("customer");
+		Facility facility = customerDao.findFacilityById(facilityId);
+		ModelAndView mav =  new ModelAndView();
 		boolean removed = customerDao.removeFacility(customer.getId(), facility);
 		if (removed) {
 			mav.addObject("removed", "Removal successful");
 		}
-		mav.setViewName("customer");
+		customer = customerDao.findCustomerById(customer.getId());
+		session.setAttribute("customer", customer);
+		mav.setViewName("redirect:viewCustomer.do");
 		return mav;
+	}
+	@RequestMapping(path="customerViewFacility.do", method = RequestMethod.GET)
+	public ModelAndView customerViewFacility(HttpSession session, @RequestParam("facilityId") int facilityId){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cFacility", customerDao.findFacilityById(facilityId));
+		mv.setViewName("customerFacilityView");
+		return mv;
 	}
 
 }

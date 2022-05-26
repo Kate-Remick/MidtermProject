@@ -102,7 +102,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Facility facility = em.find(Facility.class, facilityId);
 		Customer customer = em.find(Customer.class, customerId);
 		List<Facility> facilities = customer.getFacilities();
-		facilities.add(facility);
+		if(!facilities.contains(facility)) {
+			facilities.add(facility);
+		}
 		customer.setFacilities(facilities);
 		return facility;
 	}
@@ -113,7 +115,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Facility removeFacility = em.find(Facility.class, facility.getId());
 		Customer customer = em.find(Customer.class, customerId);
 		if (removeFacility != null) {
-			customer.removeFacility(removeFacility);
+//			customer.removeFacility(removeFacility);
+			List<Facility> facilities = customer.getFacilities();
+			facilities.remove(facilities.indexOf(removeFacility));
+			customer.setFacilities(facilities);
 		}
 		removed = !customer.getFacilities().contains(removeFacility);
 		return removed;
@@ -167,6 +172,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		System.out.println("************** Setting cas  for customer");
 		editCustomer.setCustomerActivities(newActivities);
+		em.find(Customer.class, editCustomer.getId());
 		return editCustomer;
 	}
 	
@@ -271,6 +277,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public Customer findCustomerById(int id) {
 		Customer customer = em.find(Customer.class, id);
+		customer.getCustomerActivities();
+		customer.getLogs();
+		customer.getGoals();
+		customer.getFacilities();
 		return customer;
 	}
 
