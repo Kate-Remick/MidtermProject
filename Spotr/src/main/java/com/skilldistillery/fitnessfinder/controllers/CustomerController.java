@@ -30,8 +30,8 @@ public class CustomerController {
 
 	@RequestMapping(path = "createCustomer.do", method = RequestMethod.POST)
 	public ModelAndView createCustomer(Customer customer, String dob, Address address, Gender gender,
-			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activityId,
-			@RequestParam("skillLevel") Integer[] skillLevels) {
+			FacilityPreferences prefs, HttpSession session,@RequestParam("skillLevel") Integer[] skillLevels ,
+			@RequestParam("activities") String... activityId) {
 		ModelAndView mav = new ModelAndView();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		customer.setBirthDate(LocalDate.parse(dob, formatter));
@@ -79,7 +79,7 @@ public class CustomerController {
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.POST)
 	public ModelAndView editCustomer(Customer customer, String dob, Address address, Gender gender,
-			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activities, @RequestParam("skillLevels") Integer[] skillLevels ) {
+			FacilityPreferences prefs, HttpSession session, @RequestParam("skillLevels") Integer[] skillLevels, @RequestParam("activities") String... activities) {
 		ModelAndView mav = new ModelAndView();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		customer.setBirthDate(LocalDate.parse(dob, formatter));
@@ -99,7 +99,7 @@ public class CustomerController {
 			for (int i = 0; i < activities.length; i++) {
 				CustomerActivity ca = new CustomerActivity();
 				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activities[i])));
-				ca.setSkillLevel(skillLevels[i]);
+				ca.setSkillLevel(usableSkillLevels[i]);
 				ca.setCustomer((Customer)session.getAttribute("customer"));
 				newActivities.add(ca);
 			}
