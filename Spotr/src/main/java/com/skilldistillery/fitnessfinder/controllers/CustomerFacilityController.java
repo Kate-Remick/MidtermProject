@@ -80,7 +80,7 @@ public class CustomerFacilityController {
 		mav.addObject("categories", customerDao.getAllCategories());
 		session.setAttribute("facilities", customerDao.searchFacilityByPreferences(customer.getFacilityPreferences()));
 		mav.addObject("addedMessage",
-				"The following facility has been added to your facilities list" + facility.getName());
+				"The following facility has been added to your facilities list: " + facility.getName());
 		mav.setViewName("findFacilities");
 		return mav;
 	}

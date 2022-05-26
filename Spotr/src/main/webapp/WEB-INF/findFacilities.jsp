@@ -26,13 +26,12 @@
 		
 		
 		<div class="facilities">
-			<h3>${addedMessage }</h3>
+			<h3 id="addedFacility">${addedMessage }</h3>
 			<div id="findBy">
-				<h3>Facilities matching your search</h3>
-				<label>Search by method:</label>
+				<label id="findFacilityText">Search by method:</label>
 
 				<form action="findFacilities.do" method="post">
-					<label for="category">Category</label><select name="category">
+					<label id="findFacilityText" for="category">Category</label><select name="category">
 						<c:forEach var="category" items="${categories}">
 							<option value="${category.id }">${category.title}</option>
 						</c:forEach>
@@ -41,7 +40,7 @@
 				</form>
 
 				<form action="findFacilities.do" method="post">
-					<label for="activity">Activity</label><select name="activity">
+					<label id="findFacilityText" for="activity">Activity</label><select name="activity">
 						<c:forEach var="activity" items="${activities}">
 							<option value="${activity.id }">${activity.name}</option>
 						</c:forEach>
@@ -50,7 +49,7 @@
 				</form>
 
 				<form action="findFacilities.do" method="post">
-					<label>Find facilities near me</label> <input type="hidden"
+					<label id="findFacilityText">Find facilities near me</label> <input type="hidden"
 						name="address" value="${customer.address.id}" />
 					<button type="submit">Find by location</button>
 				</form>
