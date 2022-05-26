@@ -9,6 +9,7 @@ body {
 	height: 100%;
 }
 
+/*
 div#customer {
 /*  display: inline-block;
   vertical-align: middle; */
@@ -47,6 +48,7 @@ div#activities {
   background-color: gray;
   padding: 5px;
 }
+*/
 
 .customer_labels {
 	text-align: right;

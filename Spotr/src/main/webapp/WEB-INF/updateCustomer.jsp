@@ -14,6 +14,7 @@
 <!-- ADD CSS FILES INTO THE PROJECT -->
 <link rel="stylesheet" href="../css/updateFacility.css">
 <link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="../css/updateCustomer.css">
 
 
 </head>
@@ -36,7 +37,7 @@
 				</div>
 			</div>
 			<br> <br>
-			<div class="legend col-sm-4 offset-4">New Customer Information:</div>
+			<div class="legend col-sm-4 offset-4">Update Customer Information:</div>
 			<form action="editCustomerInfo.do" method="POST"
 				name="new_customer_form" class="new_customer_form col-sm-6 offset-3"
 				id="new_customer_form">

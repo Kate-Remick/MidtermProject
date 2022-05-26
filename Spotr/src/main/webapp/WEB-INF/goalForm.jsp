@@ -14,6 +14,7 @@
 <!-- ADD CSS FILES INTO THE PROJECT -->
 <link rel="stylesheet" href="../css/updateFacility.css">
 <link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="../css/goalForm.css">
 
 </head>
 
