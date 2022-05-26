@@ -78,6 +78,7 @@ public class CustomerFacilityController {
 		customer = customerDao.findCustomerById(customer.getId());
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
+		session.setAttribute("facilities", customerDao.searchFacilityByPreferences(customer.getFacilityPreferences()));
 		mav.addObject("addedMessage",
 				"The following facility has been added to your facilities list" + facility.getName());
 		mav.setViewName("findFacilities");
@@ -97,6 +98,13 @@ public class CustomerFacilityController {
 		session.setAttribute("customer", customer);
 		mav.setViewName("redirect:viewCustomer.do");
 		return mav;
+	}
+	@RequestMapping(path="customerViewFacility.do", method = RequestMethod.GET)
+	public ModelAndView customerViewFacility(HttpSession session, @RequestParam("facilityId") int facilityId){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cFacility", customerDao.findFacilityById(facilityId));
+		mv.setViewName("customerFacilityView");
+		return mv;
 	}
 
 }

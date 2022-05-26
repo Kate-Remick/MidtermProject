@@ -64,6 +64,9 @@
 						<div class="col">${facility.name}</div>
 						<div class="col">${facility.address}</div>
 						<div class="col">
+							<a href="customerViewFacility.do?facilityId=${facility.id}"><button>View Facility</button></a>
+						</div>
+						<div class="col">
 							<a href="removeFacilities.do?facilityId=${facility.id}"><button>Remove
 									Facility</button></a>
 						</div>
