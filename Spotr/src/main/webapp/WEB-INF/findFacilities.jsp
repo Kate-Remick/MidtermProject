@@ -37,7 +37,7 @@
 							<option value="${category.id }">${category.title}</option>
 						</c:forEach>
 					</select>
-					<button type="submit">Find by category</button>
+					<button type="submit" class="btn btn-primary">Find by category</button>
 				</form>
 
 				<form action="findFacilities.do" method="post">
@@ -46,13 +46,13 @@
 							<option value="${activity.id }">${activity.name}</option>
 						</c:forEach>
 					</select>
-					<button type="submit">Find by activity</button>
+					<button type="submit" class="btn btn-primary">Find by activity</button>
 				</form>
 
 				<form action="findFacilities.do" method="post">
 					<label id="findFacilityText">Find facilities near me</label> <input type="hidden"
 						name="address" value="${customer.address.id}" />
-					<button type="submit">Find by location</button>
+					<button type="submit" class="btn btn-primary">Find by location</button>
 				</form>
 			</div>
 			
@@ -76,9 +76,9 @@
 								<th><c:if test="${facility.alwaysOpen }">Yes</c:if> <c:if
 										test="${!facility.alwaysOpen }">No</c:if></th>
 								<th>${facility.address}</th>
-								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button>View
+								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button	class="btn btn-primary">View
 											Facility Info</button></a></th>
-								<th><a href="addFacilities.do?facilityId=${facility.id}"><button>Add
+								<th><a href="addFacilities.do?facilityId=${facility.id}"><button	class="btn btn-primary">Add
 											Facility</button></a></th>
 							</tr>
 						</c:forEach>
@@ -91,9 +91,9 @@
 								<th><c:if test="${facility.alwaysOpen }">Yes</c:if> <c:if
 										test="${!facility.alwaysOpen }">No</c:if></th>
 								<th>${facility.address}</th>
-								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button>View
+								<th><a href="customerViewFacility.do?facilityId=${facility.id}"><button	class="btn btn-primary">View
 											Facility Info</button></a></th>
-								<th><a href="addFacilities.do?facilityId=${facility.id}"><button>Add
+								<th><a href="addFacilities.do?facilityId=${facility.id}"><button	class="btn btn-primary">Add
 											Facility</button></a></th>
 							</tr>
 						</c:forEach>

@@ -96,8 +96,7 @@
 					<br>
 					<br>
 				</div>
-				<a href="editFacility.do" class="col-sm-6 offset-3"><button
-						class="btn btn-primary">Update Company Profile</button></a> <br>
+				<a href="editFacility.do" class="col-sm-6 offset-3"><button	class="btn btn-primary">Update Company Profile</button></a> <br>
 			</div>
 			<br> <br> <br>
 			<div id="facilities" class="facilities">
