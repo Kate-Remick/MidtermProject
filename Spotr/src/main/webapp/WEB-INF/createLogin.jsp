@@ -23,21 +23,29 @@
 		</div>
 		
 		<br> <br> <br>
-		<div class="col-sm-6 offset-3">
-			<form action="create.do" method="post" class="form-control">
-				 <br> <input type="text" !important hidden
-					name="active" id="active" value="1" /> <span class="label">
-					<label for="username">Enter your user name:</label>
+		<div class="col-sm-4 offset-4">
+			<form action="create.do" method="post" class="form form-alignment">
+				 <br>  <span class="label"> 
+					 <div class="row field-body">
+					<div class="col">
+				 <label for="username">Enter your user name:</label>
+				 </div>
+				 </div>
 				</span><input type="text" class="form-control" name="username"
-					id="username" /><br> <label for="password">Enter your
-					password:</label><input type="password" class="form-control"
+					id="username" /><br> 
+					<div class="row field-body">
+					<div class="col">
+					<label for="password">Enter your password:</label>
+					</div>
+					</div>
+					<input type="password" class="form-control"
 					name="password" id="password" /><br> <span class="label"><label
 					for="userType">What user type are you:</label></span> <select
 					name="roleId" id="userType">
 					<option value="1">New Customer</option>
 					<option value="2">New Facility</option>
 				</select> <br> <br>
-				<button type="submit" class="form-control">Create New User</button>
+				<button type="submit" class="btn btn-primary col-sm-6 offset-3">Create New User</button>
 
 			</form>
 		</div>
