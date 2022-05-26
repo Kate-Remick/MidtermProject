@@ -75,7 +75,25 @@
 			</div>
 			<a href="findFacilities.do"><button class="btn btn-primary">Find Fitness
 					Facilities</button></a> <br>
-
+			
+			<br>
+				<c:if test="${! empty customer.bio }">
+					<div id="customer" class="customer">
+						<div class="field-body">
+							<table class="form-alignment">
+								<th>Personal Bio:</th>
+								<thead>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${customer.bio}</td>
+									</tr>
+								</tbody>
+							</table>
+							<br> <br>
+						</div>
+						</c:if>
+						<br>
 
 			<div id="activities-section" class="field-body">
 				<div class="row">
@@ -86,6 +104,7 @@
 						<strong>Skill Level</strong>
 					</div>
 				</div>
+				
 				<c:if test="${! empty customer.customerActivities }">
 					<c:forEach var="customerActivity"
 						items="${customer.customerActivities}">

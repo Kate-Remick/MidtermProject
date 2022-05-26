@@ -27,13 +27,12 @@ div#customer {
 div#facilities {
   display: inline-block;
   vertical-align: middle;
-  opacity: 0.75; 
   width: auto;
   height: auto;
   text-align: left;
   border: 3px solid #000000;
   border-radius: 10px;
-  background-color: #479ef7;
+  background-color: rgba(71, 158, 247, .75);
   padding: 5px;
 }
 
@@ -128,3 +127,9 @@ form {
 	font-style: bold;
 }
 
+#addedFacility{
+	text-align: center;
+	background: rgba(192, 217, 236, 1);
+	border-radius: 10px;
+	
+}

@@ -41,8 +41,8 @@
 									New Journal Entry</button></a>
 						</c:if>
 					</div>
-					<div class="col-sm-6"></div>
-					<div class="col-sm-2">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-3">
 						<a href="addGoal.do"><button class="btn btn-primary ">Set
 								New Goal</button></a>
 					</div>
