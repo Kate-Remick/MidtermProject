@@ -99,7 +99,7 @@ public class CustomerController {
 			for (int i = 0; i < activities.length; i++) {
 				CustomerActivity ca = new CustomerActivity();
 				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activities[i])));
-				ca.setSkillLevel(skillLevels[i]);
+				ca.setSkillLevel(usableSkillLevels[i]);
 				ca.setCustomer((Customer)session.getAttribute("customer"));
 				newActivities.add(ca);
 			}
