@@ -26,7 +26,7 @@
 
 		<div class="col-sm-6 offset-3">
 
-			<div id="customer" class="field-body">
+			<div id="customer-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Username:</strong>
@@ -50,7 +50,7 @@
 					Profile</button></a> <a href="viewJournal.do"><button class="btn btn-primary">Your Fitness
 					Journal</button></a> <br>
 
-			<div id="facilities" class="field-body">
+			<div id="facilities-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Fitness Firm</strong>
@@ -77,7 +77,7 @@
 					Facilities</button></a> <br>
 
 
-			<div id="activities" class="field-body">
+			<div id="activities-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Activity</strong>

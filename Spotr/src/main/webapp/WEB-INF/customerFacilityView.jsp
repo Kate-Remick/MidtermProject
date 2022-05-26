@@ -44,7 +44,12 @@
 		</table>
 		<br><br>
 		</div>
-	<a href="addFacilities.do?facilityId=${cFacility.id }" class="col-sm-6 offset-3"><button>Add Facility</button></a>
+		<c:if test="${!customer.facilities.contains(cFacility) }">
+		<a href="addFacilities.do?facilityId=${cFacility.id }" class="col-sm-6 offset-3"><button>Add Facility</button></a>
+		</c:if>
+		<c:if test="${customer.facilities.contains(cFacility) }">
+		<a href="removeFacilities.do?facilityId=${cFacility.id }" class="col-sm-6 offset-3"><button>Remove Facility</button></a>
+		</c:if>
 	<br>
 	</div>
 	<br>
