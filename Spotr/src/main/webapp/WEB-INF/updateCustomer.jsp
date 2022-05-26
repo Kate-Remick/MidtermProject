@@ -22,18 +22,8 @@
 
 	<main class="container-fluid">
 
-		<div class="container-fluid">
-			<section class="header" id="header">
-				<div class="banner" id="banner">
-					<a href="/"><img src="images/spotr_logo.png" class="logo"
-						id="logo" /></a> <span class="tagline" id="tagline">Local
-						Fitness Finder</span>
-					<div class="logout">
-						<span class="button" id="logout"><a href="logout.do"
-							id="logout_link">Logout</a></span>
-					</div>
-				</div>
-			</section>
+		<div class="banner-insert">
+			<jsp:include page="banner.jsp"></jsp:include>
 		</div>
 
 
