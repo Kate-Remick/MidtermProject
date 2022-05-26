@@ -84,15 +84,18 @@ public class CustomerFacilityController {
 		return mav;
 	}
 
-	@RequestMapping(path = "removeFacilities.do", method = RequestMethod.POST)
-	public ModelAndView removeFacilities(@RequestParam("customer") Customer customer,
-			@RequestParam("facility") Facility facility) {
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(path = "removeFacilities.do", method = RequestMethod.GET)
+	public ModelAndView removeFacilities(@RequestParam("facilityId") int facilityId, HttpSession session) {
+		Customer customer = (Customer)session.getAttribute("customer");
+		Facility facility = customerDao.findFacilityById(facilityId);
+		ModelAndView mav =  new ModelAndView();
 		boolean removed = customerDao.removeFacility(customer.getId(), facility);
 		if (removed) {
 			mav.addObject("removed", "Removal successful");
 		}
-		mav.setViewName("customer");
+		customer = customerDao.findCustomerById(customer.getId());
+		session.setAttribute("customer", customer);
+		mav.setViewName("redirect:viewCustomer.do");
 		return mav;
 	}
 

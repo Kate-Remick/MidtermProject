@@ -88,7 +88,15 @@
 						items="${customer.customerActivities}">
 						<div class="row">
 							<div class="col">${customerActivity.activity.name}</div>
-							<div class="col">${customerActivity.skillLevel}</div>
+							<div class="col">
+							<c:choose>
+								<c:when test="${customerActivity.skillLevel ==1 }">Beginner</c:when>
+								<c:when test="${customerActivity.skillLevel ==2 }">Intermediate</c:when>
+								<c:when test="${customerActivity.skillLevel ==3 }">Advanced</c:when>
+							
+							</c:choose>
+							
+							</div>
 						</div>
 					</c:forEach>
 				</c:if>

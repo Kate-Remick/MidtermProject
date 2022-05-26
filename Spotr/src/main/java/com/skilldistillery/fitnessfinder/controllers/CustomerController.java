@@ -52,11 +52,10 @@ public class CustomerController {
 				customerActivities.add(ca);
 			}
 		}
-		System.out.println("*******************88 entering edit activities");
 		customer = customerDao.editActivities(customer.getId(), customerActivities);
-		
+		customer = customerDao.findCustomerById(customer.getId());
 		session.setAttribute("customer", customer);
-		mav.setViewName("customer");
+		mav.setViewName("redirect:viewCustomer.do");
 		return mav;
 	}
 	
