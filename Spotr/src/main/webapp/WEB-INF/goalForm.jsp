@@ -22,19 +22,10 @@
 
 	<main class="container-fluid">
 
-		<div class="container-fluid">
-			<section class="header" id="header">
-				<div class="banner" id="banner">
-					<a href="/"><img src="images/spotr_logo.png" class="logo"
-						id="logo" /></a> <span class="tagline" id="tagline">Local
-						Fitness Finder</span>
-					<div class="logout">
-						<span class="button" id="logout"><a href="logout.do"
-							id="logout_link">Logout</a></span>
-					</div>
-				</div>
-			</section>
+		<div class="banner-insert">
+			<jsp:include page="banner.jsp"></jsp:include>
 		</div>
+		
 		<br>
 		<br>
 		<div class="row col-sm-6 offset-3">
@@ -49,7 +40,7 @@
 						goal, and what motivates you? </label><input type="text"
 						class="form-control" name="description" /><br><br>
 				</div><br><br>
-				<button class="col-sm-3 offset-4" type="submit">Set New
+				<button class="btn btn-primary col-sm-3 offset-4" type="submit">Set New
 					Goal</button>
 			</div>
 		</form>
