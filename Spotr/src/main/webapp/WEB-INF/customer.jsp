@@ -26,7 +26,7 @@
 
 		<div class="col-sm-6 offset-3">
 
-			<div id="customer" class="field-body">
+			<div id="customer-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Username:</strong>
@@ -46,11 +46,11 @@
 					<div class="col">${customer.lastName}</div>
 				</div>
 			</div>
-			<a href="editCustomerInfo.do"><button>Update Personal
-					Profile</button></a> <a href="viewJournal.do"><button>Your Fitness
+			<a href="editCustomerInfo.do"><button class="btn btn-primary">Update Personal
+					Profile</button></a> <a href="viewJournal.do"><button class="btn btn-primary">Your Fitness
 					Journal</button></a> <br>
 
-			<div id="facilities" class="field-body">
+			<div id="facilities-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Fitness Firm</strong>
@@ -64,20 +64,20 @@
 						<div class="col">${facility.name}</div>
 						<div class="col">${facility.address}</div>
 						<div class="col">
-							<a href="customerViewFacility.do?facilityId=${facility.id}"><button>View Facility</button></a>
+							<a href="customerViewFacility.do?facilityId=${facility.id}"><button class="btn btn-primary">View Facility</button></a>
 						</div>
 						<div class="col">
-							<a href="removeFacilities.do?facilityId=${facility.id}"><button>Remove
+							<a href="removeFacilities.do?facilityId=${facility.id}"><button class="btn btn-primary">Remove
 									Facility</button></a>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<a href="findFacilities.do"><button>Find Fitness
+			<a href="findFacilities.do"><button class="btn btn-primary">Find Fitness
 					Facilities</button></a> <br>
 
 
-			<div id="activities" class="field-body">
+			<div id="activities-section" class="field-body">
 				<div class="row">
 					<div class="col">
 						<strong>Activity</strong>
