@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="../css/facility.css">
 
 </head>
 <body>

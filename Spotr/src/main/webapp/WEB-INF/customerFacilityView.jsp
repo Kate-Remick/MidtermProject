@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="../css/templateCopy.css">
+<link rel="stylesheet" href="../css/customerFacilityView.css">
 
 </head>
 <body>
