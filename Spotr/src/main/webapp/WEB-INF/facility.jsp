@@ -11,39 +11,25 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/facility.css">
+
+
+<link rel="stylesheet" href="../css/template.css">
 
 </head>
 <body>
 
 <main class="container-fluid">
 
-		<section class="header" id="header">
-			<div class="banner" id="banner">
-			<a href="/"><img src="images/spotr_logo.png"
-				class="logo" id="logo" /></a>
-				
-			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<div class="logout"><span class="button" id="logout"><a href="logout.do" id="logout_link">Logout</a></span></div>
-			</div>
-		</section>
-	<section class="main" id="main">
+<div class="banner-insert">
+			<jsp:include page="banner.jsp"></jsp:include>
+		</div>
 
-<h1>${DEBUG}</h1>
-</br>
-</br>
-</br>
-
-<!-- 
-FACILITIES
-USERNAME
-FIRST NAME
-LAST NAME
-JOURNAL LINKS
-GOALS
-ACTIVITES & SKILL LEVELS
--->
-	<div name="facility" id="facility" class="facility">
+<br>
+<br>
+<br>
+<div class="row col-sm-6 offset-3">
+	<div  id="facilities" class="facilities">
+		<div class="field-body">
 		<table>
 		<tr><td class="facility_labels">Company:</td><td class="facility_data">${facility.name}</td></tr>
 		<tr><td class="facility_labels">Franchiser:</td><td class="facility_data">${facility.brand}</td></tr>
@@ -56,12 +42,17 @@ ACTIVITES & SKILL LEVELS
 		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">${facility.alwaysOpen}</td></tr>
 		<tr><td class="facility_labels">Price:</td><td class="facility_data">$${facility.price}</td></tr>
 		</table>
+		<br><br>
+		</div>
+	<a href="editFacility.do" class="col-sm-6 offset-3"><button>Update Company Profile</button></a>
 	<br>
-	<a href="editFacility.do"><button>Update Company Profile</button></a>
 	</div>
 	<br>
-	<div name="activities" id="activities" class="activities">
-		<table>
+	<br>
+	<br>
+	<div  id="facilities" class="facilities" >
+	<div class="field-body">
+		<table class="form-alignment">
 		<th>Our Facility Provides:</th>
 		<thead>
 		</thead>
@@ -71,11 +62,15 @@ ACTIVITES & SKILL LEVELS
 			</c:forEach>
 		</tbody>
 		</table>
-	<br>
+	<br><br>
+	</div>
+	</div>
 	</div>
 	<br>
 
-</section>
+
+
+
 </main>
 
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
