@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body {
+	margin-top: 100px;
+	background-image: 
+		url(../images/most-muscular-ronnie-coleman.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+
+form.login_form {
+/*  display: inline-block; */
+  position: relative;
+  border: 3px solid rgba(0,160,254,0);
+ 	border-radius: 10px;
+  background: rgba(192, 217, 236, 0.6);
+  width: 200px;
+  margin:auto;
+  padding: 5px;
+ 	text-align: left;
+  box-sizing: border-box;	
+  top: 30px;
+}
+
+div#inputs {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: 100%;
+  text-align: center;
+}
+
+#new_account{
+	text-decoration: underline;
+	color: black;
+	background-color: rgba(71, 158, 247,1);
+	text-transform: bold;
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.formLabels {
+	width: 20%;
+	text-align: right;
+}
+
+.inline {
+	display: inline;
+}
