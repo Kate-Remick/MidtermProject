@@ -11,8 +11,8 @@ body {
 
 /*
 div#customer {
-/*  display: inline-block;
-  vertical-align: middle; */
+**	display: inline-block;
+  vertical-align: middle; **
   margin:auto;
   width: auto;
   height: auto;
@@ -21,7 +21,7 @@ div#customer {
   border-radius: 10px;
   background-color: gray;
   padding: 5px;
-}
+} */
 
 div#facilities {
 /*  display: inline-block;

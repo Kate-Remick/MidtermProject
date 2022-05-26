@@ -43,6 +43,7 @@
 		<tr><td class="facility_labels">Site open 24 hours:</td><td class="facility_data">${facility.alwaysOpen}</td></tr>
 		<tr><td class="facility_labels">Price:</td><td class="facility_data">$${facility.price}</td></tr>
 		</table>
+		
 		<br><br>
 		</div>
 	<a href="editFacility.do" class="col-sm-6 offset-3"><button class="btn btn-primary">Update Company Profile</button></a>
