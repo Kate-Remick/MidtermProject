@@ -11,7 +11,7 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/customer.css">
+<link rel="stylesheet" href="css/customer.css">
 
 </head>
 <body>

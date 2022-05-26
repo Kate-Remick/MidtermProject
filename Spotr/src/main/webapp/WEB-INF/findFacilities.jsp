@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>Facility Search</title>
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
-<link rel="stylesheet" href="../css/updateFacility.css">
-<link rel="stylesheet" href="../css/template.css">
-<link rel="stylesheet" href="../css/findFacilities.css">
+<link rel="stylesheet" href="css/updateFacility.css">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="css/findFacilities.css">
 
 </head>
 <body>

@@ -45,6 +45,7 @@ public class FacilityDAOImpl implements FacilityDAO {
 			editFacility.setPrice(newFacility.getPrice());
 			editFacility.setActivities(newFacility.getActivities());
 			editFacility.setAddress(newFacility.getAddress());
+			editFacility.setMissionStatement(newFacility.getMissionStatement());
 			em.flush();
 		}
 		return editFacility;

@@ -8,7 +8,7 @@
 <title>New Journal Entry</title>
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 
-<link rel="stylesheet" href="../css/journal.css">
+<link rel="stylesheet" href="css/journal.css">
 
 </head>
 <body>

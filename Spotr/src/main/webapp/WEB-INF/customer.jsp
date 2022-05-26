@@ -11,7 +11,7 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="css/template.css">
 
 </head>
 <body>
@@ -70,6 +70,7 @@
 							<a href="removeFacilities.do?facilityId=${facility.id}"><button class="btn btn-primary">Remove
 									Facility</button></a>
 						</div>
+						
 					</div>
 				</c:forEach>
 			</div>

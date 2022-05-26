@@ -10,7 +10,7 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/banner.css">
+<link rel="stylesheet" href="css/banner.css">
 
 </head>
 
@@ -22,16 +22,16 @@
 				<c:if test="${! empty loggedInUser}">
 					<c:if test="${! empty customer }">
 						<a href="viewCustomer.do"><img class="logo"
-							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+							src="images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
 					</c:if>
 					<c:if test="${! empty facility }">
 						<a href="viewFacility.do"><img class="logo"
-							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+							src="images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
 					</c:if>
 				</c:if>
 				<c:if test="${empty loggedInUser }">
 						<a href="home.do"><img class="logo"
-							src="../images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
+							src="images/spotr_logo_sm.jpg" class="logo" id="logo" /></a>
 				</c:if>
 			</div>
 

@@ -13,8 +13,8 @@
 <!-- ADD CSS FILES INTO THE PROJECT -->
 
 
-<link rel="stylesheet" href="../css/template.css">
-<link rel="stylesheet" href="../css/facility.css">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="css/facility.css">
 
 </head>
 <body>
@@ -72,10 +72,16 @@
 						</tr>
 					</table>
 					<br>
-					<c:if test="${! empty facility.missionStatement}">
-						<div id="mission-statement" class="field-body">
+					
+
+
+					<br>
+					<br>
+				</div>
+				<c:if test="${! empty facility.missionStatement}">
+						
 							<div class="field-body">
-								<table class="form-alignment">
+								<table >
 									<thead>
 										<tr>
 											<th>Mission Statement:</th>
@@ -89,13 +95,8 @@
 								</table>
 								<br> <br>
 							</div>
-						</div>
+						
 					</c:if>
-
-
-					<br>
-					<br>
-				</div>
 				<a href="editFacility.do" class="col-sm-6 offset-3"><button	class="btn btn-primary">Update Company Profile</button></a> <br>
 			</div>
 			<br> <br> <br>

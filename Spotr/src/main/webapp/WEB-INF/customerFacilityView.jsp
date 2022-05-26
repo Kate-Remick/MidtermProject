@@ -13,8 +13,8 @@
 <!-- ADD CSS FILES INTO THE PROJECT -->
 
 
-<link rel="stylesheet" href="../css/templateCopy.css">
-<link rel="stylesheet" href="../css/customerFacilityView.css">
+<link rel="stylesheet" href="css/templateCopy.css">
+<link rel="stylesheet" href="css/customerFacilityView.css">
 
 </head>
 <body>

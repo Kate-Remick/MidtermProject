@@ -11,8 +11,8 @@
 
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 
-<link rel="stylesheet" href="../css/updateFacility.css">
-<link rel="stylesheet" href="../css/template.css">
+<link rel="stylesheet" href="css/updateFacility.css">
+<link rel="stylesheet" href="css/template.css">
 
 </head>
 

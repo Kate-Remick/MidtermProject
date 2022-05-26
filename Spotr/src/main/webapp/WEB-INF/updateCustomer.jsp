@@ -12,9 +12,9 @@
 <!-- ADD BOOTSTRAP INTO THE PROJECT -->
 <jsp:include page="bootstrapHead.jsp"></jsp:include>
 <!-- ADD CSS FILES INTO THE PROJECT -->
-<link rel="stylesheet" href="../css/updateFacility.css">
-<link rel="stylesheet" href="../css/template.css">
-<link rel="stylesheet" href="../css/updateCustomer.css">
+<link rel="stylesheet" href="css/updateFacility.css">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="css/updateCustomer.css">
 
 
 </head>

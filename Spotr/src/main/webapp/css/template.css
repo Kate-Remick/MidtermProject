@@ -109,13 +109,13 @@ form {
 }
 
 td {
-	padding-left: 4px;
-	padding-right: 4px;
+	padding: 4px;
+	
 }
 
 th {
-	padding-left: 4px;
-	padding-right: 4px;
+	padding: 4px;
+	
 }
 
 
