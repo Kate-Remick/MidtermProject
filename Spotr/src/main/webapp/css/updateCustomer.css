@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/image14.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}

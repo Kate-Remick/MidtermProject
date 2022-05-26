@@ -23,7 +23,7 @@ public class LoginController {
 			HttpSession session) {
 		if (session.getAttribute("loggedInUser") == null) {
 			Login login = userDao.findByUsernameAndPassword(username, password);
-			if (login == null) {
+			if (login == null ) {
 				return "home";
 			} else if (login.getRole().getId() == 1) {
 				session.setAttribute("loggedInUser", login);
@@ -57,14 +57,15 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "create.do", method = RequestMethod.POST)
-	public ModelAndView createdLogin(Login login, HttpSession session) {
+	public ModelAndView createdLogin(@RequestParam("roleId")int roleId, Login login, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("activities", userDao.getAllActivities());
 
 		if (userDao.checkIfUsernameExists(login.getUsername())) {
 			mav.addObject("message", "Username already exists");
 			mav.setViewName("createLogin");
 		} else {
-			switch (login.getRole().getId()) {
+			switch (roleId) {
 			case 1:
 				login = userDao.createCustomerUser(login.getUsername(), login.getPassword());
 				session.setAttribute("loggedInUser", login);

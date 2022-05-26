@@ -17,6 +17,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Customer {
 
@@ -37,20 +42,25 @@ public class Customer {
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
+	@Cascade(CascadeType.PERSIST)
 	private Address address;
 
 	@ManyToMany
 	@JoinTable(name = "customer_facility", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "facility_id"))
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Facility> facilities;
 
 	@ManyToOne
 	@JoinColumn(name = "gender_id")
+	@Cascade(CascadeType.PERSIST)
 	private Gender gender;
 
 	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Journal> logs;
 
 	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Goal> goals;
 
 	@OneToOne
@@ -58,10 +68,13 @@ public class Customer {
 	private Login login;
 
 	@OneToMany(mappedBy = "customer")
+	@Cascade(CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<CustomerActivity> customerActivities;
 
 	@OneToOne
 	@JoinColumn(name = "facility_preferences_id")
+	@Cascade(CascadeType.PERSIST)
 	private FacilityPreferences facilityPreferences;
 
 	public Customer() {

@@ -1,5 +1,8 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.util.List;
+
+import com.skilldistillery.fitnessfinder.entities.Activity;
 import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Facility;
 import com.skilldistillery.fitnessfinder.entities.Login;
@@ -12,6 +15,7 @@ public interface UserDAO {
 	Login createFacilityUser(String username, String password);
 	Customer loginCustomerUser(Login login);
 	Facility loginFacilityUser(Login login);
+	List<Activity> getAllActivities();
 //	Login createTrainerUser(String username, String password);
 	
 }

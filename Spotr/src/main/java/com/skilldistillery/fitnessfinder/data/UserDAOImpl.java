@@ -1,11 +1,15 @@
 package com.skilldistillery.fitnessfinder.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.fitnessfinder.entities.Activity;
 import com.skilldistillery.fitnessfinder.entities.Customer;
 import com.skilldistillery.fitnessfinder.entities.Facility;
 import com.skilldistillery.fitnessfinder.entities.Login;
@@ -27,8 +31,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Login findByUsernameAndPassword(String username, String password) {
 		String jpql = "SELECT l FROM Login l WHERE l.username = :username " + "AND l.password = :password";
-		Login login = em.createQuery(jpql, Login.class).setParameter("username", username)
-				.setParameter("password", password).getResultList().get(0);
+		List<Login> loginList = em.createQuery(jpql, Login.class).setParameter("username", username)
+				.setParameter("password", password).getResultList();
+		Login login = null;
+		if(loginList != null && loginList.size() > 0) {
+			login = loginList.get(0);
+		}
 		return login;
 	}
 
@@ -36,8 +44,8 @@ public class UserDAOImpl implements UserDAO {
 	public Boolean checkIfUsernameExists(String username) {
 		boolean exists;
 		String jpql = "SELECT l FROM Login l WHERE username = :username";
-		Login login = em.createQuery(jpql, Login.class).setParameter("username", username).getResultList().get(0);
-		exists = !(login == null);
+		List<Login> login = em.createQuery(jpql, Login.class).setParameter("username", username).getResultList();
+		exists = !(login == null || login.size() == 0);
 		return exists;
 	}
 
@@ -47,6 +55,7 @@ public class UserDAOImpl implements UserDAO {
 		login.setRole(em.find(Role.class, 1));
 		login.setUsername(username);
 		login.setPassword(password);
+		login.setActive(true);
 		em.persist(login);
 		return login;
 	}
@@ -57,6 +66,7 @@ public class UserDAOImpl implements UserDAO {
 		login.setRole(em.find(Role.class, 2));
 		login.setUsername(username);
 		login.setPassword(password);
+		login.setActive(true);
 		em.persist(login);
 		return login;
 	}
@@ -83,6 +93,13 @@ public class UserDAOImpl implements UserDAO {
 		return facility;
 	}
 
+	@Override
+	public List<Activity> getAllActivities() {
+		List<Activity> activities = new ArrayList<>();
+		String jpql = "SELECT a FROM Activity a";
+		activities = em.createQuery(jpql, Activity.class).getResultList();
+		return activities;
+	}
 //	@Override
 //	public Login createTrainerUser(String username, String password) {
 //		Login login = new Login(); 

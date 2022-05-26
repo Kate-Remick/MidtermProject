@@ -25,4 +25,28 @@ public class UserController {
 		
 	}
 	
+	//DUMMY METHOD FOR TESTING JSP PAGES
+	@RequestMapping(path = "customer.do")
+	public String dummyCustomer(Model model) {
+		return "customer";
+	}
+	
+	//DUMMY METHOD FOR TESTING JSP PAGES
+	@RequestMapping(path = "facility.do")
+	public String dummyFacility(Model model) {
+		return "facility";
+	}
+
+	//DUMMY METHOD FOR TESTING JSP PAGES
+	@RequestMapping(path = "newCustomer.do")
+	public String dummyNewCustomer(Model model) {
+		return "new_customer";
+	}
+	
+	//DUMMY METHOD FOR TESTING JSP PAGES
+	@RequestMapping(path = "banner.do")
+	public String dummyBanner(Model model) {
+		return "banner";
+	}
+
 }

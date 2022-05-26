@@ -10,8 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Facility {
@@ -40,6 +44,7 @@ public class Facility {
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
+	@Cascade(CascadeType.PERSIST)
 	private Address address;
 
 	@ManyToMany(mappedBy = "facilities")
@@ -49,7 +54,8 @@ public class Facility {
 	@JoinColumn(name = "login_id")
 	private Login login;
 
-	@ManyToMany(mappedBy = "facilities")
+	@ManyToMany
+	@JoinTable(name = "facility_activity", joinColumns = @JoinColumn(name = "facility_id"), inverseJoinColumns = @JoinColumn(name = "activity_id"))
 	private List<Activity> activities;
 
 	public Facility() {
