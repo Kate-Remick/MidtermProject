@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import com.skilldistillery.fitnessfinder.entities.Address;
 import com.skilldistillery.fitnessfinder.entities.Facility;
 import com.skilldistillery.fitnessfinder.entities.Login;
 
+@Controller
 public class FacilityController {
 
 	@Autowired
@@ -24,54 +26,55 @@ public class FacilityController {
 
 	@RequestMapping(path = "viewFacility.do", method = RequestMethod.GET)
 	public String viewFacility(HttpSession session) {
-		return "viewFacility";
+		Facility facility = (Facility)session.getAttribute("facility");
+		session.setAttribute("facility", facility);
+		return "facility";
 	}
 
-	@RequestMapping(path = "createFacility.do", method = RequestMethod.GET)
-	public String createFacilityForm() {
-		return "createFacilityForm";
-	}
 
 	@RequestMapping(path="createFacility.do", method = RequestMethod.POST)
-	public ModelAndView createFacility(@RequestParam ("loggedInUser")Login login, Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView createFacility(Facility facility, Address address, HttpSession session, @RequestParam ("activityarray")String... activities) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
-		if (activity != null && activity.length > 0) {
-			for (int i = 0; i < activity.length; i++) {
-				
-					facilityActivity.add(activity[i]);
-				
-				
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+					Activity activity = facilityDAO.findActivityById(Integer.parseInt(activities[i]));
+					facilityActivity.add(activity);
 			}
 		}
 		facility.setActivities(facilityActivity);
-		facilityDAO.createFacility(login, facility);
+		Login login = (Login) session.getAttribute("loggedInUser");
+		facility = facilityDAO.createFacility(login, facility);
+//		facility = facilityDAO.createFacility((Login)session.getAttribute("loggedInUser"), facility);
 		session.setAttribute("facility", facility);
 		mv.setViewName("facility");
 		return mv;
 	}
 	
 	@RequestMapping(path = "editFacility.do", method = RequestMethod.GET)
-	public String editFacilityForm() {
-		return "editFacilityForm";
+	public ModelAndView editFacilityForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("activities", facilityDAO.getAllActivities());
+		mv.setViewName("updateFacility");
+		return mv;
 	}
 	
 	@RequestMapping(path="editFacility.do", method = RequestMethod.POST)
-	public ModelAndView editFacility(@RequestParam ("facility")Facility facilityUnderEdit, Facility facility, Address address, HttpSession session, @RequestParam ("activities")Activity... activity) {
+	public ModelAndView editFacility( Facility facility, Address address, HttpSession session, @RequestParam ("activityarray")String... activities) {
 		ModelAndView mv = new ModelAndView();
 		facility.setAddress(address);
 		List<Activity> facilityActivity = new ArrayList<>();
-		if (activity != null && activity.length > 0) {
-			for (int i = 0; i < activity.length; i++) {
-				
-					facilityActivity.add(activity[i]);
-				
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+					
+					Activity activity = facilityDAO.findActivityById(Integer.parseInt(activities[i]));
+					facilityActivity.add(activity);
 				
 			}
 		}
 		facility.setActivities(facilityActivity);
-		facilityDAO.editFacilityInfo(facilityUnderEdit, facility);
+		facility = facilityDAO.editFacilityInfo((Facility)session.getAttribute("facility"), facility);
 		session.setAttribute("facility", facility);
 		mv.setViewName("redirect:editedFacility.do");
 		return mv;
@@ -79,7 +82,7 @@ public class FacilityController {
 	
 	@RequestMapping(path = "editedFacility.do", method = RequestMethod.GET)
 	public String editedFacility() {
-		return "facility.do";
+		return "facility";
 	}
 
 }

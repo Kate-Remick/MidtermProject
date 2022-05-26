@@ -1,5 +1,7 @@
 package com.skilldistillery.fitnessfinder.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,94 +29,105 @@ public class CustomerController {
 	private CustomerDAO customerDao;
 
 	@RequestMapping(path = "createCustomer.do", method = RequestMethod.POST)
-	public ModelAndView createCustomer(@RequestParam("loggedInUser") Login login, Customer customer, Address address,
-			Gender gender, FacilityPreferences prefs, HttpSession session, @RequestParam("activities")CustomerActivity... activities) {
+	public ModelAndView createCustomer(Customer customer, String dob, Address address, Gender gender,
+			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activityId,
+			@RequestParam("skillLevel") Integer[] skillLevels) {
 		ModelAndView mav = new ModelAndView();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		customer.setBirthDate(LocalDate.parse(dob, formatter));
+		System.out.println(customer.getBirthDate());
 		customer.setAddress(address);
 		customer.setGender(gender);
 		customer.setFacilityPreferences(prefs);
-		// customer.setCustomerActivities(customer activities from JSP)
-		if (activities != null && activities.length > 0) {
-			for (int i = 0; i < activities.length; i++) {
-				customer.addCustomerActivity(activities[i]);
+		Login login = (Login) session.getAttribute("loggedInUser"); // HELPED FROM JEREMY
+		customer = customerDao.createCustomer(login, customer);
+		Integer[] usableSkillLevels = new Integer[activityId.length];
+		int skillCount = 0;
+		for (Integer skill : skillLevels) {
+			System.out.println(skill);
+			if( skill != null) {
+				usableSkillLevels[skillCount] = skill;
+				skillCount ++;
 			}
 		}
-		customer = customerDao.createCustomer(login, customer);
+		List<CustomerActivity> customerActivities = new ArrayList<CustomerActivity>();
+		if (activityId != null && activityId.length > 0) {
+			for (int i = 0; i < activityId.length; i++) {
+				CustomerActivity ca = new CustomerActivity();
+				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activityId[i])));
+				ca.setSkillLevel(usableSkillLevels[i]);
+				
+				ca.setCustomer(customer);
+				customerActivities.add(ca);
+			}
+		}
+		customer = customerDao.editActivities(customer.getId(), customerActivities);
+		customer = customerDao.findCustomerById(customer.getId());
 		session.setAttribute("customer", customer);
-		mav.setViewName("customer");
+		mav.setViewName("redirect:viewCustomer.do");
 		return mav;
 	}
+	
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.GET)
-	public String editCustomerPage() {
-		return "customerInfo";
+	public ModelAndView editCustomerPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("activities", customerDao.getAllActivities());
+		mv.setViewName("updateCustomer");
+		return mv;
 	}
 
 	@RequestMapping(path = "editCustomerInfo.do", method = RequestMethod.POST)
-	public ModelAndView editCustomer(Customer customer, Gender gender, HttpSession session) {
+	public ModelAndView editCustomer(Customer customer, String dob, Address address, Gender gender,
+			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activities, @RequestParam("skillLevels") Integer[] skillLevels ) {
 		ModelAndView mav = new ModelAndView();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		customer.setBirthDate(LocalDate.parse(dob, formatter));
+		customer.setAddress(address);
 		customer.setGender(gender);
-		customer = customerDao.editCustomerInfo(customer);
-		session.setAttribute("customer", customer);
+		Integer[] usableSkillLevels = new Integer[activities.length];
+		int skillCount = 0;
+		for (Integer skill : skillLevels) {
+			System.out.println(skill);
+			if( skill != null) {
+				usableSkillLevels[skillCount] = skill;
+				skillCount ++;
+			}
+		}
+		List<CustomerActivity> newActivities = new ArrayList<>();
+		if (activities != null && activities.length > 0) {
+			for (int i = 0; i < activities.length; i++) {
+				CustomerActivity ca = new CustomerActivity();
+				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activities[i])));
+				ca.setSkillLevel(skillLevels[i]);
+				ca.setCustomer((Customer)session.getAttribute("customer"));
+				newActivities.add(ca);
+			}
+		}
+		Customer editedCustomer = customerDao.editCustomerInfo(customer,((Customer) session.getAttribute("customer")).getId());
+		editedCustomer = customerDao.editActivities(editedCustomer.getId(), newActivities);
+		editedCustomer = customerDao.editFacilityPreferences(editedCustomer.getId(), prefs);
+		editedCustomer = customerDao.findCustomerById(editedCustomer.getId());
+		
+		session.setAttribute("customer", editedCustomer);
 		mav.setViewName("redirect:editedCustomerInfo.do");
 		return mav;
 	}
+
 
 	@RequestMapping(path = "editedCustomerInfo.do", method = RequestMethod.GET)
 	public String editedCustomerPage() {
 		return "customer";
 	}
-
-	@RequestMapping(path = "editCustomerAddress.do", method = RequestMethod.GET)
-	public String editCustomerAddressPage() {
-		return "customerAddress";
-	}
-
-	@RequestMapping(path = "editCustomerAddress.do", method = RequestMethod.POST)
-	public ModelAndView editCustomerAddress(@RequestParam("customer") Customer customer, Address address,
-			HttpSession session) {
+	
+	@RequestMapping(path = "viewCustomer.do", method = RequestMethod.GET)
+	public ModelAndView viewCustomer(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		customer = customerDao.editCustomerAddress(customer, address);
+		mav.setViewName("customer");
+		Customer customer = customerDao.findCustomerById(((Customer)session.getAttribute("customer")).getId());
 		session.setAttribute("customer", customer);
-		mav.setViewName("redirect:editedCustomerInfo.do");
 		return mav;
 	}
 
-	@RequestMapping(path = "editCustomerPrefs.do", method = RequestMethod.GET)
-	public String editCustomerPrefsPage() {
-		return "customerPrefs";
-	}
-
-	@RequestMapping(path = "editCustomerPrefs.do", method = RequestMethod.POST)
-	public ModelAndView editCustomerPrefs(@RequestParam("customer")Customer customer, FacilityPreferences prefs, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		customer = customerDao.editFacilityPreferences(customer.getId(), prefs);
-		session.setAttribute("customer", customer);
-		mav.setViewName("redirect:editedCustomerInfo.do");
-		return mav;
-	}
-	
-	@RequestMapping(path="editCustomerActivities.do", method = RequestMethod.GET)
-	public String editCustomerAcivities() {
-		return "customerActivitiesForm";
-	}
-	
-	@RequestMapping(path="editCustomerActivities.do", method = RequestMethod.POST)
-	public String editCustomerActivities(@RequestParam("customer")Customer customer, @RequestParam("activities")CustomerActivity... activities) {
-		List<CustomerActivity> newActivities = new ArrayList<>();
-		if (activities != null && activities.length > 0) {
-			for (int i = 0; i < activities.length; i++) {
-				newActivities.add(activities[i]);
-			}
-		}
-		customerDao.editActivities(customer.getId(), newActivities);
-		return "redirect:editedCustomerActivites.do";
-	}
-	
-	@RequestMapping(path="editedCustomerActivites.do", method = RequestMethod.GET)
-	public String editedActivities() {
-		return "customer";
-	}
-	
 
 }

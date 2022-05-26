@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/customer_background1.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+/*
+div#customer {
+**  display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+
+
+div#facilities {
+**  display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: #479ef7;
+  padding: 5px;
+}
+
+div#activities {
+**  display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+*/
+
+.customer_labels {
+	text-align: right;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.customer_data {
+	text-align: left;
+	font-family: sans-serif;
+}
+
+
+
+
+.legend {
+	  border-radius: 10px;
+	  background-color: lightgrey;
+	  border: 1px;
+	  border-color: black;
+	  padding: 5px 10px;
+	  
+}
+
+form {
+	background: white; 
+	opacity: 0.75;
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+}
+
+.field-body {
+	background:rgba(192, 217, 236, 0.6);
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+  padding: 5px;
+}
+
+.form-alignment {
+	padding-left: 10%;
+	padding-right: 10%;
+	width: 100%;
+	display: block;
+	overflow: auto;
+}
+
+
+.formLabels {
+	text-align: center;
+    box-sizing: border-box;
+	width: 20%;
+	text-align: right;
+}
+*/
+
+.inline {
+	display: inline;
+}
+
+.warning {
+	background-color: lightred;
+	color: red;
+	font-style: bold;
+}
+

@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+
+.banner-wrapper {
+	width: 100%;
+	height: 100px;
+	margin: 0;
+	padding: 0;
+}
+
+div.logo{
+	background-image: url(../images/spotr_logo_sm.jpg);	
+	float:left;
+	/*     width: 287px; */
+	height:100%;
+	display:block;    
+	margin: 0;
+	padding: 0;
+}
+
+img.logo {
+	height: 100px;
+}
+
+div.banner{
+	display: inline; /* MIGHT NOT DO ANYTHING */
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+div.tagline{
+  display: flex;
+  max-width: 90%;
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+h1.tagline {
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+}
+
+section.header {
+	background-color: rgba(0,160,254,255);
+	background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;              /* optional, center the image */
+}
+
+span.buttons {
+	position: absolute;
+	right: 20px;
+}
+
+a.banner {
+	border: 2px;
+	margin: 5px;
+	padding: 5px;
+	background-color: light-gray;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: bold;
+  color: black;
+  	
+}
+
+/*
+div.banner{
+	display: inline; ** MIGHT NOT DO ANYTHING **
+	height: 100px;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+.tagline {
+  display: inline-block;
+  position: relative;
+  left: 20%;
+  color: white;
+  font-size: 60px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: oblique 90deg;
+  
+  
+}
+*/

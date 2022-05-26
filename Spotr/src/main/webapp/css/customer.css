@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/customer_background1.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+/*
+div#customer {
+**	display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid red;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+} */
+
+div#facilities {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid red;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+
+div#activities {
+/*  display: inline-block;
+  vertical-align: middle; */
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid red;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+*/
+
+.customer_labels {
+	text-align: right;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.customer_data {
+	text-align: left;
+	font-family: sans-serif;
+}
+
+
+
+.formLabels {
+	width: 20%;
+	text-align: right;
+}
+
+.inline {
+	display: inline;
+}

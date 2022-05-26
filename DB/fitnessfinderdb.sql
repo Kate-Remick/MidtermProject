@@ -557,6 +557,10 @@ INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (69, 'crossfit13', 'crossfit13', 1, 2);
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (70, 'crossfit14', 'crossfit14', 1, 2);
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (71, 'crossfit15', 'crossfit15', 1, 2);
+<<<<<<< HEAD
+=======
+INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (72, 'lightweight', 'password', 1, 1);
+>>>>>>> 7d9538268b116900647b138e2132bc2f632c70ca
 
 COMMIT;
 
@@ -566,8 +570,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fitnessfinderdb`;
+<<<<<<< HEAD
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (1, '500 Oak St', NULL, 'Boston', 'MA', '03059', '757-767-7999', 'man@training.com', NULL);
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (2, '100 Elm', NULL, 'Boston', 'MA', '03569', '617-777-2345', 'gymmaster@gym.com', 'gym.com');
+=======
+INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (1, '500 Oak St', ' ', 'Boston', 'MA', '03059', '757-767-7999', 'man@training.com', ' ');
+INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (2, '100 Elm St', ' ', 'Boston', 'MA', '03569', '617-777-2345', 'gymmaster@gym.com', 'gym.com');
+>>>>>>> 7d9538268b116900647b138e2132bc2f632c70ca
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (3, '1630 W Evans Ave', ' ', 'Englewood', 'CO', '80110', '720-770-1616', ' ', 'www.ironwarriorgym.com');
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (4, '1244 E Colfax Ave', ' ', 'Denver', 'CO', '80218', '303-558-1555', ' ', 'www.anytimefitness.com');
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (5, '1516 Emerson St', ' ', 'Denver', 'CO', '80218', '303-832-7263', ' ', 'www.colfaxstrong.com');
@@ -637,6 +646,10 @@ INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `stat
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (69, '1805 E 58th Ave', 'Unit M', 'Denver', 'CO', '80216', '(720) 460-1778', 'info@mountainstrongdenver.com', 'http://www.mountainstrongdenver.com/');
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (70, '2360 Lawrence Street', '', 'Denver', 'CO', '80205', '720 780 7224', 'info@720athletics.training', 'https://720athletics.com/');
 INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (71, '2422 S Trenton Way', 'Unit D', 'Denver', 'CO', '80231', '720-295-1884', 'info@crossfitcherrycreek.com', 'https://www.crossfitcherrycreek.com/');
+<<<<<<< HEAD
+=======
+INSERT INTO `address` (`id`, `street_address1`, `street_address2`, `city`, `state`, `zip`, `phone`, `email`, `url`) VALUES (72, '1600 South Monaco Parkway', '#214', 'Denver', 'CO', '80222', '(720) 867-5309', 'rcoleman@mrolympia.com', ' ');
+>>>>>>> 7d9538268b116900647b138e2132bc2f632c70ca
 
 COMMIT;
 
@@ -648,6 +661,7 @@ START TRANSACTION;
 USE `fitnessfinderdb`;
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (1, 'Crush your enemies', 1, 'Globo', 'GloboGym', 'Ben Stiller', 3, 2, 1, 150);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (2, 'See them driven before you', 0, ' ', 'Iron Warrior Gym', 'Jeff Bezos', 34, 3, 1, 55);
+<<<<<<< HEAD
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (3, 'What is best', 0, ' ', 'Anytime Fitness', 'Marky Mark', 35, 4, 0, 900);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (4, 'Strength and Honor', 1, ' ', 'Colfax Strong', 'Maximus D', 36, 5, 1, 444);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (5, ' ', 1, ' ', 'Denver Gym and Fitness', 'Mark Hamil', 37, 6, 1, 333);
@@ -657,6 +671,17 @@ INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `nam
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (9, ' ', 1, ' ', 'University Hills YMCA', 'Village Person', 41, 10, 0, NULL);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (10, 'Teaching the world to dance for over 100 years.', 1, 'Aurthur Murray', 'Colorado Dance Centers', ' ', 42, 11, 0, NULL);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (11, ' ', 1, ' ', 'EVQ Elite Dance Studio', 'Victoria Quintana', 43, 12, 0, NULL);
+=======
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (3, 'What is best', 0, ' ', 'Anytime Fitness', 'Marky Mark', 35, 4, 0, 90);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (4, 'Strength and Honor', 1, ' ', 'Colfax Strong', 'Maximus D', 36, 5, 1, 45);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (5, ' ', 1, ' ', 'Denver Gym and Fitness', 'Mark Hamil', 37, 6, 1, 39);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (6, ' ', 1, ' ', 'The Rebel Workout', 'Jeff Bridges', 38, 7, 0, 65);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (7, ' ', 0, ' ', 'TFA MMA & Fitness', 'Tony Stark', 39, 8, 1, 85);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (8, ' ', 0, ' ', 'Gracie BJJ Academy', 'Renzo Gracie', 40, 9, 0, 75);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (9, ' ', 1, ' ', 'University Hills YMCA', 'Village Person', 41, 10, 0, 45);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (10, 'Teaching the world to dance for over 100 years.', 1, 'Aurthur Murray', 'Colorado Dance Centers', ' ', 42, 11, 0, 45);
+INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (11, ' ', 1, ' ', 'EVQ Elite Dance Studio', 'Victoria Quintana', 43, 12, 0, 35);
+>>>>>>> 7d9538268b116900647b138e2132bc2f632c70ca
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (12, ' ', 1, 'Jazzercise', 'Jazzercise Aurora', ' ', 44, 13, 0, 25);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (13, ' ', 1, ' ', 'DS Dancesport Ballroom', 'Deannah Strashnikova', 45, 14, 0, 118);
 INSERT INTO `facility` (`id`, `mission_statement`, `has_trainers`, `brand`, `name`, `owner_name`, `login_id`, `address_id`, `always_open`, `price`) VALUES (14, ' ', 1, ' ', 'Dance2B', 'Jennifer Tisdale', 46, 15, 0, 22);
@@ -694,6 +719,7 @@ COMMIT;
 START TRANSACTION;
 USE `fitnessfinderdb`;
 INSERT INTO `facility_preferences` (`id`, `always_open`, `price_max`, `has_trainers`) VALUES (1, 1, 100, 1);
+INSERT INTO `facility_preferences` (`id`, `always_open`, `price_max`, `has_trainers`) VALUES (2, 0, 500, 0);
 
 COMMIT;
 
@@ -746,6 +772,7 @@ INSERT INTO `customer` (`id`, `first_name`, `last_name`, `birth_date`, `bio`, `l
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `birth_date`, `bio`, `login_id`, `address_id`, `facility_preferences_id`, `gender_id`) VALUES (29, 'Jose', 'Evans', '1988-12-02', '', 31, 44, 1, 3);
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `birth_date`, `bio`, `login_id`, `address_id`, `facility_preferences_id`, `gender_id`) VALUES (30, 'Steven', 'Taylor', '1970-01-11', '', 32, 45, 1, 1);
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `birth_date`, `bio`, `login_id`, `address_id`, `facility_preferences_id`, `gender_id`) VALUES (31, 'Patricia', 'Johnson', '1986-05-03', '', 33, 46, 1, 2);
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `birth_date`, `bio`, `login_id`, `address_id`, `facility_preferences_id`, `gender_id`) VALUES (32, 'Ronnie', 'Coleman', '1990-05-13', 'Lightweight! YEAH BUDDY!', 72, 72, 2, 1);
 
 COMMIT;
 
@@ -791,6 +818,9 @@ COMMIT;
 START TRANSACTION;
 USE `fitnessfinderdb`;
 INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`, `completed`) VALUES (1, 'Pump Iron', 'bench 1000 lbs', 1, 0);
+INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`, `completed`) VALUES (2, 'Become Mr Olympia', 'I\'m the best ever. I\'m the most brutal and vicious, and most ruthless champion there\'s ever been. There\'s no one can stop me. ', 32, 0);
+INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`, `completed`) VALUES (3, 'Deadlift 1500 Pounds', 'For driving my flintstones car', 32, 0);
+INSERT INTO `goal` (`id`, `name`, `description`, `customer_id`, `completed`) VALUES (4, 'Bench 750 Pounds', 'LIGHTWEIGHT BABY!', 32, 1);
 
 COMMIT;
 
@@ -1311,6 +1341,8 @@ INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VA
 INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VALUES (509, 'Today I broke through these barriers I\'ve been feeling.', '2022-02-8', 13, 1);
 INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VALUES (510, 'Today I really felt the burn.', '2022-03-19', 3, 1);
 INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VALUES (511, 'Today I wished I pushed harder.', '2022-03-27', 26, 1);
+INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VALUES (512, 'Today I worked out with Jay Cutler', '2022-03-27', 32, 2);
+INSERT INTO `journal` (`id`, `entry`, `created_at`, `customer_id`, `goal_id`) VALUES (513, 'Today I walked to the gym with a refrigerator', '2022-04-15', 32, 3);
 
 COMMIT;
 
@@ -1321,6 +1353,11 @@ COMMIT;
 START TRANSACTION;
 USE `fitnessfinderdb`;
 INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (1, 1);
+INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (2, 32);
+INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (4, 32);
+INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (16, 32);
+INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (17, 32);
+INSERT INTO `customer_facility` (`facility_id`, `customer_id`) VALUES (19, 32);
 
 COMMIT;
 

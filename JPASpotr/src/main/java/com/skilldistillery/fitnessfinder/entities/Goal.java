@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Goal {
 
@@ -25,9 +28,11 @@ public class Goal {
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Customer customer;
 
 	@OneToMany(mappedBy = "goal")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Journal> logs;
 
 	private boolean completed;

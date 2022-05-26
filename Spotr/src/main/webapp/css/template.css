@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+body {
+	background-image: 
+		url(../images/customer_background1.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100%;
+}
+
+/*
+div#customer {
+**  display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+/*  */
+
+div#facilities {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: rgba(71, 158, 247, .75);
+  padding: 5px;
+}
+
+/* iv#activities {
+**  display: inline-block;
+  vertical-align: middle; **
+  margin:auto;
+  width: auto;
+  height: auto;
+  text-align: left;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 5px;
+}
+*/ */
+
+.customer_labels {
+	text-align: right;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.customer_data {
+	text-align: left;
+	font-family: sans-serif;
+}
+
+
+
+
+.legend {
+	  border-radius: 10px;
+	  background-color: lightgrey;
+	  border: 1px;
+	  border-color: black;
+	  padding: 5px 10px;
+	  
+}
+
+form {
+  background-color: rgb(71, 158, 247, .85); 
+/*	opacity: 0.75; */
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+}
+
+.field-body {
+/*  background-color: rgb(71, 158, 247); */ 
+  background:rgba(192, 217, 236, 0.85);
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+  padding: 5px;
+}
+.field-solid {
+	background:rgba(192, 217, 236, 1);
+ 	border-radius: 10px;
+ 	border: 3px solid #000000;
+ 	text-align: left;
+  box-sizing: border-box;	
+  padding: 5px;
+}
+
+.form-alignment {
+	padding-left: 10%;
+	padding-right: 10%;
+	width: 100%;
+	display: block;
+	overflow: auto;
+}
+
+td {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+th {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+
+.formLabels {
+	text-align: center;
+    box-sizing: border-box;
+	width: 20%;
+	text-align: right;
+}
+*/
+
+.inline {
+	display: inline;
+}
+
+.left-padding {
+	padding-left: 10px;
+}
+
+.warning {
+	background-color: lightred;
+	color: red;
+	font-style: bold;
+}
+
+#addedFacility{
+	text-align: center;
+	background: rgba(192, 217, 236, 1);
+	border-radius: 10px;
+	
+}
