@@ -31,7 +31,7 @@ public class CustomerController {
 	@RequestMapping(path = "createCustomer.do", method = RequestMethod.POST)
 	public ModelAndView createCustomer(Customer customer, String dob, Address address, Gender gender,
 			FacilityPreferences prefs, HttpSession session, @RequestParam("activities") String[] activityId,
-			@RequestParam("skillLevel") int[] skillLevels) {
+			@RequestParam("skillLevel") Integer[] skillLevels) {
 		ModelAndView mav = new ModelAndView();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		customer.setBirthDate(LocalDate.parse(dob, formatter));
@@ -41,13 +41,22 @@ public class CustomerController {
 		customer.setFacilityPreferences(prefs);
 		Login login = (Login) session.getAttribute("loggedInUser"); // HELPED FROM JEREMY
 		customer = customerDao.createCustomer(login, customer);
-		
+		Integer[] usableSkillLevels = new Integer[activityId.length];
+		int skillCount = 0;
+		for (Integer skill : skillLevels) {
+			System.out.println(skill);
+			if( skill != null) {
+				usableSkillLevels[skillCount] = skill;
+				skillCount ++;
+			}
+		}
 		List<CustomerActivity> customerActivities = new ArrayList<CustomerActivity>();
 		if (activityId != null && activityId.length > 0) {
 			for (int i = 0; i < activityId.length; i++) {
 				CustomerActivity ca = new CustomerActivity();
 				ca.setActivity(customerDao.findActivityById(Integer.parseInt(activityId[i])));
-				ca.setSkillLevel(skillLevels[i]);
+				ca.setSkillLevel(usableSkillLevels[i]);
+				
 				ca.setCustomer(customer);
 				customerActivities.add(ca);
 			}
