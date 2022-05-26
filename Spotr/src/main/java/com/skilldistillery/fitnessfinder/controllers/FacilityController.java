@@ -28,7 +28,7 @@ public class FacilityController {
 	public String viewFacility(HttpSession session) {
 		Facility facility = (Facility)session.getAttribute("facility");
 		session.setAttribute("facility", facility);
-		return "viewFacility";
+		return "facility";
 	}
 
 
