@@ -75,7 +75,8 @@ div#activities {
 }
 
 form {
-  background-color: rgba(71, 158, 247, .75); 
+  background-color: rgb(71, 158, 247); 
+	opacity: 0.75;
  	border-radius: 10px;
  	border: 3px solid #000000;
  	text-align: left;
@@ -83,7 +84,7 @@ form {
 }
 
 .field-body {
-	background:rgba(192, 217, 236, 0.6);
+  background-color: rgb(71, 158, 247); 
  	border-radius: 10px;
  	border: 3px solid #000000;
  	text-align: left;
@@ -106,6 +107,7 @@ form {
 	width: 20%;
 	text-align: right;
 }
+*/
 
 .inline {
 	display: inline;
