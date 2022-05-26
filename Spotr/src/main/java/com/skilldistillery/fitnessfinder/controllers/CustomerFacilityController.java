@@ -29,7 +29,7 @@ public class CustomerFacilityController {
 		Customer customer = (Customer)session.getAttribute("customer");
 		List<Facility> preferredFacilities = customerDao.searchFacilityByPreferences(customer.getFacilityPreferences());
 		System.out.println("**************************88" +preferredFacilities);
-		mav.addObject("preferredFacilities", preferredFacilities);
+		session.setAttribute("facilities", preferredFacilities);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
 		mav.setViewName("findFacilities");
@@ -37,34 +37,34 @@ public class CustomerFacilityController {
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "category", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category) {
+	public ModelAndView findFacilitiesByCategory(@RequestParam("category") int category, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByCategory(category);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "address", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address) {
+	public ModelAndView findFacilitiesByLocation(@RequestParam("address") int address, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByLocation(address);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
 
 	@RequestMapping(path = "findFacilities.do", params = "activity", method = RequestMethod.POST)
-	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") int activity) {
+	public ModelAndView findFacilitiesByActivity(@RequestParam("activity") int activity, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		List<Facility> facilities = customerDao.searchFacilityByActivity(activity);
 		mav.addObject("activities", customerDao.getAllActivities());
 		mav.addObject("categories", customerDao.getAllCategories());
-		mav.addObject("facilities", facilities);
+		session.setAttribute("facilities", facilities);
 		mav.setViewName("findFacilities");
 		return mav;
 	}
