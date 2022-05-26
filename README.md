@@ -20,13 +20,15 @@ This full stack web application utilizes a fully developed mySQL database schema
 - Gradle
 - Git and Github
 - Unix Terminal
+- JPA
+- HTML/CSS
 - Model-View-Controller
 
 ## Lessons Learned
 - Utilizing git branches and consistently merging to main branch to optimize team production
 - Creating a schema table with a compound key caused more problems than it solved
 - Java beans using Spring boot cannot pass objects to Controllers :(
--
+- Working a lot with HTML and CSS to format and build a cleaner looking site
 
 ## EER Diagram
 <img src="DB/fitnessfinderdb.png" alt="DB Schema"/>
