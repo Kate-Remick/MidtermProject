@@ -161,14 +161,19 @@
 											${activity.name} </label>
 									</div>
 								</div>
-
-								<select class="skill-level" name="skillLevel"
+								<!-- <label for="beginner">Beginner</label>
+								<input type="radio" name="skillLevel" value=1>
+								<label for="Intermediate">Intermediate</label>
+								<input type="radio" name="skillLevel" value=2>
+								<label for="Advanced">Advanced</label>
+								<input type="radio" name="skillLevel" value=3> -->
+							 <select class="skill-level" name="skillLevel"
 									id="skillLevel">
-									<option value=1>--Please choose a skill level--</option>
+									<option value="${null }">--Please choose a skill level--</option>
 									<option value=1>Beginner</option>
 									<option value=2>Intermediate</option>
 									<option value=3>Advanced</option>
-								</select>
+								</select> 
 							</div>
 						</c:forEach>
 					</div>
