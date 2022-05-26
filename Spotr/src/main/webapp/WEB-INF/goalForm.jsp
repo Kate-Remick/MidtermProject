@@ -29,11 +29,11 @@
 		<br>
 		<br>
 		<div class="row col-sm-6 offset-3">
-		<form action="addGoal.do" method="post">
+		<form class="field-solid" action="addGoal.do" method="post">
 			<div class="form-alignment">
 
 				<div class="row d-inline-flex">
-					<label for="name">What do you want to achieve? </label><input
+					<label  for="name">What do you want to achieve? </label><input
 						type="text" class="form-control" name="name" /><br> <br>
 					<br>
 					<label for="description">How do you plan to achieve your
