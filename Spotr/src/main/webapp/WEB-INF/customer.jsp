@@ -22,73 +22,84 @@
 			<jsp:include page="banner.jsp"></jsp:include>
 		</div>
 
-	<div class= "col-sm-6 offset-3">
-		<div id="customer" class="customer field-body">
-			<div class="row">
-				<div class="col"><strong>Username:</strong></div><div class="col">${customer.login.username}</div>
-			</div>
-			<div class="row">
-				<div class="col"><strong>First Name:</strong></div><div class="col">${customer.firstName}</div>
-			</div>
-			</div>
-			<div class="row">
-				<div class="col"><strong>Last Name:</strong></div><div class="col">${customer.lastName}</div>
-		</div>
-		<a href="editCustomerInfo.do"><button>Update
-					Personal Profile</button></a> <a href="viewJournal.do"><button>Your
-					Fitness Journal</button></a>
-
-		<br> 
-		
-		<a href="findFacilities.do"><button>Find
-				Fitness Facilities</button></a>
-		<div name="facilities" id="facilities" class="facilities">
-			<table>
-				<thead>
-					<th>Fitness FIrm</th>
-					<th>Location</th>
-					<th></th>
-				</thead>
-				<tbody>
-					<c:forEach var="facility" items="${customer.facilities}">
-						<tr>
-							<td>${facility.name}</td>
-							<td>${facility.address}</td>
-							<td><a href="removeFacilities.do?facilityId=${facility.id}"><button>Remove
-										Facility</button></a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
 		<br>
-		<div id="activities" class="activities">
-			<table>
-				<thead>
-					<th>Acitivity</th>
-					<th>Goal</th>
-					<th></th>
-				</thead>
-				<tbody>
-					<c:if test="${! empty customer.customerActivities }">
-						<c:forEach var="customerActivity"
-							items="${customer.customerActivities}">
-							<!-- FIX MEEEEEEEEEEEEEE -->
-							<tr>
-								<td>${customerActivity.activity.name}</td>
-								<td>${customerActivity.skillLevel}</td>
-						</c:forEach>
-					</c:if>
-				</tbody>
-			</table>
+
+		<div class="col-sm-6 offset-3">
+
+			<div id="customer" class="field-body">
+				<div class="row">
+					<div class="col">
+						<strong>Username:</strong>
+					</div>
+					<div class="col">${customer.login.username}</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<strong>First Name:</strong>
+					</div>
+					<div class="col">${customer.firstName}</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<strong>Last Name:</strong>
+					</div>
+					<div class="col">${customer.lastName}</div>
+				</div>
+			</div>
+			<a href="editCustomerInfo.do"><button>Update Personal
+					Profile</button></a> <a href="viewJournal.do"><button>Your Fitness
+					Journal</button></a> <br>
+
+			<div id="facilities" class="field-body">
+				<div class="row">
+					<div class="col">
+						<strong>Fitness Firm</strong>
+					</div>
+					<div class="col">
+						<strong>Address</strong>
+					</div>
+				</div>
+				<c:forEach var="facility" items="${customer.facilities}">
+					<div class="row">
+						<div class="col">${facility.name}</div>
+						<div class="col">${facility.address}</div>
+						<div class="col">
+							<a href="removeFacilities.do?facilityId=${facility.id}"><button>Remove
+									Facility</button></a>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<a href="findFacilities.do"><button>Find Fitness
+					Facilities</button></a> <br>
+
+
+			<div id="activities" class="field-body">
+				<div class="row">
+					<div class="col">
+						<strong>Activity</strong>
+					</div>
+					<div class="col">
+						<strong>Skill Level</strong>
+					</div>
+				</div>
+				<c:if test="${! empty customer.customerActivities }">
+					<c:forEach var="customerActivity"
+						items="${customer.customerActivities}">
+						<div class="row">
+							<div class="col">${customerActivity.activity.name}</div>
+							<div class="col">${customerActivity.skillLevel}</div>
+						</div>
+					</c:forEach>
+				</c:if>
+				<br>
+
+			</div>
 			<br>
 
+
+
 		</div>
-		<br>
-
-
-
-</div>
 	</main>
 
 	<!-- ADD BOOTSTRAP INTO THE PROJECT -->
