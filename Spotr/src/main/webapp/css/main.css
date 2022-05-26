@@ -1,59 +1,28 @@
 @charset "UTF-8";
 
 body {
+	margin-top: 100px;
 	background-image: 
-		url(../images/rc_back.jpg);
+		url(../images/most-muscular-ronnie-coleman.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 	height: 100%;
 }
 
-section.header {
- 	background-image:
-      url(../images/banner2.png);
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;              /* optional, center the image */
-}
-
-section.div.a.logo{
-     float:left;
-/*     width: 287px; */
-     height:100%;
-     display:block;    
-     margin: 0;
-     padding: 0;
-}
-
-div.banner{
-	display: inline; /* MIGHT NOT DO ANYTHING */
-	height: 100px;
-	vertical-align: middle;
-	padding: 0;
-	margin: 0;
-}
-
-.tagline {
-  display: inline-block;
-  position: relative;
-  left: 20%;
-  color: white;
-  font-size: 60px;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-style: oblique 90deg;
-  
-  
-}
 
 form.login_form {
 /*  display: inline-block; */
   position: relative;
-  border: 1px solid rgb(255,232,57);
+  border: 3px solid rgba(0,160,254,0);
+ 	border-radius: 10px;
+  background: rgba(192, 217, 236, 0.6);
   width: 200px;
   margin:auto;
   padding: 5px;
-  text-align: left;
+ 	text-align: left;
+  box-sizing: border-box;	
+  top: 30px;
 }
 
 div#inputs {
@@ -64,28 +33,14 @@ div#inputs {
   text-align: center;
 }
 
-span.button {
-	display: inline-block;
-    position: relative;
-    right: 5%;
-    top:50%;
-    color:red; 
-    font-size: 12px;
-    background-color: #ffcaca;
-    padding: 5px;
-border-radius: 5px 5px 5px;
-border: 1px solid red;
-padding-left: 25px;
-float: right;
-    
-	
-}
-
-section.main {
-	
-	background-color:
-	linear-gradient(45deg, blue, red);
-	
+#new_account{
+	text-decoration: underline;
+	color: black;
+	background-color: rgba(71, 158, 247,1);
+	text-transform: bold;
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 10px;
 }
 
 .formLabels {

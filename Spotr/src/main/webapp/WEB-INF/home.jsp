@@ -18,17 +18,11 @@
 
 <main class="container-fluid">
 
-		<section class="header" id="header">
-			<div class="banner" id="banner">
-			<a href="/"><img src="images/spotr_logo.png"
-				class="logo" id="logo" /></a>
-				
-			<span class="tagline" id="tagline">Local Fitness Finder</span>
-			<span class="button" id="login"><a href="customer.do">Customer</a></span>
-			<span class="button" id="new_account"><a href="facility.do">Facility</a></span>
-			<span class="button" id="banner"><a href="banner.do">Banner</a></span>
-			</div>
-		</section>
+		<div class="banner-insert">
+			<jsp:include page="banner.jsp"></jsp:include>
+		</div>
+
+
 	<section class="main" id="main">
 
 	<div name="inputs" id="inputs" class="inputs">
@@ -40,6 +34,8 @@
 	<input type="password" name="password" id="password"><br>
 	<input type="submit" value="Log In">
 	</form>
+	<br>
+	<br>
 	<a href="create.do" name="new_account" id="new_account">New User? Click here!</a>
 	</div>
 	
