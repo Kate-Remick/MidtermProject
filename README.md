@@ -38,6 +38,7 @@ This full-stack web application utilizes a fully developed MySQL database schema
   - HTML/CSS
   - Bootstrap
   - Java Standard Tag Library (JSTL)
+  - Java Server Pages (JSP)
 - Backend
   - Java
   - Spring MVC (Model-View-Control)
@@ -46,11 +47,13 @@ This full-stack web application utilizes a fully developed MySQL database schema
   - Gradle
   - Unix Terminal and shell commands
   - Java Persistence API (JPA)
-  - Hibernate
+  - Apache Tomcat
+  - AWS
 - Collaboration
   - Git and Github
   - Zoom
   - Slack
+  - Trello
 - Research
   - Google
   - StackOverflow
