@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema fitnessfinderdb
@@ -459,7 +459,7 @@ ENGINE = InnoDB;
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS fitnessuser@localhost;
-SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE USER 'fitnessuser'@'localhost' IDENTIFIED BY 'fitnessuser';
 
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'fitnessuser'@'localhost';
@@ -557,7 +557,7 @@ INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (69, 'crossfit13', 'crossfit13', 1, 2);
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (70, 'crossfit14', 'crossfit14', 1, 2);
 INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (71, 'crossfit15', 'crossfit15', 1, 2);
-INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (72, 'lightweight', 'password', 1, 1);
+INSERT INTO `login` (`id`, `username`, `password`, `active`, `role_id`) VALUES (72, 'lightweight', 'P4Ssw0rd1', 1, 1);
 
 COMMIT;
 
