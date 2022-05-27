@@ -11,28 +11,38 @@ Spotr is intended to be used by a customer to find different fitness facilities 
 
 ## Description
 
-This full stack web application utilizes a fully developed mySQL database schema connected to Java through JPA. Following C.R.U.D the app allows the manipulation of different entities in the database tables. Two different types of users with different permissions can log in and are authenticated through a mySQL table. The customer user has a log and can track different goals and journal entries with timestamps to track their fitness progress.
+This full-stack web application utilizes a fully developed MySQL database schema connected to Java through JPA. Following C.R.U.D the app allows the manipulation of different entities in the database tables. Two different types of users with different permissions can log in and are authenticated through a MySQL table. The customer user has a log and can track different goals and journal entries with timestamps to track their fitness progress.
+
+## Lessons Learned
+- Utilize git branches and consistently merging to main branch to optimize team production
+
+- Creating a schema table with a compound key caused more problems than it solved
+- Java beans using Spring boot cannot pass objects to Controllers :(
+- Using HTML and CSS to format and build a cleaner looking site
 
 ## Technologies Used
+- Frontend
+  - HTML/CSS
+  - Bootstrap
+  - Java Standard Tag Library (JSTL)
 - Backend
   - Java
   - Spring MVC
   - MySQLWorkbench
   - MySQL
-- Gradle
-- Git and Github
-- Unix Terminal
-- JPA
-- HTML/CSS
-- Bootstrap
-- Java Standard Tag Library (JSTL)
-- Hibernate
-
-## Lessons Learned
-- Utilizing git branches and consistently merging to main branch to optimize team production
-- Creating a schema table with a compound key caused more problems than it solved
-- Java beans using Spring boot cannot pass objects to Controllers :(
-- Working a lot with HTML and CSS to format and build a cleaner looking site
+  - Gradle
+  - Unix Terminal
+  - Java Persistence API
+  - Hibernate
+- Collaboration
+  - Git and Github
+  - Zoom
+  - Slack
+- Research
+  - Google
+  - StackOverflow
+  - Mozilla Developer Network
+  - SD SQUAD
 
 ## EER Diagram
 <img src="DB/fitnessfinderdb.png" alt="DB Schema"/>
